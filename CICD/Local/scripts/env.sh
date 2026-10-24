@@ -45,13 +45,19 @@ PGVECTOR_CONNECTOR_PORT="${PGVECTOR_CONNECTOR_PORT:-8001}"
 VLLM_PORT="${VLLM_PORT:-8000}"
 SGLANG_PORT="${SGLANG_PORT:-30000}"
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
+OLLAMA_MODEL="${OLLAMA_MODEL:-deepseek-r1:8b}"
 # false: a proxy named ollama forwards to Ollama on this computer.
 # true: the Ollama container is that same name. LiteLLM always calls http://ollama:11434.
 case "${OLLAMA_ENABLED:-false}" in
   1|true|TRUE|yes|YES|on|ON) OLLAMA_ENABLED=true ;;
   *) OLLAMA_ENABLED=false ;;
 esac
-export OLLAMA_ENABLED
+# true: pull OLLAMA_MODEL during docker-all-up. false skips the download.
+case "${OLLAMA_PULL:-true}" in
+  0|false|FALSE|no|NO|off|OFF) OLLAMA_PULL=false ;;
+  *) OLLAMA_PULL=true ;;
+esac
+export OLLAMA_ENABLED OLLAMA_PULL OLLAMA_MODEL
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 export LITELLM_UI="http://127.0.0.1:${LITELLM_PORT}/ui"
 export LITELLM_DOCS="http://127.0.0.1:${LITELLM_PORT}/"

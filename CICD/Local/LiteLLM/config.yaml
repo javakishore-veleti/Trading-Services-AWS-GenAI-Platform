@@ -1,22 +1,24 @@
-# Single container. Redis, vLLM, SGLang, and Ollama are separate compose projects on the shared network.
+# Single container. Redis and Ollama are separate compose projects on the shared network.
+# vLLM and SGLang stay in their own compose files for a machine with an NVIDIA GPU.
+# This laptop does not start them, so they are not routes here.
 # The Ollama row always uses the Docker name ollama. That name is the Ollama container, or a proxy to the host.
 # router_settings shares router state. The cache block is also what coordinates
 # rate limits and budgets. A migrations job and extra replicas stay off.
 model_list:
-  - model_name: deepseek-r1-qwen3-8b
-    litellm_params:
-      model: openai/deepseek-r1-qwen3-8b
-      api_base: http://vllm:8000/v1
-      api_key: none
-  - model_name: deepseek-r1-qwen3-8b-sglang
-    litellm_params:
-      model: openai/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
-      api_base: http://sglang:30000/v1
-      api_key: none
+  # ollama-models-start
+  # Dropped from the running config when the ollama command is not installed.
   - model_name: deepseek-r1-8b-ollama
     litellm_params:
       model: ollama/deepseek-r1:8b
       api_base: http://ollama:11434
+  # ollama-models-end
+  # Any bedrock/<model id> request. A call is what reaches AWS. Saving this row does not.
+  - model_name: bedrock/*
+    litellm_params:
+      model: bedrock/*
+      aws_access_key_id: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_region_name: os.environ/AWS_REGION_NAME
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

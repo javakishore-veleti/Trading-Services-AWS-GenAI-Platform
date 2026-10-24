@@ -3,6 +3,7 @@
 # vLLM and SGLang need an NVIDIA GPU.
 # OLLAMA_ENABLED=false (the default) starts a proxy named ollama that forwards to the host.
 # OLLAMA_ENABLED=true starts the Ollama container under that same name.
+# OLLAMA_PULL=true (the default) downloads OLLAMA_MODEL. Set it to false to skip that download.
 set -euo pipefail
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env.sh"
@@ -33,10 +34,22 @@ if [ "$OLLAMA_ENABLED" = "true" ]; then
   docker compose -f "$LOCAL_DIR/Ollama/docker-compose.yaml" up -d
 else
   echo "Ollama container was not started. OLLAMA_ENABLED is false."
-  echo "Stopping the Ollama container so the proxy can take the name ollama. Its model volume is kept."
-  docker compose -f "$LOCAL_DIR/Ollama/docker-compose.yaml" down
-  echo "Starting the Ollama proxy. LiteLLM still calls http://ollama:11434, which forwards to the host."
-  docker compose -f "$LOCAL_DIR/OllamaProxy/docker-compose.yaml" up -d
+  if ! command -v ollama >/dev/null 2>&1; then
+    echo "Ollama is not installed. The proxy was not started, and LiteLLM will not list an Ollama model."
+    docker compose -f "$LOCAL_DIR/Ollama/docker-compose.yaml" down
+    docker compose -f "$LOCAL_DIR/OllamaProxy/docker-compose.yaml" down
+  else
+    echo "Stopping the Ollama container so the proxy can take the name ollama. Its model volume is kept."
+    docker compose -f "$LOCAL_DIR/Ollama/docker-compose.yaml" down
+    echo "Starting the Ollama proxy. LiteLLM still calls http://ollama:11434, which forwards to the host."
+    docker compose -f "$LOCAL_DIR/OllamaProxy/docker-compose.yaml" up -d
+    if [ "$OLLAMA_PULL" = "true" ]; then
+      echo "Pulling ${OLLAMA_MODEL} into Ollama on this computer."
+      ollama pull "$OLLAMA_MODEL"
+    else
+      echo "Ollama model was not pulled. OLLAMA_PULL is false."
+    fi
+  fi
 fi
 
 if [ "$has_nvidia" -eq 1 ]; then
@@ -45,7 +58,9 @@ if [ "$has_nvidia" -eq 1 ]; then
   echo "SGLang OpenAI API:"
   echo "http://127.0.0.1:${SGLANG_PORT}/v1"
 fi
-echo "Ollama API, from LiteLLM:"
-echo "http://ollama:11434"
-echo "Ollama API, on this computer:"
-echo "http://127.0.0.1:${OLLAMA_PORT}"
+if [ "$OLLAMA_ENABLED" = "true" ] || command -v ollama >/dev/null 2>&1; then
+  echo "Ollama API, from LiteLLM:"
+  echo "http://ollama:11434"
+  echo "Ollama API, on this computer:"
+  echo "http://127.0.0.1:${OLLAMA_PORT}"
+fi

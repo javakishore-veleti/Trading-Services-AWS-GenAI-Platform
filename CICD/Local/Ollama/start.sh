@@ -10,5 +10,12 @@ while [ "$i" -lt 30 ]; do
   i=$((i + 1))
   sleep 1
 done
-ollama pull "$OLLAMA_MODEL"
+case "${OLLAMA_PULL:-true}" in
+  0|false|FALSE|no|NO|off|OFF)
+    echo "OLLAMA_PULL is false. ${OLLAMA_MODEL} was not pulled."
+    ;;
+  *)
+    ollama pull "$OLLAMA_MODEL"
+    ;;
+esac
 wait "$pid"

@@ -26,7 +26,7 @@ services:
       REDIS_PORT: "6379"
       REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
     volumes:
-      - ./config.yaml:/app/config.yaml:ro
+      - ./config.runtime.yaml:/app/config.yaml:ro
     networks:
       - local
     restart: unless-stopped
