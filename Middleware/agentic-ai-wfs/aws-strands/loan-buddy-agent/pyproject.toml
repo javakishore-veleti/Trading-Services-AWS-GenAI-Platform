@@ -1,0 +1,13 @@
+[project]
+name = "strands-loan-buddy-agent"
+version = "0.1.0"
+description = "Strands loan application agent. It calls LiteLLM and stores the upload on this computer."
+requires-python = ">=3.12"
+dependencies = [
+    "strands-agents==1.47.0",
+    "litellm>=1.74.0",
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+    "python-multipart==0.0.20",
+    "pillow==12.3.0",
+]

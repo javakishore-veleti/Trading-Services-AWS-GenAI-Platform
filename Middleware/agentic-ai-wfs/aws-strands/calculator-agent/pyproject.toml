@@ -1,0 +1,11 @@
+[project]
+name = "strands-calculator-agent"
+version = "0.1.0"
+description = "Strands calculator. It calls LiteLLM and uses local arithmetic tools."
+requires-python = ">=3.12"
+dependencies = [
+    "strands-agents==1.47.0",
+    "litellm>=1.74.0",
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+]

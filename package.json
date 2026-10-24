@@ -16,6 +16,12 @@
     "local::mcp-servers::all:down": "bash Middleware/mcp-servers/mcp-all-down.sh",
     "local::lang-graph::all:up": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-up.sh",
     "local::lang-graph::all:status": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-status.sh",
-    "local::lang-graph::all:down": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-down.sh"
+    "local::lang-graph::all:down": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-down.sh",
+    "local::strands::all:up": "bash Middleware/agentic-ai-wfs/aws-strands/strands-all-up.sh",
+    "local::strands::all:status": "bash Middleware/agentic-ai-wfs/aws-strands/strands-all-status.sh",
+    "local::strands::all:down": "bash Middleware/agentic-ai-wfs/aws-strands/strands-all-down.sh",
+    "local::agno::all:up": "bash Middleware/agentic-ai-wfs/agno/agno-all-up.sh",
+    "local::agno::all:status": "bash Middleware/agentic-ai-wfs/agno/agno-all-status.sh",
+    "local::agno::all:down": "bash Middleware/agentic-ai-wfs/agno/agno-all-down.sh"
   }
 }

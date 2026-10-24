@@ -93,12 +93,20 @@ SKILLS = [
 ]
 
 # One LangGraph agent per trading desk. LiteLLM calls host.docker.internal, the same way it calls MCP.
+# name, port, team id, description, card tags.
 DESK_AGENTS = [
-    ("trading-desk-offers", "8201", "BU1000-trading-desk-offers", "Runs the offer process: rating, discount, then the all-in quote."),
-    ("trading-desk-bffs", "8202", "BU1001-trading-desk-bffs", "Carries a screen request to the offer book and the order book and returns their answer."),
-    ("trading-desk-io", "8203", "BU1002-trading-desk-io", "Runs catalog, the offer book, and the order book as one process for the eight countries."),
-    ("trading-desk-order", "8204", "BU1003-trading-desk-order", "Books a new order, cancel, upgrade, or downgrade. An upgrade or downgrade is immediate or bill-through."),
-    ("trading-desk-platforms", "8205", "BU1004-trading-desk-platforms", "Carries a Salesforce or Shopify request to the offer book and the order book and writes the result back."),
+    ("trading-desk-offers", "8201", "BU1000-trading-desk-offers", "Runs the offer process: rating, discount, then the all-in quote.", ["forex", "trading-desk"]),
+    ("trading-desk-bffs", "8202", "BU1001-trading-desk-bffs", "Carries a screen request to the offer book and the order book and returns their answer.", ["forex", "trading-desk"]),
+    ("trading-desk-io", "8203", "BU1002-trading-desk-io", "Runs catalog, the offer book, and the order book as one process for the eight countries.", ["forex", "trading-desk"]),
+    ("trading-desk-order", "8204", "BU1003-trading-desk-order", "Books a new order, cancel, upgrade, or downgrade. An upgrade or downgrade is immediate or bill-through.", ["forex", "trading-desk"]),
+    ("trading-desk-platforms", "8205", "BU1004-trading-desk-platforms", "Carries a Salesforce or Shopify request to the offer book and the order book and writes the result back.", ["forex", "trading-desk"]),
+]
+
+# Strands and Agno speak the same /runs/wait route. They have no trading-desk team.
+EXAMPLE_AGENTS = [
+    ("strands-calculator-agent", "8301", "", "Arithmetic through the Strands calculator.", ["strands", "calculator"]),
+    ("strands-loan-buddy-agent", "8302", "", "Credit-application text through the Strands loan agent. An image upload stays on the agent port.", ["strands", "loan"]),
+    ("agno-calculator-agent", "8401", "", "Arithmetic through the Agno calculator.", ["agno", "calculator"]),
 ]
 
 GUARDRAILS = [
@@ -495,7 +503,7 @@ def ensure_agents():
     if status != 200 or not isinstance(existing, list):
         raise SystemExit(f"Could not list agents: {status} {existing}")
     by_name = {row.get("agent_name"): row for row in existing}
-    for name, port, _team, description in DESK_AGENTS:
+    for name, port, _team, description, tags in DESK_AGENTS + EXAMPLE_AGENTS:
         api_base = "http://host.docker.internal:" + port
         model = "langgraph/" + name
         body = {
@@ -515,7 +523,7 @@ def ensure_agents():
                         "id": name,
                         "name": name,
                         "description": description,
-                        "tags": ["forex", "trading-desk"],
+                        "tags": tags,
                     }
                 ],
             },
@@ -553,7 +561,7 @@ def ensure_agent_keys():
     if status != 200 or not isinstance(existing, list):
         raise SystemExit(f"Could not list agents: {status} {existing}")
     by_name = {row.get("agent_name"): row for row in existing}
-    for name, _port, team_id, _description in DESK_AGENTS:
+    for name, _port, team_id, _description, _tags in DESK_AGENTS + EXAMPLE_AGENTS:
         found = by_name.get(name)
         if not found:
             raise SystemExit(f"Agent {name} is not registered.")
@@ -567,12 +575,14 @@ def ensure_agent_keys():
         if status == 200 and rows:
             print("agent key " + name)
             continue
-        status, result = call("POST", "/key/generate", {
+        key_body = {
             "key_alias": name,
             "agent_id": agent_id,
-            "team_id": team_id,
             "models": ["all-proxy-models"],
-        })
+        }
+        if team_id:
+            key_body["team_id"] = team_id
+        status, result = call("POST", "/key/generate", key_body)
         if status != 200 or not isinstance(result, dict) or not result.get("key"):
             safe = result
             if isinstance(result, dict):

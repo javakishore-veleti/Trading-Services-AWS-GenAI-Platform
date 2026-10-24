@@ -9,19 +9,21 @@ Hands-on build of a GenAI platform on Amazon EKS, one manually triggered GitHub 
 
 ## Local sign-in
 
-Start with `npm run local::containers::middleware::all:up`. Passwords that say `.env` are in that file and are not written here.
+Start with `npm run local::containers::middleware::all:up`. Passwords that say `.env` are in that file and are not written here. Langfuse starts only when `LANGFUSE_ENABLED=true`. Phoenix starts only when `PHOENIX_ENABLED=true`. Open WebUI starts only when `OPENWEBUI_ENABLED=true`. n8n starts only when `N8N_ENABLED=true`. All four default to false.
 
 | Component | Local address | User | Password |
 |---|---|---|---|
 | LiteLLM admin | [http://127.0.0.1:4000/ui](http://127.0.0.1:4000/ui) | `admin@localhost` | `UI_ADMIN_PASSWORD` in `.env` |
 | LiteLLM API | [http://127.0.0.1:4000](http://127.0.0.1:4000) | API key | `LITELLM_MASTER_KEY` in `.env` |
 | Open WebUI | [http://127.0.0.1:3001](http://127.0.0.1:3001) | `admin@example.com` | `openwebui` |
+| n8n | [http://127.0.0.1:5678](http://127.0.0.1:5678) | chosen on first visit | chosen on first visit |
 | Langfuse | [http://127.0.0.1:3000](http://127.0.0.1:3000) | `admin@example.com` | `langfuse` |
 | Phoenix | [http://127.0.0.1:6006](http://127.0.0.1:6006) | none | none |
 | Embeddings (TEI) | [http://127.0.0.1:8080/embed](http://127.0.0.1:8080/embed) | none | none |
 | Ollama | [http://127.0.0.1:11434](http://127.0.0.1:11434) | none | none |
 | Postgres | `127.0.0.1:5432` database `postgres` | `postgres` | `postgres` |
 | Langfuse database | `127.0.0.1:5432` database `langfuse` | `langfuse` | `langfuse` |
+| n8n database | `127.0.0.1:5432` database `n8n` | `n8n` | `n8n` |
 | pgvector | `127.0.0.1:5433` database `pgvector` | `pgvector` | `pgvector` |
 | pgvector connector | [http://127.0.0.1:8001/health](http://127.0.0.1:8001/health) | none | none |
 | Redis | `127.0.0.1:6379` | none | `redis` |
@@ -38,6 +40,9 @@ Start with `npm run local::containers::middleware::all:up`. Passwords that say `
 | trading-desk-io | [http://127.0.0.1:8203/health](http://127.0.0.1:8203/health) | none | none |
 | trading-desk-order | [http://127.0.0.1:8204/health](http://127.0.0.1:8204/health) | none | none |
 | trading-desk-platforms | [http://127.0.0.1:8205/health](http://127.0.0.1:8205/health) | none | none |
+| Strands calculator | [http://127.0.0.1:8301/health](http://127.0.0.1:8301/health) | none | none |
+| Strands loan buddy | [http://127.0.0.1:8302/health](http://127.0.0.1:8302/health) | none | none |
+| Agno calculator | [http://127.0.0.1:8401/health](http://127.0.0.1:8401/health) | none | none |
 
 vLLM and SGLang are not started on this Mac. ClickHouse stays inside the Langfuse containers and has no localhost port.
 

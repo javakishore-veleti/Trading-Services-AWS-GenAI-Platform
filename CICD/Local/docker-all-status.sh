@@ -16,6 +16,7 @@ TEI_FILE="$DIR/TEI/docker-compose.yaml"
 LANGFUSE_FILE="$DIR/Langfuse/docker-compose.yaml"
 PHOENIX_FILE="$DIR/Phoenix/docker-compose.yaml"
 OPENWEBUI_FILE="$DIR/OpenWebUI/docker-compose.yaml"
+N8N_FILE="$DIR/n8n/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
@@ -33,6 +34,7 @@ TEI_PORT="${TEI_PORT:-8080}"
 LANGFUSE_PORT="${LANGFUSE_PORT:-3000}"
 PHOENIX_PORT="${PHOENIX_PORT:-6006}"
 OPENWEBUI_PORT="${OPENWEBUI_PORT:-3001}"
+N8N_PORT="${N8N_PORT:-5678}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -96,6 +98,11 @@ echo
 echo "Open WebUI"
 docker compose -f "$OPENWEBUI_FILE" ps
 echo "http://127.0.0.1:${OPENWEBUI_PORT}"
+
+echo
+echo "n8n"
+docker compose -f "$N8N_FILE" ps
+echo "http://127.0.0.1:${N8N_PORT}"
 
 echo
 echo "LiteLLM"

@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
-# Start Open WebUI. It calls LiteLLM, so the gateway must already be up.
+# Start Open WebUI when OPENWEBUI_ENABLED is true. The default is false.
+# It calls LiteLLM, so the gateway must already be up.
 set -euo pipefail
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env.sh"
+
+if [ "$OPENWEBUI_ENABLED" != "true" ]; then
+  echo "Open WebUI was not started. OPENWEBUI_ENABLED is false."
+  exit 0
+fi
 
 if ! docker network inspect trading-services-local >/dev/null 2>&1; then
   docker network create trading-services-local

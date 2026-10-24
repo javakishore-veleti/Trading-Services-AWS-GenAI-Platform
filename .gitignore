@@ -155,6 +155,8 @@ activemq-data/
 .venv
 Middleware/mcp-servers/.run/
 Middleware/agentic-ai-wfs/lang-graph/.run/
+Middleware/agentic-ai-wfs/aws-strands/.run/
+Middleware/agentic-ai-wfs/agno/.run/
 env/
 venv/
 ENV/

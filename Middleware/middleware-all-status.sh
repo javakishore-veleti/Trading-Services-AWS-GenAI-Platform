@@ -9,3 +9,9 @@ echo "MCP servers"
 echo
 echo "Desk agents"
 "$DIR/agentic-ai-wfs/lang-graph/lang-graph-all-status.sh"
+echo
+echo "Strands agents"
+"$DIR/agentic-ai-wfs/aws-strands/strands-all-status.sh"
+echo
+echo "Agno"
+"$DIR/agentic-ai-wfs/agno/agno-all-status.sh"

@@ -1,0 +1,38 @@
+name: trading-services-genai-n8n
+
+# Workflow editor from the starter kit. Workflows live in the platform Postgres
+# database n8n. The kit chart turns the secure cookie off when there is no domain.
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${N8N_PORT:-5678}:5678"
+    environment:
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_PORT: "5432"
+      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_USER: n8n
+      DB_POSTGRESDB_PASSWORD: n8n
+      N8N_HOST: 127.0.0.1
+      N8N_PORT: "5678"
+      N8N_PROTOCOL: http
+      N8N_SECURE_COOKIE: "false"
+      N8N_EDITOR_BASE_URL: http://127.0.0.1:${N8N_PORT:-5678}
+      WEBHOOK_URL: http://127.0.0.1:${N8N_PORT:-5678}/
+      N8N_ENCRYPTION_KEY: n8n-local-encryption-key
+      N8N_DIAGNOSTICS_ENABLED: "false"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    mem_limit: 2g
+    networks:
+      - local
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  n8n_data:
