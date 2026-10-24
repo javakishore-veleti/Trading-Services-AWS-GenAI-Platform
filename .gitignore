@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Genai-on-EKS hands-on additions ---
+.env
+.env.*
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+kubeconfig*
+*.kubeconfig

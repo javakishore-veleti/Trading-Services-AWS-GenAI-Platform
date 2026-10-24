@@ -1,0 +1,66 @@
+name: "01 - Terraform state backend"
+
+# plan: read-only. apply: creates the S3 state bucket (needs typed confirmation + sandbox approval).
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "plan or apply"
+        type: choice
+        options: [plan, apply]
+        default: plan
+      confirm:
+        description: "Type APPLY to proceed when action = apply"
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate inputs
+        run: |
+          if [ "${{ inputs.action }}" = "apply" ] && [ "${{ inputs.confirm }}" != "APPLY" ]; then
+            echo "::error::action=apply requires confirm=APPLY"
+            exit 1
+          fi
+
+  plan:
+    needs: guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Plan state bucket
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+        run: bash stages/01-state-backend/bootstrap.sh plan
+
+  apply:
+    needs: plan
+    if: ${{ inputs.action == 'apply' }}
+    runs-on: ubuntu-latest
+    environment: sandbox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Apply state bucket
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+        run: bash stages/01-state-backend/bootstrap.sh apply
