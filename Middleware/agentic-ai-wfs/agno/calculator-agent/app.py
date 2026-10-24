@@ -1,18 +1,16 @@
 import json
 import os
 from contextlib import asynccontextmanager
-from pathlib import Path
+from urllib.parse import quote_plus
 
 import uvicorn
 from agno.agent import Agent
-from agno.db.sqlite import SqliteDb
+from agno.db.postgres import PostgresDb
 from agno.models.openai.like import OpenAILike
 from agno.tools.calculator import CalculatorTools
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field
-
-DB_FILE = str(Path(__file__).resolve().parents[1] / ".run" / "calculator.db")
 
 SYSTEM_PROMPT = """
 You are a helpful calculator assistant that can perform basic arithmetic operations.
@@ -54,6 +52,20 @@ def platform_messages(content: str) -> dict[str, list]:
     return {"messages": [{"type": "ai", "role": "assistant", "content": content}]}
 
 
+def postgres_db() -> PostgresDb:
+    user = quote_plus(os.environ.get("POSTGRES_USER", "postgres"))
+    password = quote_plus(os.environ.get("POSTGRES_PASSWORD", "postgres"))
+    host = os.environ.get("POSTGRES_HOST", "127.0.0.1")
+    port = os.environ.get("POSTGRES_PORT", "5432")
+    database = os.environ.get("POSTGRES_DB", "postgres")
+    return PostgresDb(
+        db_url=f"postgresql+psycopg://{user}:{password}@{host}:{port}/{database}",
+        db_schema="agno",
+        session_table="agent_sessions",
+        memory_table="memories",
+    )
+
+
 def litellm_model() -> OpenAILike:
     base = os.environ.get("LITELLM_BASE_URL", "http://127.0.0.1:4000").rstrip("/")
     if not base.endswith("/v1"):
@@ -70,15 +82,17 @@ class CalculatorHost:
         self._name = "agno-calculator-agent"
         self._port = 8401
         self._agent: Agent | None = None
+        self._db: PostgresDb | None = None
 
     def build(self) -> FastAPI:
         host = self
 
         @asynccontextmanager
         async def lifespan(app: FastAPI):
-            Path(DB_FILE).parent.mkdir(parents=True, exist_ok=True)
+            host._db = postgres_db()
+            host._db._create_all_tables()
             model = litellm_model()
-            db = SqliteDb(db_file=DB_FILE)
+            db = host._db
             host._agent = Agent(
                 model=model,
                 system_message=SYSTEM_PROMPT,
@@ -89,6 +103,7 @@ class CalculatorHost:
                 telemetry=False,
             )
             yield
+            host._db.close()
 
         app = FastAPI(title=self._name, lifespan=lifespan)
         app.add_api_route("/health", self.health, methods=["GET"])
@@ -100,20 +115,21 @@ class CalculatorHost:
     def health(self) -> dict[str, str]:
         return {"status": "ok", "service": self._name}
 
-    async def answer(self, text: str) -> str:
+    async def answer(self, text: str, session_id: str = "local") -> str:
         if self._agent is None:
             return "The calculator agent is not ready."
-        response = await self._agent.arun(text, user_id="local", stream=False)
+        response = await self._agent.arun(text, user_id="local", session_id=session_id, stream=False)
         return str(response.content)
 
     async def prompt(self, request: PromptRequest) -> str:
         return await self.answer(request.prompt)
 
     async def runs_wait(self, request: PlatformRunRequest) -> dict[str, list]:
-        return platform_messages(await self.answer(last_user_text(request)))
+        session_id = request.thread_id or "local"
+        return platform_messages(await self.answer(last_user_text(request), session_id))
 
     async def runs_stream(self, request: PlatformRunRequest) -> StreamingResponse:
-        content = await self.answer(last_user_text(request))
+        content = await self.answer(last_user_text(request), request.thread_id or "local")
 
         def events():
             message = ["messages", [[{"type": "ai", "content": content}, {}]]]

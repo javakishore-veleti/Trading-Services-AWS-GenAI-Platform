@@ -6,6 +6,6 @@ One process from the starter-kit calculator example. It is its own uv project. I
 | --- | --- | --- |
 | calculator-agent | 8401 | `POST /` with `{"prompt":"..."}` |
 
-The calculator tools run in the process. Session rows sit in `.run/calculator.db`. The kit's calculator MCP server is not part of this stack.
+The calculator tools run in the process. Sessions and memories sit in the platform Postgres schema `agno`, in place of the SQLite file. The kit's calculator MCP server is not part of this stack.
 
 Start it with `agno-all-up.sh`. The LiteLLM seed registers it as `langgraph/agno-calculator-agent`. LiteLLM calls `POST /runs/wait` on `http://host.docker.internal:8401`.

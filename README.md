@@ -23,6 +23,8 @@ Start with `npm run local::containers::middleware::all:up`. Passwords that say `
 | Ollama | [http://127.0.0.1:11434](http://127.0.0.1:11434) | none | none |
 | Postgres | `127.0.0.1:5432` database `postgres` | `postgres` | `postgres` |
 | Langfuse database | `127.0.0.1:5432` database `langfuse` | `langfuse` | `langfuse` |
+| Strands schema | `127.0.0.1:5432` schema `strands` | `postgres` | `postgres` |
+| Agno schema | `127.0.0.1:5432` schema `agno` | `postgres` | `postgres` |
 | n8n database | `127.0.0.1:5432` database `n8n` | `n8n` | `n8n` |
 | pgvector | `127.0.0.1:5433` database `pgvector` | `pgvector` | `pgvector` |
 | pgvector connector | [http://127.0.0.1:8001/health](http://127.0.0.1:8001/health) | none | none |

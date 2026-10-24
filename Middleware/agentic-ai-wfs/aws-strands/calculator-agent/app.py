@@ -7,7 +7,9 @@ from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field
 from strands import Agent, tool
+from strands.memory import MemoryManager
 from strands.models.litellm import LiteLLMModel
+from strands_db import ensure_schema, memory_manager, session_manager
 
 
 class PromptRequest(BaseModel):
@@ -99,18 +101,16 @@ class CalculatorHost:
     def __init__(self) -> None:
         self._name = "strands-calculator-agent"
         self._port = 8301
-        self._agent: Agent | None = None
+        self._memory: MemoryManager | None = None
+        self._agents: dict[str, Agent] = {}
 
     def build(self) -> FastAPI:
         host = self
 
         @asynccontextmanager
         async def lifespan(app: FastAPI):
-            host._agent = Agent(
-                model=litellm_model(),
-                system_prompt=SYSTEM_PROMPT,
-                tools=[add, subtract, multiply, divide],
-            )
+            ensure_schema()
+            host._memory = memory_manager()
             yield
 
         app = FastAPI(title=self._name, lifespan=lifespan)
@@ -123,19 +123,31 @@ class CalculatorHost:
     def health(self) -> dict[str, str]:
         return {"status": "ok", "service": self._name}
 
-    def answer(self, text: str) -> str:
-        if self._agent is None:
+    def answer(self, text: str, session_id: str) -> str:
+        if self._memory is None:
             return "The calculator agent is not ready."
-        return str(self._agent(text))
+        agent = self._agents.get(session_id)
+        if agent is None:
+            agent = Agent(
+                model=litellm_model(),
+                system_prompt=SYSTEM_PROMPT,
+                tools=[add, subtract, multiply, divide],
+                agent_id=self._name,
+                session_manager=session_manager(session_id),
+                memory_manager=self._memory,
+            )
+            self._agents[session_id] = agent
+        return str(agent(text))
 
     async def prompt(self, request: PromptRequest) -> str:
-        return self.answer(request.prompt)
+        return self.answer(request.prompt, "local")
 
     async def runs_wait(self, request: PlatformRunRequest) -> dict[str, list]:
-        return platform_messages(self.answer(last_user_text(request)))
+        session_id = request.thread_id or "local"
+        return platform_messages(self.answer(last_user_text(request), session_id))
 
     async def runs_stream(self, request: PlatformRunRequest) -> StreamingResponse:
-        content = self.answer(last_user_text(request))
+        content = self.answer(last_user_text(request), request.thread_id or "local")
 
         def events():
             message = ["messages", [[{"type": "ai", "content": content}, {}]]]
