@@ -5,6 +5,8 @@ name: trading-services-genai-vllm
 services:
   vllm:
     image: vllm/vllm-openai:v0.10.2
+    ipc: host
+    gpus: all
     command:
       - vllm
       - serve

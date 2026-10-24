@@ -1,0 +1,32 @@
+name: trading-services-genai-ollama
+
+# Own compose file. Started only when OLLAMA_ENABLED=true.
+# The service name is ollama, the same name the host proxy uses, so LiteLLM does not change.
+services:
+  ollama:
+    image: ollama/ollama:0.10.1
+    entrypoint: ["/bin/bash", "/start.sh"]
+    ports:
+      - "127.0.0.1:${OLLAMA_PORT:-11434}:11434"
+    environment:
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-deepseek-r1:8b}
+    volumes:
+      - ./start.sh:/start.sh:ro
+      - ollama_data:/root/.ollama
+    networks:
+      - local
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+      start_period: 20s
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  ollama_data:

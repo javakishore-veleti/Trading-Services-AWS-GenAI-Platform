@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Show Postgres, Redis, vLLM, then LiteLLM.
+# Show Postgres, Redis, each model engine, then LiteLLM.
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -9,6 +9,9 @@ REDIS_FILE="$DIR/Redis/docker-compose.yaml"
 PGVECTOR_FILE="$DIR/pgvector/docker-compose.yaml"
 PGVECTOR_CONNECTOR_FILE="$DIR/pgvector-connector/docker-compose.yaml"
 VLLM_FILE="$DIR/vLLM/docker-compose.yaml"
+SGLANG_FILE="$DIR/SGLang/docker-compose.yaml"
+OLLAMA_FILE="$DIR/Ollama/docker-compose.yaml"
+OLLAMA_PROXY_FILE="$DIR/OllamaProxy/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
@@ -20,6 +23,8 @@ PGVECTOR_USER="${PGVECTOR_USER:-pgvector}"
 PGVECTOR_DB="${PGVECTOR_DB:-pgvector}"
 PGVECTOR_CONNECTOR_PORT="${PGVECTOR_CONNECTOR_PORT:-8001}"
 VLLM_PORT="${VLLM_PORT:-8000}"
+SGLANG_PORT="${SGLANG_PORT:-30000}"
+OLLAMA_PORT="${OLLAMA_PORT:-11434}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -48,6 +53,21 @@ echo
 echo "vLLM"
 docker compose -f "$VLLM_FILE" ps
 echo "http://127.0.0.1:${VLLM_PORT}/v1"
+
+echo
+echo "SGLang"
+docker compose -f "$SGLANG_FILE" ps
+echo "http://127.0.0.1:${SGLANG_PORT}/v1"
+
+echo
+echo "Ollama"
+echo "OLLAMA_ENABLED=${OLLAMA_ENABLED}  LiteLLM calls http://ollama:11434"
+if [ "$OLLAMA_ENABLED" = "true" ]; then
+  docker compose -f "$OLLAMA_FILE" ps
+else
+  docker compose -f "$OLLAMA_PROXY_FILE" ps
+fi
+echo "http://127.0.0.1:${OLLAMA_PORT}"
 
 echo
 echo "LiteLLM"

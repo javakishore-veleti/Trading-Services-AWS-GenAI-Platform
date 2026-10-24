@@ -1,0 +1,34 @@
+name: trading-services-genai-ollama-proxy
+
+# Started when OLLAMA_ENABLED is false. Network alias "ollama" matches the Ollama container,
+# so LiteLLM keeps calling http://ollama:11434 and this process forwards to the host.
+services:
+  ollama-proxy:
+    image: alpine/socat:1.8.0.0
+    command:
+      - TCP-LISTEN:11434,fork,reuseaddr
+      - TCP:host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      local:
+        aliases:
+          - ollama
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - socat
+        - -T
+        - "2"
+        - STDOUT
+        - TCP:host.docker.internal:11434
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+
+networks:
+  local:
+    name: trading-services-local
+    external: true

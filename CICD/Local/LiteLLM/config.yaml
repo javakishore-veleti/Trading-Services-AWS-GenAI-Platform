@@ -1,4 +1,5 @@
-# Single container. Redis and vLLM are separate compose projects on the shared network.
+# Single container. Redis, vLLM, SGLang, and Ollama are separate compose projects on the shared network.
+# The Ollama row always uses the Docker name ollama. That name is the Ollama container, or a proxy to the host.
 # router_settings shares router state. The cache block is also what coordinates
 # rate limits and budgets. A migrations job and extra replicas stay off.
 model_list:
@@ -7,6 +8,15 @@ model_list:
       model: openai/deepseek-r1-qwen3-8b
       api_base: http://vllm:8000/v1
       api_key: none
+  - model_name: deepseek-r1-qwen3-8b-sglang
+    litellm_params:
+      model: openai/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+      api_base: http://sglang:30000/v1
+      api_key: none
+  - model_name: deepseek-r1-8b-ollama
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://ollama:11434
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

@@ -24,3 +24,7 @@ Actions → pick the workflow → Run workflow. Run `plan` first, read the job s
 ## Never commit
 
 `.env`, `*.tfstate*`, `.terraform/`, `tfplan`, kubeconfig files, keys or tokens.
+
+## Reference
+
+This solution is built on the [GenAI on EKS starter kit](https://github.com/aws-samples/sample-genai-on-eks-starter-kit).

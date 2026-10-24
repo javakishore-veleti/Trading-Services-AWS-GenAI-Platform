@@ -1,0 +1,42 @@
+name: trading-services-genai-sglang
+
+# Own compose file. Linux with an NVIDIA GPU and the NVIDIA Container Toolkit.
+# https://docs.sglang.io — docker pull lmsysorg/sglang:latest, then sglang serve.
+services:
+  sglang:
+    image: lmsysorg/sglang:latest
+    ipc: host
+    gpus: all
+    command:
+      - sglang
+      - serve
+      - ${SGLANG_MODEL:-deepseek-ai/DeepSeek-R1-0528-Qwen3-8B}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "30000"
+    ports:
+      - "127.0.0.1:${SGLANG_PORT:-30000}:30000"
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    volumes:
+      - huggingface_cache:/root/.cache/huggingface
+    networks:
+      - local
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:30000/health')"
+      interval: 30s
+      timeout: 10s
+      retries: 40
+      start_period: 600s
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  huggingface_cache:
