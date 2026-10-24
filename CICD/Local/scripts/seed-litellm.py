@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, guardrails, desk agents, and admin login."""
+"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, guardrails, desk agents, app users, and admin login."""
 
 import base64
 import json
@@ -9,6 +9,7 @@ import string
 import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -580,6 +581,37 @@ def ensure_agent_keys():
         print("agent key " + name)
 
 
+def ensure_app_users():
+    for name in names:
+        alias = "app-user-" + name
+        email = alias + "@localhost"
+        status, listing = call("GET", "/user/list?user_email=" + urllib.parse.quote(email))
+        users = listing.get("users", []) if isinstance(listing, dict) else []
+        found = next(
+            (user for user in users if (user.get("user_email") or "").lower() == email.lower()),
+            None,
+        )
+        if found:
+            print("app user " + alias)
+            continue
+        status, result = call("POST", "/user/new", {
+            "user_id": alias,
+            "user_email": email,
+            "user_alias": alias,
+            "user_role": "internal_user_viewer",
+            "teams": [{"team_id": name, "user_role": "user"}],
+            "auto_create_key": True,
+            "models": ["all-proxy-models"],
+            "send_invite_email": False,
+        })
+        if status != 200:
+            safe = result
+            if isinstance(result, dict):
+                safe = {key: value for key, value in result.items() if key not in ("key", "token")}
+            raise SystemExit(f"Could not create app user {alias}: {status} {safe}")
+        print("app user " + alias)
+
+
 def ensure_admin():
     if login(password):
         return
@@ -649,6 +681,7 @@ def main():
     ensure_guardrails()
     ensure_agents()
     ensure_agent_keys()
+    ensure_app_users()
     ensure_admin()
 
 
