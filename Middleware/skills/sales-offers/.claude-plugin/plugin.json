@@ -1,0 +1,6 @@
+{
+  "name": "sales-offers",
+  "version": "1.0.0",
+  "description": "Price an FX trade from the customer rating, the rating discount, and the all-in quote.",
+  "skills": "./skills"
+}

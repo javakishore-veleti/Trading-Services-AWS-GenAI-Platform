@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the local teams, budgets, vector stores, indexes, MCP servers, and admin login."""
+"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, and admin login."""
 
 import base64
 import json
@@ -36,6 +36,59 @@ MCP_SERVERS = [
     ("trades-partners-mcp", "8104", "Correspondent banks on FX integrations"),
     ("traders-master-data-mcp", "8105", "Traders, books, channels, and desk installations"),
     ("traders-analytics-mcp", "8106", "Read-only end-of-day, intraday, and hourly analytics"),
+]
+
+# One toolset per server, containing that server's own tool names.
+MCP_TOOLS = {
+    "trades-catalog-mcp": ["list_fx_products", "get_fx_product"],
+    "trades-offers-mcp": ["list_customer_ratings", "list_rating_discounts", "quote_fx_offer"],
+    "trades-orders-mcp": ["list_fx_orders", "get_fx_order", "create_fx_order"],
+    "trades-partners-mcp": ["list_fx_partners", "get_fx_partner"],
+    "traders-master-data-mcp": [
+        "list_omni_channels",
+        "list_desk_countries",
+        "list_trading_desks",
+        "list_desk_installations",
+        "list_trading_books",
+        "list_book_defaults",
+        "list_book_channels",
+        "list_traders",
+    ],
+    "traders-analytics-mcp": ["list_analytics_grains", "read_fx_analytics"],
+}
+
+SKILL_REPO = "https://github.com/javakishore-veleti/Trading-Services-AWS-GenAI-Platform.git"
+SKILLS = [
+    (
+        "sales-offers",
+        "offers",
+        "Price an FX trade from the customer rating, the rating discount, and the all-in quote.",
+        ["fx", "quote", "rating", "discount", "all-in"],
+    ),
+    (
+        "sales-bffs",
+        "screen-apis",
+        "Serve the sales screens. Advisor, Partner, Dealer, Mobile, Web, and Kiosk call this backend.",
+        ["advisor", "partner", "dealer", "mobile", "web", "kiosk"],
+    ),
+    (
+        "sales-order",
+        "orders",
+        "Place, cancel, upgrade, or downgrade an order. An upgrade or downgrade is immediate or bill-through.",
+        ["new-order", "cancel", "upgrade", "downgrade", "bill-through"],
+    ),
+    (
+        "sales-io",
+        "international-operations",
+        "Run catalog, offer, and order as one business for the international countries.",
+        ["south-korea", "japan", "china", "australia", "new-zealand", "brazil", "belgium", "france"],
+    ),
+    (
+        "sales-platforms",
+        "platforms",
+        "Keep external selling platforms, including Salesforce CRM and Shopify, in step with the offer and the order.",
+        ["salesforce", "shopify", "crm"],
+    ),
 ]
 
 
@@ -305,6 +358,84 @@ def ensure_mcp_servers():
         print("mcp server " + registry_name)
 
 
+def ensure_mcp_toolsets():
+    status, existing = call("GET", "/v1/mcp/toolset")
+    if status != 200 or not isinstance(existing, list):
+        raise SystemExit(f"Could not list MCP toolsets: {status} {existing}")
+    by_name = {row.get("toolset_name"): row for row in existing}
+    for name, _port, description in MCP_SERVERS:
+        registry_name = name.replace("-", "_")
+        tools = [
+            {"server_id": registry_name, "tool_name": tool_name}
+            for tool_name in MCP_TOOLS[name]
+        ]
+        wanted = {(item["server_id"], item["tool_name"]) for item in tools}
+        found = by_name.get(registry_name)
+        if found:
+            current = {
+                (item.get("server_id"), item.get("tool_name"))
+                for item in found.get("tools") or []
+            }
+            if current == wanted and (found.get("description") or "") == description:
+                print("mcp toolset " + registry_name)
+                continue
+            status, result = call("PUT", "/v1/mcp/toolset", {
+                "toolset_id": found["toolset_id"],
+                "toolset_name": registry_name,
+                "description": description,
+                "tools": tools,
+            })
+            ok = status == 200
+        else:
+            status, result = call("POST", "/v1/mcp/toolset", {
+                "toolset_name": registry_name,
+                "description": description,
+                "tools": tools,
+            })
+            ok = status in (200, 201)
+        if not ok:
+            raise SystemExit(f"Could not register MCP toolset {registry_name}: {status} {result}")
+        print("mcp toolset " + registry_name)
+
+
+def ensure_skills():
+    status, existing = call("GET", "/claude-code/plugins")
+    if status != 200 or not isinstance(existing, dict):
+        raise SystemExit(f"Could not list skills: {status} {existing}")
+    rows = existing.get("plugins") or existing.get("data") or []
+    by_name = {row.get("name"): row for row in rows}
+    for name, namespace, description, keywords in SKILLS:
+        body = {
+            "name": name,
+            "source": {
+                "source": "git-subdir",
+                "url": SKILL_REPO,
+                "path": "Middleware/skills/" + name,
+            },
+            "version": "1.0.0",
+            "description": description,
+            "keywords": keywords,
+            "category": "Sales",
+            "domain": "Sales",
+            "namespace": namespace,
+        }
+        found = by_name.get(name)
+        if found and found.get("description") == description and found.get("version") == "1.0.0":
+            print("skill " + name)
+            continue
+        if found:
+            status, result = call("PUT", "/claude-code/plugins/" + name, {
+                key: value for key, value in body.items() if key != "name"
+            })
+            ok = status == 200
+        else:
+            status, result = call("POST", "/claude-code/plugins", body)
+            ok = status in (200, 201)
+        if not ok:
+            raise SystemExit(f"Could not register skill {name}: {status} {result}")
+        print("skill " + name)
+
+
 def ensure_admin():
     if login(password):
         return
@@ -369,6 +500,8 @@ def main():
     ensure_vector_stores()
     ensure_indexes()
     ensure_mcp_servers()
+    ensure_mcp_toolsets()
+    ensure_skills()
     ensure_admin()
 
 

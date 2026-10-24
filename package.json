@@ -8,6 +8,9 @@
     "local::containers::all:up": "bash CICD/Local/docker-all-up.sh",
     "local::containers::all:status": "bash CICD/Local/docker-all-status.sh",
     "local::containers::all:down": "bash CICD/Local/docker-all-down.sh",
+    "local::containers::middleware::all:up": "bash CICD/Local/containers-middleware-all-up.sh",
+    "local::containers::middleware::all:status": "bash CICD/Local/containers-middleware-all-status.sh",
+    "local::containers::middleware::all:down": "bash CICD/Local/containers-middleware-all-down.sh",
     "local::mcp-servers::all:up": "bash Middleware/mcp-servers/mcp-all-up.sh",
     "local::mcp-servers::all:status": "bash Middleware/mcp-servers/mcp-all-status.sh",
     "local::mcp-servers::all:down": "bash Middleware/mcp-servers/mcp-all-down.sh"

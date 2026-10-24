@@ -1,0 +1,6 @@
+{
+  "name": "sales-io",
+  "version": "1.0.0",
+  "description": "Run catalog, offer, and order as one business for the international countries.",
+  "skills": "./skills"
+}
