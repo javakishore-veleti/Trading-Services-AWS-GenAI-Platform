@@ -1,0 +1,30 @@
+name: "Lint (no AWS access)"
+
+# Runs on every push and PR. Never touches AWS.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install cfn-lint
+        run: pip install cfn-lint==1.* yamllint
+      - name: CloudFormation templates
+        run: cfn-lint stages/*/template.yaml
+      - name: Workflow YAML
+        run: |
+          yamllint -d "{extends: relaxed, rules: {line-length: disable, truthy: disable}}" .github/workflows
+      - name: Shell scripts
+        run: |
+          for f in scripts/*.sh stages/*/stage.sh; do bash -n "$f"; done

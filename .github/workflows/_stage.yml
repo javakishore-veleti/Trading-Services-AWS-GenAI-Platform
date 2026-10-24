@@ -1,0 +1,104 @@
+name: "Reusable stage runner"
+
+# Called by every stage workflow and by 099. Runs stages/<stage_dir>/stage.sh <action>.
+# plan    -> no AWS changes (change sets are created, shown, and deleted)
+# apply   -> needs confirm=APPLY and sandbox approval
+# destroy -> needs confirm=DESTROY and sandbox approval
+on:
+  workflow_call:
+    inputs:
+      stage_dir:
+        type: string
+        required: true
+      action:
+        type: string
+        required: true
+      confirm:
+        type: string
+        required: false
+        default: ""
+      needs_cluster:
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate inputs
+        run: |
+          case "${{ inputs.action }}" in
+            plan) exit 0 ;;
+            apply)   [ "${{ inputs.confirm }}" = "APPLY" ]   || { echo "::error::apply requires confirm=APPLY"; exit 1; } ;;
+            destroy) [ "${{ inputs.confirm }}" = "DESTROY" ] || { echo "::error::destroy requires confirm=DESTROY"; exit 1; } ;;
+            *) echo "::error::unknown action ${{ inputs.action }}"; exit 1 ;;
+          esac
+
+  plan:
+    needs: guard
+    if: ${{ inputs.action == 'plan' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Run stage (plan)
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          VPC_ID: ${{ vars.VPC_ID }}
+          CLUSTER_NAME: ${{ vars.CLUSTER_NAME || 'genai-eks' }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ "${{ inputs.needs_cluster }}" = "true" ]; then aws eks update-kubeconfig --region "$AWS_REGION" --name "$CLUSTER_NAME"; fi
+          bash "stages/${{ inputs.stage_dir }}/stage.sh" plan
+
+  apply:
+    needs: guard
+    if: ${{ inputs.action == 'apply' }}
+    runs-on: ubuntu-latest
+    environment: sandbox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Run stage (apply)
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          VPC_ID: ${{ vars.VPC_ID }}
+          CLUSTER_NAME: ${{ vars.CLUSTER_NAME || 'genai-eks' }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ "${{ inputs.needs_cluster }}" = "true" ]; then aws eks update-kubeconfig --region "$AWS_REGION" --name "$CLUSTER_NAME"; fi
+          bash "stages/${{ inputs.stage_dir }}/stage.sh" apply
+
+  destroy:
+    needs: guard
+    if: ${{ inputs.action == 'destroy' }}
+    runs-on: ubuntu-latest
+    environment: sandbox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Run stage (destroy)
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          VPC_ID: ${{ vars.VPC_ID }}
+          CLUSTER_NAME: ${{ vars.CLUSTER_NAME || 'genai-eks' }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ "${{ inputs.needs_cluster }}" = "true" ]; then aws eks update-kubeconfig --region "$AWS_REGION" --name "$CLUSTER_NAME" || true; fi
+          bash "stages/${{ inputs.stage_dir }}/stage.sh" destroy

@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: genai-eks stage 03 - EFS shared storage for model caches
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+  VpcCidr:
+    Type: String
+  Subnet1:
+    Type: String
+  Subnet2:
+    Type: String
+    Default: ""
+  Subnet3:
+    Type: String
+    Default: ""
+  Subnet4:
+    Type: String
+    Default: ""
+Conditions:
+  Has2: !Not [!Equals [!Ref Subnet2, ""]]
+  Has3: !Not [!Equals [!Ref Subnet3, ""]]
+  Has4: !Not [!Equals [!Ref Subnet4, ""]]
+Resources:
+  FileSystem:
+    Type: AWS::EFS::FileSystem
+    Properties:
+      Encrypted: true
+      PerformanceMode: generalPurpose
+      ThroughputMode: elastic
+      FileSystemTags:
+        - Key: Name
+          Value: genai-eks-efs
+  NfsSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: NFS (2049) from inside the VPC to EFS mount targets
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 2049
+          ToPort: 2049
+          CidrIp: !Ref VpcCidr
+  MountTarget1:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: !Ref FileSystem
+      SubnetId: !Ref Subnet1
+      SecurityGroups: [!Ref NfsSecurityGroup]
+  MountTarget2:
+    Type: AWS::EFS::MountTarget
+    Condition: Has2
+    Properties:
+      FileSystemId: !Ref FileSystem
+      SubnetId: !Ref Subnet2
+      SecurityGroups: [!Ref NfsSecurityGroup]
+  MountTarget3:
+    Type: AWS::EFS::MountTarget
+    Condition: Has3
+    Properties:
+      FileSystemId: !Ref FileSystem
+      SubnetId: !Ref Subnet3
+      SecurityGroups: [!Ref NfsSecurityGroup]
+  MountTarget4:
+    Type: AWS::EFS::MountTarget
+    Condition: Has4
+    Properties:
+      FileSystemId: !Ref FileSystem
+      SubnetId: !Ref Subnet4
+      SecurityGroups: [!Ref NfsSecurityGroup]
+Outputs:
+  FileSystemId:
+    Value: !Ref FileSystem
+  NfsSecurityGroupId:
+    Value: !Ref NfsSecurityGroup
