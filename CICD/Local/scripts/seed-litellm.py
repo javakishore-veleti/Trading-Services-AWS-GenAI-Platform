@@ -28,6 +28,7 @@ password = env["UI_ADMIN_PASSWORD"]
 names = [line for line in os.environ["LOCAL_TEAM_NAMES"].splitlines() if line]
 
 # The proxy runs in Docker and calls these later. Registration does not connect.
+# LiteLLM uses "-" to prefix tool names, so server_name and alias cannot contain it.
 MCP_SERVERS = [
     ("trades-catalog-mcp", "8101", "FX product catalog for customers"),
     ("trades-offers-mcp", "8102", "Customer ratings, discounts, and all-in FX pricing"),
@@ -277,30 +278,31 @@ def ensure_mcp_servers():
     by_id = {row.get("server_id"): row for row in existing}
     by_name = {row.get("server_name"): row for row in existing}
     for name, port, description in MCP_SERVERS:
+        registry_name = name.replace("-", "_")
         url = "http://host.docker.internal:" + port + "/mcp"
         body = {
-            "server_id": name,
-            "server_name": name,
-            "alias": name,
+            "server_id": registry_name,
+            "server_name": registry_name,
+            "alias": registry_name,
             "description": description,
             "url": url,
             "transport": "http",
             "auth_type": "none",
         }
-        found = by_id.get(name) or by_name.get(name)
+        found = by_id.get(registry_name) or by_name.get(registry_name)
         if found and found.get("url") == url and found.get("transport") == "http":
-            print("mcp server " + name)
+            print("mcp server " + registry_name)
             continue
         if found:
             body["server_id"] = found["server_id"]
-            status, _result = call("PUT", "/v1/mcp/server", body)
+            status, result = call("PUT", "/v1/mcp/server", body)
             ok = status in (200, 202)
         else:
-            status, _result = call("POST", "/v1/mcp/server", body)
+            status, result = call("POST", "/v1/mcp/server", body)
             ok = status in (200, 201)
         if not ok:
-            raise SystemExit(f"Could not register MCP server {name}.")
-        print("mcp server " + name)
+            raise SystemExit(f"Could not register MCP server {registry_name}: {status} {result}")
+        print("mcp server " + registry_name)
 
 
 def ensure_admin():
