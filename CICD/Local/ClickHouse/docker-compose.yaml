@@ -1,0 +1,33 @@
+name: trading-services-genai-clickhouse
+
+# Trace storage for Lens. Not published on the host. Lens is the only client.
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:26.9.6.6@sha256:eb4870e7ca7ed70c259eebfcfbee6cf797017f6b5436c2926bbbfe3d4d28486e
+    environment:
+      CLICKHOUSE_USER: lens
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:?Set CLICKHOUSE_PASSWORD in .env}
+      CLICKHOUSE_DB: lens
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: "1"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./keeper.xml:/etc/clickhouse-server/config.d/lens-keeper.xml:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - clickhouse-client --user lens --password "$$CLICKHOUSE_PASSWORD" --query "SELECT 1" >/dev/null
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    networks:
+      - storage
+    restart: unless-stopped
+
+networks:
+  storage:
+    name: trading-services-lens-storage
+    internal: true
+
+volumes:
+  clickhouse_data:

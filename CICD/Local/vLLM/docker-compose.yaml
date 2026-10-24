@@ -1,0 +1,42 @@
+name: trading-services-genai-vllm
+
+# Own compose file. Same model and image as stages/11-vllm-model.
+# vllm/vllm-openai expects an NVIDIA GPU. It does not start on Apple Silicon.
+services:
+  vllm:
+    image: vllm/vllm-openai:v0.10.2
+    command:
+      - vllm
+      - serve
+      - ${VLLM_MODEL:-deepseek-ai/DeepSeek-R1-0528-Qwen3-8B}
+      - --served-model-name=${VLLM_SERVED_MODEL_NAME:-deepseek-r1-qwen3-8b}
+      - --trust-remote-code
+      - --gpu-memory-utilization=0.90
+      - --max-model-len=32768
+      - --reasoning-parser=deepseek_r1
+    ports:
+      - "127.0.0.1:${VLLM_PORT:-8000}:8000"
+    environment:
+      HUGGING_FACE_HUB_TOKEN: ${HF_TOKEN:-}
+    shm_size: "1gb"
+    volumes:
+      - huggingface_cache:/root/.cache/huggingface
+    networks:
+      - local
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"
+      interval: 30s
+      timeout: 10s
+      retries: 40
+      start_period: 600s
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  huggingface_cache:

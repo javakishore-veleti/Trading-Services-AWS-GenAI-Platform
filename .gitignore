@@ -222,6 +222,7 @@ __marimo__/
 # --- Genai-on-EKS hands-on additions ---
 .env
 .env.*
+!.env.template
 *.tfstate
 *.tfstate.*
 *.tfplan

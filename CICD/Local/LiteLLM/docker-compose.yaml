@@ -1,6 +1,6 @@
 name: trading-services-genai-platfrom
 
-# Starts after Postgres is up. Login and keys come from the repo-root .env.
+# Starts after Postgres and Redis are up. Login and keys come from the repo-root .env.
 # Host port defaults to 4000. Database defaults match CICD/Local/Postgres.
 services:
   litellm:
@@ -22,6 +22,13 @@ services:
       STORE_MODEL_IN_DB: "True"
       LITELLM_MODE: PRODUCTION
       LITELLM_LOG: ${LITELLM_LOG:-INFO}
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
+      LITELLM_LENS_URL: http://lens:4318
+      LITELLM_LENS_PUBLIC_URL: http://127.0.0.1:${LENS_PORT:-4318}
+      LITELLM_LENS_SERVICE_TOKEN: ${LITELLM_LENS_SERVICE_TOKEN:-}
+      LENS_GATEWAY_SECRET: ${LENS_GATEWAY_SECRET:-}
     volumes:
       - ./config.yaml:/app/config.yaml:ro
     networks:

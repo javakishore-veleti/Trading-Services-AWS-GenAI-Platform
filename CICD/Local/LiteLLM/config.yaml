@@ -1,5 +1,13 @@
-# Single-container subset of https://docs.litellm.ai/docs/proxy/prod
-# One process, so Redis, a migrations job, and extra replicas stay off.
+# Single container. Redis and vLLM are separate compose projects on the shared network.
+# router_settings shares router state. The cache block is also what coordinates
+# rate limits and budgets. A migrations job and extra replicas stay off.
+model_list:
+  - model_name: deepseek-r1-qwen3-8b
+    litellm_params:
+      model: openai/deepseek-r1-qwen3-8b
+      api_base: http://vllm:8000/v1
+      api_key: none
+
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
   disable_env_credential_login: true
@@ -7,8 +15,22 @@ general_settings:
   store_model_in_db: true
   proxy_batch_write_at: 60
   database_connection_pool_limit: 10
+  tracing:
+    store:
+      type: lens
+
+router_settings:
+  redis_host: os.environ/REDIS_HOST
+  redis_port: os.environ/REDIS_PORT
+  redis_password: os.environ/REDIS_PASSWORD
 
 litellm_settings:
   request_timeout: 600
   set_verbose: false
   json_logs: true
+  cache: true
+  cache_params:
+    type: redis
+    host: os.environ/REDIS_HOST
+    port: os.environ/REDIS_PORT
+    password: os.environ/REDIS_PASSWORD
