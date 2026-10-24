@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, and admin login."""
+"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, guardrails, and admin login."""
 
 import base64
 import json
@@ -89,6 +89,16 @@ SKILLS = [
         "Keep external selling platforms, including Salesforce CRM and Shopify, in step with the offer and the order.",
         ["salesforce", "shopify", "crm"],
     ),
+]
+
+GUARDRAILS = [
+    ("offer-price", ["post_call"], "Block an FX quote whose net spread breaks the rating discount or the 0.5 basis point floor."),
+    ("order-change", ["pre_call", "pre_mcp_call"], "An order change is new, cancel, upgrade, or downgrade. Upgrade and downgrade name immediate or bill-through."),
+    ("international-country", ["pre_call", "pre_mcp_call"], "International operations runs only for its eight countries."),
+    ("screen-boundary", ["pre_call", "pre_mcp_call"], "A sales screen can carry a request. It cannot set the discount or the upgrade timing."),
+    ("platform-boundary", ["pre_call", "pre_mcp_call"], "A selling platform can carry the change. It cannot set the price or the timing."),
+    ("analytics-read-only", ["pre_call", "pre_mcp_call"], "Analytics allows an end-of-day, intraday, or hourly read. A write is blocked."),
+    ("team-tools", ["pre_call", "pre_mcp_call"], "A team key can call only the tools for its own business."),
 ]
 
 
@@ -436,6 +446,40 @@ def ensure_skills():
         print("skill " + name)
 
 
+def ensure_guardrails():
+    root = Path(sys.argv[1]).resolve().parent / "Middleware" / "guard-rails"
+    status, existing = call("GET", "/v2/guardrails/list")
+    if status != 200 or not isinstance(existing, dict):
+        raise SystemExit(f"Could not list guardrails: {status} {existing}")
+    by_name = {row.get("guardrail_name"): row for row in existing.get("guardrails") or []}
+    for name, modes, description in GUARDRAILS:
+        code = (root / name / "apply_guardrail.py").read_text()
+        body = {
+            "guardrail_name": name,
+            "litellm_params": {
+                "guardrail": "custom_code",
+                "mode": modes,
+                "custom_code": code,
+                "default_on": True,
+            },
+            "guardrail_info": {"description": description},
+        }
+        found = by_name.get(name)
+        current = (found or {}).get("litellm_params") or {}
+        if found and current.get("custom_code") == code and current.get("mode") == modes:
+            print("guardrail " + name)
+            continue
+        if found:
+            status, result = call("PUT", "/guardrails/" + found["guardrail_id"], {"guardrail": body})
+            ok = status == 200
+        else:
+            status, result = call("POST", "/guardrails", {"guardrail": body})
+            ok = status in (200, 201)
+        if not ok:
+            raise SystemExit(f"Could not register guardrail {name}: {status} {result}")
+        print("guardrail " + name)
+
+
 def ensure_admin():
     if login(password):
         return
@@ -502,6 +546,7 @@ def main():
     ensure_mcp_servers()
     ensure_mcp_toolsets()
     ensure_skills()
+    ensure_guardrails()
     ensure_admin()
 
 
