@@ -61,9 +61,10 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 - Be concise in summaries. Put detail in `PLAN.md` or the stage README, not in chat.
 
 ## Current status
-- Stage 00 (preflight, read-only): written, not yet run.
-- Stage 01 was removed (CloudFormation replaces the state bucket).
-- Stage 02 onward: not started. Each one is written after the previous stage is verified.
-- Teardown: `099-aws-destroy-all.yml` has only a placeholder until stacks exist.
-- User-owned prerequisites: IAM user `Trading-Services-AWS-GenAI-Platform` with policy `Trading-Services-AWS-GenAI-Platform` (from `iam/ci-policy.json`), GitHub secrets and
-  variables, `sandbox` environment, budget alarm, GPU vCPU quota request, and the VPC ID.
+- Stage 00 (preflight): pushed, passed on GitHub (learning-mode WARN for public-subnet nodes).
+- Stages 02, 03, 04: written and pushed; not yet applied.
+- Stages 05–11: written and pushed; not yet applied.
+- Stages 12–19: not written yet.
+- Stage 99 teardown: `099-aws-destroy-all.yml` calls each destroy path in reverse order through `_stage.yml`.
+- Shared code: `scripts/lib.sh` (CloudFormation and subnet helpers), `.github/workflows/_stage.yml` (reusable runner).
+- IAM: `iam/ci-policy.json` has permissions for stages 02–11. It must be published to the IAM user in the console.

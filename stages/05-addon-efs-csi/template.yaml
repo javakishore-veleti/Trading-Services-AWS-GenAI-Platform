@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: genai-eks stage 05 - IAM role for the EFS CSI driver (Pod Identity)
+Parameters:
+  ClusterName:
+    Type: String
+Resources:
+  EfsCsiRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: genai-eks-efs-csi-role
+      Tags:
+        - Key: cluster
+          Value: !Ref ClusterName
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: pods.eks.amazonaws.com
+            Action: ["sts:AssumeRole", "sts:TagSession"]
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy
+Outputs:
+  RoleArn:
+    Value: !GetAtt EfsCsiRole.Arn

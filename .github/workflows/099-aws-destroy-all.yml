@@ -1,8 +1,7 @@
 name: "099 - Destroy all (reverse order)"
 
-# Tears down everything the stage workflows created, newest stage first.
-# Never deletes the existing VPC (vpc-id is an input, not something this course creates).
-# Each later stage adds its own destroy job here, placed before the jobs it depends on.
+# Tears down every stage, newest first, by calling each stage's destroy path through _stage.yml.
+# Each destroy job waits for sandbox approval. The VPC is never deleted.
 on:
   workflow_dispatch:
     inputs:
@@ -29,24 +28,56 @@ jobs:
             exit 1
           fi
 
-  # ---------------------------------------------------------------------------
-  # Destroy jobs go here, newest first. Each stage adds one job, e.g.:
-  #
-  #   destroy-16-ecr:
-  #     needs: guard
-  #     environment: sandbox
-  #     ...
-  #     run: aws cloudformation delete-stack --stack-name genai-eks-16-ecr
-  #
-  # Sequence: 17 agent -> 16 ecr -> 15 qdrant -> 14 tei -> 13 openwebui -> 12 litellm
-  #   -> 11 vllm -> 10 gpu nodepool -> 09 smoke app -> 07 ingress-nginx
-  #   -> 06 lb-controller -> 05 efs-csi -> 04 eks cluster -> 03 efs
-  #   -> 02 subnet tags removed (VPC stays)
-  # ---------------------------------------------------------------------------
-
-  # Placeholder so the workflow has a job to report while no stage is built yet.
-  nothing-to-destroy-yet:
+  d11:
     needs: guard
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "No stacks exist yet. Stages are added here as they are built."
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 11-vllm-model, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d10:
+    needs: d11
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 10-gpu-nodepool, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d09:
+    needs: d10
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 09-smoke-app, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d07:
+    needs: d09
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 07-addon-ingress-nginx, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d06:
+    needs: d07
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 06-addon-lb-controller, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d05:
+    needs: d06
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 05-addon-efs-csi, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d04:
+    needs: d05
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 04-eks-cluster, action: destroy, confirm: DESTROY, needs_cluster: false}
+    secrets: inherit
+
+  d03:
+    needs: d04
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 03-efs, action: destroy, confirm: DESTROY, needs_cluster: false}
+    secrets: inherit
+
+  d02:
+    needs: d03
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 02-vpc-subnet-tags, action: destroy, confirm: DESTROY, needs_cluster: false}
+    secrets: inherit

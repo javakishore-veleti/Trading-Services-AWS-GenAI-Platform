@@ -1,0 +1,28 @@
+name: "07 - addon ingress nginx"
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "plan, apply or destroy"
+        type: choice
+        options: [plan, apply, destroy]
+        default: plan
+      confirm:
+        description: "APPLY for apply, DESTROY for destroy"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 07-addon-ingress-nginx
+      action: ${{ inputs.action }}
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit
