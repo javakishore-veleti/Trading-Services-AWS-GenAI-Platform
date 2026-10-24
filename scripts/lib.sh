@@ -49,12 +49,15 @@ subnet_is_public() {  # subnet_is_public SUBNET_ID — true if its default route
 # cfn_plan STACK TEMPLATE [Key=Value ...] — create a change set, show it, delete it. Changes nothing.
 cfn_plan() {
   local stack=$1 template=$2; shift 2
-  local type=CREATE cs="plan-$(date +%s)" params=() p line reason
+  local type=CREATE cs="plan-$(date +%s)" line reason pfile
   stack_exists "$stack" && type=UPDATE
-  for p in "$@"; do params+=("ParameterKey=${p%%=*},ParameterValue=${p#*=}"); done
+  # JSON, not shorthand: shorthand treats commas in list values as separators.
+  pfile=$(mktemp)
+  python3 -c 'import json,sys; print(json.dumps([{"ParameterKey": a.split("=",1)[0], "ParameterValue": a.split("=",1)[1]} for a in sys.argv[1:]]))' "$@" > "$pfile"
   aws cloudformation create-change-set --region "$AWS_REGION" --stack-name "$stack" \
     --change-set-name "$cs" --change-set-type "$type" --template-body "file://$template" \
-    --capabilities CAPABILITY_NAMED_IAM --parameters "${params[@]}" >/dev/null
+    --capabilities CAPABILITY_NAMED_IAM --parameters "file://$pfile" >/dev/null
+  rm -f "$pfile"
   if ! aws cloudformation wait change-set-create-complete --region "$AWS_REGION" \
       --stack-name "$stack" --change-set-name "$cs" 2>/dev/null; then
     reason=$(aws cloudformation describe-change-set --region "$AWS_REGION" --stack-name "$stack" \
