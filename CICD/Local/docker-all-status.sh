@@ -13,6 +13,8 @@ SGLANG_FILE="$DIR/SGLang/docker-compose.yaml"
 OLLAMA_FILE="$DIR/Ollama/docker-compose.yaml"
 OLLAMA_PROXY_FILE="$DIR/OllamaProxy/docker-compose.yaml"
 TEI_FILE="$DIR/TEI/docker-compose.yaml"
+LANGFUSE_FILE="$DIR/Langfuse/docker-compose.yaml"
+PHOENIX_FILE="$DIR/Phoenix/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
@@ -27,6 +29,8 @@ VLLM_PORT="${VLLM_PORT:-8000}"
 SGLANG_PORT="${SGLANG_PORT:-30000}"
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
 TEI_PORT="${TEI_PORT:-8080}"
+LANGFUSE_PORT="${LANGFUSE_PORT:-3000}"
+PHOENIX_PORT="${PHOENIX_PORT:-6006}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -75,6 +79,16 @@ echo
 echo "TEI"
 docker compose -f "$TEI_FILE" ps
 echo "http://127.0.0.1:${TEI_PORT}/embed"
+
+echo
+echo "Langfuse"
+docker compose -f "$LANGFUSE_FILE" ps
+echo "http://127.0.0.1:${LANGFUSE_PORT}"
+
+echo
+echo "Phoenix"
+docker compose -f "$PHOENIX_FILE" ps
+echo "http://127.0.0.1:${PHOENIX_PORT}"
 
 echo
 echo "LiteLLM"

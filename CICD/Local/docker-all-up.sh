@@ -6,6 +6,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 "$DIR/scripts/start-datastores.sh"
 "$DIR/scripts/start-llm-models.sh"
+"$DIR/scripts/start-observability.sh"
 "$DIR/scripts/start-tei.sh"
 "$DIR/scripts/provision-pgvector.sh"
 "$DIR/scripts/start-litellm.sh"

@@ -25,11 +25,19 @@ case "$(uname -m)" in
 esac
 export TEI_IMAGE TEI_PLATFORM
 
-echo "Starting TEI (${TEI_IMAGE}). The first download of ${TEI_MODEL} can take a long time."
+echo "Starting TEI (${TEI_IMAGE}) with ${TEI_MODEL}."
 docker compose -f "$LOCAL_DIR/TEI/docker-compose.yaml" up -d
 
 ready=0
-for _ in $(seq 1 120); do
+for _ in $(seq 1 240); do
+  running="$(docker inspect -f '{{.State.Running}}' trading-services-genai-tei-tei-1 2>/dev/null || echo false)"
+  restarts="$(docker inspect -f '{{.RestartCount}}' trading-services-genai-tei-tei-1 2>/dev/null || echo 0)"
+  if [ "$running" != "true" ] || [ "$restarts" != "0" ]; then
+    echo "TEI exited before it was ready." >&2
+    docker logs --tail 40 trading-services-genai-tei-tei-1 >&2 || true
+    docker compose -f "$LOCAL_DIR/TEI/docker-compose.yaml" stop >/dev/null
+    exit 1
+  fi
   if curl -fsS "http://127.0.0.1:${TEI_PORT}/health" >/dev/null 2>&1; then
     ready=1
     break
@@ -55,9 +63,10 @@ if data and isinstance(data[0], list):
     data = data[0]
 if not data or not isinstance(data[0], (int, float)):
     raise SystemExit("TEI /embed did not return a vector.")
-if len(data) != 1024:
-    raise SystemExit(f"TEI returned {len(data)} numbers, expected 1024.")
-print("TEI /embed returned a vector of 1024 numbers.")
+expected = int("${TEI_EMBEDDING_DIM}")
+if len(data) != expected:
+    raise SystemExit(f"TEI returned {len(data)} numbers, expected {expected}.")
+print(f"TEI /embed returned a vector of {len(data)} numbers.")
 PY
 
 echo "TEI embed API:"

@@ -1,0 +1,26 @@
+name: trading-services-genai-phoenix
+
+# One container. Traces stay in its volume. No program is installed on the Mac.
+services:
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PHOENIX_PORT:-6006}:6006"
+      - "127.0.0.1:4317:4317"
+    environment:
+      PHOENIX_WORKING_DIR: /phoenix
+    volumes:
+      - phoenix_data:/phoenix
+    networks:
+      local:
+        aliases:
+          - phoenix
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  phoenix_data:

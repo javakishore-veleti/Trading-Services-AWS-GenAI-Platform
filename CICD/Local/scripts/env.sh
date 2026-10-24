@@ -36,8 +36,11 @@ export LOCAL_TEAM_NAMES="$(printf '%s\n' "${LOCAL_TEAMS[@]}")"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
 POSTGRES_USER="${POSTGRES_USER:-postgres}"
+POSTGRES_PASSWORD="${POSTGRES_PASSWORD:-postgres}"
 POSTGRES_DB="${POSTGRES_DB:-postgres}"
 REDIS_PORT="${REDIS_PORT:-6379}"
+REDIS_PASSWORD="${REDIS_PASSWORD:-redis}"
+export POSTGRES_PASSWORD REDIS_PASSWORD
 PGVECTOR_PORT="${PGVECTOR_PORT:-5433}"
 PGVECTOR_USER="${PGVECTOR_USER:-pgvector}"
 PGVECTOR_DB="${PGVECTOR_DB:-pgvector}"
@@ -46,8 +49,14 @@ VLLM_PORT="${VLLM_PORT:-8000}"
 SGLANG_PORT="${SGLANG_PORT:-30000}"
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
 TEI_PORT="${TEI_PORT:-8080}"
-TEI_MODEL="${TEI_MODEL:-Qwen/Qwen3-Embedding-0.6B}"
-export TEI_PORT TEI_MODEL
+# Qwen3-Embedding-0.6B needs about 5 GB to load. This Docker VM is 7.6 GB and
+# Langfuse is already running, so Docker kills that model. bge-small fits.
+TEI_MODEL="${TEI_MODEL:-BAAI/bge-small-en-v1.5}"
+TEI_EMBEDDING_DIM="${TEI_EMBEDDING_DIM:-384}"
+export TEI_PORT TEI_MODEL TEI_EMBEDDING_DIM
+LANGFUSE_PORT="${LANGFUSE_PORT:-3000}"
+PHOENIX_PORT="${PHOENIX_PORT:-6006}"
+export LANGFUSE_PORT PHOENIX_PORT
 OLLAMA_MODEL="${OLLAMA_MODEL:-deepseek-r1:8b}"
 # false: a proxy named ollama forwards to Ollama on this computer.
 # true: the Ollama container is that same name. LiteLLM always calls http://ollama:11434.
