@@ -1,0 +1,14 @@
+# Single-container subset of https://docs.litellm.ai/docs/proxy/prod
+# One process, so Redis, a migrations job, and extra replicas stay off.
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  disable_env_credential_login: true
+  trusted_proxy_ranges: []
+  store_model_in_db: true
+  proxy_batch_write_at: 60
+  database_connection_pool_limit: 10
+
+litellm_settings:
+  request_timeout: 600
+  set_verbose: false
+  json_logs: true
