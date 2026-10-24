@@ -25,10 +25,6 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: "6379"
       REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
-      LITELLM_LENS_URL: http://lens:4318
-      LITELLM_LENS_PUBLIC_URL: http://127.0.0.1:${LENS_PORT:-4318}
-      LITELLM_LENS_SERVICE_TOKEN: ${LITELLM_LENS_SERVICE_TOKEN:-}
-      LENS_GATEWAY_SECRET: ${LENS_GATEWAY_SECRET:-}
     volumes:
       - ./config.yaml:/app/config.yaml:ro
     networks:

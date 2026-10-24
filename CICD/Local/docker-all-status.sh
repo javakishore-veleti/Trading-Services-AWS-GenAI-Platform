@@ -5,8 +5,8 @@ set -euo pipefail
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 POSTGRES_FILE="$DIR/Postgres/docker-compose.yaml"
 REDIS_FILE="$DIR/Redis/docker-compose.yaml"
-CLICKHOUSE_FILE="$DIR/ClickHouse/docker-compose.yaml"
-LENS_FILE="$DIR/Lens/docker-compose.yaml"
+PGVECTOR_FILE="$DIR/pgvector/docker-compose.yaml"
+PGVECTOR_CONNECTOR_FILE="$DIR/pgvector-connector/docker-compose.yaml"
 VLLM_FILE="$DIR/vLLM/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
@@ -14,8 +14,11 @@ POSTGRES_PORT="${POSTGRES_PORT:-5432}"
 POSTGRES_USER="${POSTGRES_USER:-postgres}"
 POSTGRES_DB="${POSTGRES_DB:-postgres}"
 REDIS_PORT="${REDIS_PORT:-6379}"
+PGVECTOR_PORT="${PGVECTOR_PORT:-5433}"
+PGVECTOR_USER="${PGVECTOR_USER:-pgvector}"
+PGVECTOR_DB="${PGVECTOR_DB:-pgvector}"
+PGVECTOR_CONNECTOR_PORT="${PGVECTOR_CONNECTOR_PORT:-8001}"
 VLLM_PORT="${VLLM_PORT:-8000}"
-LENS_PORT="${LENS_PORT:-4318}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -28,19 +31,22 @@ docker compose -f "$REDIS_FILE" ps
 echo "redis://127.0.0.1:${REDIS_PORT}"
 
 echo
+echo "pgvector"
+docker compose -f "$PGVECTOR_FILE" ps
+echo "postgresql://${PGVECTOR_USER}@127.0.0.1:${PGVECTOR_PORT}/${PGVECTOR_DB}"
+docker exec trading-services-genai-pgvector-pgvector-1 \
+  psql -U "${PGVECTOR_USER}" -d "${PGVECTOR_DB}" -At -c \
+  "SELECT datname FROM pg_database WHERE datname LIKE 'vs\\_%' ORDER BY 1" 2>/dev/null || true
+
+echo
+echo "pgvector connector"
+docker compose -f "$PGVECTOR_CONNECTOR_FILE" ps
+echo "http://127.0.0.1:${PGVECTOR_CONNECTOR_PORT}/health"
+
+echo
 echo "vLLM"
 docker compose -f "$VLLM_FILE" ps
 echo "http://127.0.0.1:${VLLM_PORT}/v1"
-
-echo
-echo "ClickHouse"
-docker compose -f "$CLICKHOUSE_FILE" ps
-
-echo
-echo "Lens"
-docker compose -f "$LENS_FILE" ps
-echo "http://127.0.0.1:${LENS_PORT}/ui"
-echo "http://127.0.0.1:${LITELLM_PORT}/ui/lens/"
 
 echo
 echo "LiteLLM"

@@ -15,9 +15,8 @@ general_settings:
   store_model_in_db: true
   proxy_batch_write_at: 60
   database_connection_pool_limit: 10
-  tracing:
-    store:
-      type: lens
+  # A key or team with no vector-store grant can search nothing.
+  vector_store_deny_by_default: true
 
 router_settings:
   redis_host: os.environ/REDIS_HOST
