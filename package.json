@@ -1,0 +1,12 @@
+{
+  "name": "trading-services-genai-platform",
+  "version": "1.0.0",
+  "description": "Trading Services GenAI Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "local::containers::all:up": "bash CICD/Local/docker-all-up.sh",
+    "local::containers::all:status": "bash CICD/Local/docker-all-status.sh",
+    "local::containers::all:down": "bash CICD/Local/docker-all-down.sh"
+  }
+}
