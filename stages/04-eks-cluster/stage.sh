@@ -12,7 +12,8 @@ K8S_VERSION=${K8S_VERSION:-1.34}
 
 if [ "$ACTION" = destroy ]; then cfn_destroy "$STACK"; exit 0; fi
 
-SUBNETS=$(subnets_in_vpc | awk '{print $1}' | paste -sd, -)
+# EKS cannot place the control plane in every zone. us-east-1e is rejected, so skip it.
+SUBNETS=$(subnets_in_vpc | awk '$2 != "us-east-1e" {print $1}' | paste -sd, -)
 CI_ARN=$(aws sts get-caller-identity --query Arn --output text)
 PARAMS=("ClusterName=${CLUSTER_NAME}" "KubernetesVersion=${K8S_VERSION}" "SubnetIds=${SUBNETS}" "CiPrincipalArn=${CI_ARN}")
 
