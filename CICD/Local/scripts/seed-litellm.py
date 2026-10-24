@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, guardrails, and admin login."""
+"""Create the local teams, budgets, vector stores, indexes, MCP servers, toolsets, skills, guardrails, desk agents, and admin login."""
 
 import base64
 import json
@@ -89,6 +89,15 @@ SKILLS = [
         "Pass a Salesforce CRM or Shopify request that names a FOREX customer, pair, and change to the offer book and the order book, then store their result on the platform. The platform supplies no discount, no all-in, and no timing.",
         ["salesforce", "shopify", "crm"],
     ),
+]
+
+# One LangGraph agent per trading desk. LiteLLM calls host.docker.internal, the same way it calls MCP.
+DESK_AGENTS = [
+    ("trading-desk-offers", "8201", "BU1000-trading-desk-offers", "Runs the offer process: rating, discount, then the all-in quote."),
+    ("trading-desk-bffs", "8202", "BU1001-trading-desk-bffs", "Carries a screen request to the offer book and the order book and returns their answer."),
+    ("trading-desk-io", "8203", "BU1002-trading-desk-io", "Runs catalog, the offer book, and the order book as one process for the eight countries."),
+    ("trading-desk-order", "8204", "BU1003-trading-desk-order", "Books a new order, cancel, upgrade, or downgrade. An upgrade or downgrade is immediate or bill-through."),
+    ("trading-desk-platforms", "8205", "BU1004-trading-desk-platforms", "Carries a Salesforce or Shopify request to the offer book and the order book and writes the result back."),
 ]
 
 GUARDRAILS = [
@@ -480,6 +489,97 @@ def ensure_guardrails():
         print("guardrail " + name)
 
 
+def ensure_agents():
+    status, existing = call("GET", "/v1/agents")
+    if status != 200 or not isinstance(existing, list):
+        raise SystemExit(f"Could not list agents: {status} {existing}")
+    by_name = {row.get("agent_name"): row for row in existing}
+    for name, port, _team, description in DESK_AGENTS:
+        api_base = "http://host.docker.internal:" + port
+        model = "langgraph/" + name
+        body = {
+            "agent_name": name,
+            "enabled": True,
+            "agent_card_params": {
+                "protocolVersion": "1.0",
+                "name": name,
+                "description": description,
+                "url": api_base,
+                "version": "1.0.0",
+                "capabilities": {"streaming": True},
+                "defaultInputModes": ["text"],
+                "defaultOutputModes": ["text"],
+                "skills": [
+                    {
+                        "id": name,
+                        "name": name,
+                        "description": description,
+                        "tags": ["forex", "trading-desk"],
+                    }
+                ],
+            },
+            "litellm_params": {
+                "custom_llm_provider": "langgraph",
+                "model": model,
+                "api_base": api_base,
+            },
+        }
+        found = by_name.get(name)
+        params = (found or {}).get("litellm_params") or {}
+        card = (found or {}).get("agent_card_params") or {}
+        if (
+            found
+            and params.get("model") == model
+            and params.get("api_base") == api_base
+            and params.get("custom_llm_provider") == "langgraph"
+            and card.get("description") == description
+        ):
+            print("agent " + name)
+            continue
+        if found:
+            status, result = call("PUT", "/v1/agents/" + found["agent_id"], body)
+            ok = status == 200
+        else:
+            status, result = call("POST", "/v1/agents", body)
+            ok = status in (200, 201)
+        if not ok:
+            raise SystemExit(f"Could not register agent {name}: {status} {result}")
+        print("agent " + name)
+
+
+def ensure_agent_keys():
+    status, existing = call("GET", "/v1/agents")
+    if status != 200 or not isinstance(existing, list):
+        raise SystemExit(f"Could not list agents: {status} {existing}")
+    by_name = {row.get("agent_name"): row for row in existing}
+    for name, _port, team_id, _description in DESK_AGENTS:
+        found = by_name.get(name)
+        if not found:
+            raise SystemExit(f"Agent {name} is not registered.")
+        agent_id = found["agent_id"]
+        status, listed = call("GET", "/key/list?agent_id=" + agent_id + "&page=1&size=10")
+        rows = []
+        if isinstance(listed, dict):
+            rows = listed.get("keys") or listed.get("data") or []
+        elif isinstance(listed, list):
+            rows = listed
+        if status == 200 and rows:
+            print("agent key " + name)
+            continue
+        status, result = call("POST", "/key/generate", {
+            "key_alias": name,
+            "agent_id": agent_id,
+            "team_id": team_id,
+            "models": ["all-proxy-models"],
+        })
+        if status != 200 or not isinstance(result, dict) or not result.get("key"):
+            safe = result
+            if isinstance(result, dict):
+                safe = {key: value for key, value in result.items() if key not in ("key", "token")}
+            raise SystemExit(f"Could not create the key for {name}: {status} {safe}")
+        print("agent key " + name)
+
+
 def ensure_admin():
     if login(password):
         return
@@ -547,6 +647,8 @@ def main():
     ensure_mcp_toolsets()
     ensure_skills()
     ensure_guardrails()
+    ensure_agents()
+    ensure_agent_keys()
     ensure_admin()
 
 

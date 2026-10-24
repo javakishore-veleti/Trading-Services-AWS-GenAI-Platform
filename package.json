@@ -13,6 +13,9 @@
     "local::containers::middleware::all:down": "bash CICD/Local/containers-middleware-all-down.sh",
     "local::mcp-servers::all:up": "bash Middleware/mcp-servers/mcp-all-up.sh",
     "local::mcp-servers::all:status": "bash Middleware/mcp-servers/mcp-all-status.sh",
-    "local::mcp-servers::all:down": "bash Middleware/mcp-servers/mcp-all-down.sh"
+    "local::mcp-servers::all:down": "bash Middleware/mcp-servers/mcp-all-down.sh",
+    "local::lang-graph::all:up": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-up.sh",
+    "local::lang-graph::all:status": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-status.sh",
+    "local::lang-graph::all:down": "bash Middleware/agentic-ai-wfs/lang-graph/lang-graph-all-down.sh"
   }
 }

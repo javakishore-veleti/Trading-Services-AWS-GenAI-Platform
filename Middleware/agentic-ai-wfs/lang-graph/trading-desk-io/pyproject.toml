@@ -1,0 +1,12 @@
+[project]
+name = "trading-desk-io"
+version = "0.1.0"
+description = "FOREX international process: catalog, then offer, then order"
+requires-python = ">=3.12"
+dependencies = [
+    "langgraph==1.0.2",
+    "fastmcp==2.14.7",
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+    "redis==7.1.0",
+]
