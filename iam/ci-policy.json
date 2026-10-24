@@ -23,10 +23,15 @@
     {
       "Sid": "TagSubnetsOfExistingVpcOnly",
       "Effect": "Allow",
-      "Action": ["ec2:CreateTags", "ec2:DeleteTags"],
+      "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags"
+      ],
       "Resource": "arn:aws:ec2:*:*:subnet/*",
       "Condition": {
-        "StringEquals": { "ec2:ResourceTag/genai-eks-managed": "false" }
+        "StringEquals": {
+          "ec2:ResourceTag/genai-eks-managed": "false"
+        }
       }
     },
     {
@@ -40,26 +45,31 @@
       "Resource": "*"
     },
     {
-      "Sid": "TerraformStateBucketOnly",
+      "Sid": "CloudFormationStacksGenaiEksOnly",
       "Effect": "Allow",
       "Action": [
-        "s3:CreateBucket",
-        "s3:ListBucket",
-        "s3:GetBucketLocation",
-        "s3:GetBucketVersioning",
-        "s3:PutBucketVersioning",
-        "s3:GetEncryptionConfiguration",
-        "s3:PutEncryptionConfiguration",
-        "s3:GetBucketPublicAccessBlock",
-        "s3:PutBucketPublicAccessBlock",
-        "s3:GetObject",
-        "s3:PutObject",
-        "s3:DeleteObject"
+        "cloudformation:CreateChangeSet",
+        "cloudformation:DescribeChangeSet",
+        "cloudformation:ExecuteChangeSet",
+        "cloudformation:DeleteChangeSet",
+        "cloudformation:CreateStack",
+        "cloudformation:UpdateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:GetTemplate",
+        "cloudformation:ValidateTemplate"
       ],
       "Resource": [
-        "arn:aws:s3:::genai-eks-tfstate-*",
-        "arn:aws:s3:::genai-eks-tfstate-*/*"
+        "arn:aws:cloudformation:*:*:stack/genai-eks-*/*"
       ]
+    },
+    {
+      "Sid": "CloudFormationValidateTemplates",
+      "Effect": "Allow",
+      "Action": "cloudformation:ValidateTemplate",
+      "Resource": "*"
     }
   ]
 }

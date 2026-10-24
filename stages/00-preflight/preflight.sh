@@ -10,7 +10,7 @@ FAILURES=0
 MIN_GPU_VCPUS=4
 GPU_QUOTA_NAME="Running On-Demand G and VT instances"
 
-report() {  # report PASS|FAIL message
+report() {  # report PASS|WARN|FAIL message
   local status=$1; shift
   echo "${status}  $*"
   [ "$status" = "FAIL" ] && FAILURES=$((FAILURES + 1))
@@ -98,15 +98,22 @@ else
   report FAIL "no public subnet (0.0.0.0/0 -> igw). Internet-facing ALBs need one"
 fi
 
+# Learning mode: EKS nodes may run in public subnets (public IPs, no NAT cost).
+# Production should use private subnets with NAT egress instead.
 if [ "$PRIVATE_NAT_COUNT" -ge 2 ]; then
   report PASS "${PRIVATE_NAT_COUNT} private subnet(s) with a NAT gateway route"
+elif [ "$PUBLIC_COUNT" -ge 2 ]; then
+  report WARN "no private subnets with NAT; EKS nodes will use public subnets (learning mode, not for production)"
 else
-  report FAIL "${PRIVATE_NAT_COUNT} private subnet(s) with NAT egress; need >= 2 for EKS nodes"
+  report FAIL "need >= 2 subnets with internet or NAT egress for EKS nodes"
 fi
 
 # 4. GPU vCPU quota ---------------------------------------------------------
+# Read the full JSON list and take the first match. Using "| [0]" in --query runs per page
+# and returns several lines, which breaks the comparison.
 GPU_QUOTA=$(aws service-quotas list-service-quotas --service-code ec2 --region "$AWS_REGION" \
-  --query "Quotas[?QuotaName=='${GPU_QUOTA_NAME}'].Value | [0]" --output text)
+  --query "Quotas[?QuotaName=='${GPU_QUOTA_NAME}'].Value" --output json \
+  | python3 -c 'import json,sys; v=json.load(sys.stdin); print(v[0] if v else "")')
 GPU_QUOTA=$(clean "$GPU_QUOTA")
 
 if [ -z "$GPU_QUOTA" ]; then

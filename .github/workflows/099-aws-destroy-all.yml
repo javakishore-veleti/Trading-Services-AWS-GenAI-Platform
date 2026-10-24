@@ -1,0 +1,52 @@
+name: "099 - Destroy all (reverse order)"
+
+# Tears down everything the stage workflows created, newest stage first.
+# Never deletes the existing VPC (vpc-id is an input, not something this course creates).
+# Each later stage adds its own destroy job here, placed before the jobs it depends on.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to run"
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate confirmation
+        run: |
+          if [ "${{ inputs.confirm }}" != "DESTROY" ]; then
+            echo "::error::confirm must be DESTROY"
+            exit 1
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Destroy jobs go here, newest first. Each stage adds one job, e.g.:
+  #
+  #   destroy-16-ecr:
+  #     needs: guard
+  #     environment: sandbox
+  #     ...
+  #     run: aws cloudformation delete-stack --stack-name genai-eks-16-ecr
+  #
+  # Sequence: 17 agent -> 16 ecr -> 15 qdrant -> 14 tei -> 13 openwebui -> 12 litellm
+  #   -> 11 vllm -> 10 gpu nodepool -> 09 smoke app -> 07 ingress-nginx
+  #   -> 06 lb-controller -> 05 efs-csi -> 04 eks cluster -> 03 efs
+  #   -> 02 subnet tags removed (VPC stays)
+  # ---------------------------------------------------------------------------
+
+  # Placeholder so the workflow has a job to report while no stage is built yet.
+  nothing-to-destroy-yet:
+    needs: guard
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "No stacks exist yet. Stages are added here as they are built."

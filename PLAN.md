@@ -1,11 +1,8 @@
-# GenAI on EKS — Hands-on Development Plan
+# Hands-on Development Plan — GenAI on EKS (Trading-Services-AWS-GenAI-Platform)
 
-A staged, one-workflow-per-stage path to rebuild the
-[aws-samples/sample-genai-on-eks-starter-kit](https://github.com/aws-samples/sample-genai-on-eks-starter-kit)
-yourself, with AWS resources created **only** by manually triggered GitHub Actions workflows.
+Rebuild of the aws-samples "GenAI on EKS starter kit", one stage at a time. Every AWS resource is created only by a manually triggered GitHub Actions workflow (`workflow_dispatch`). Infrastructure is CloudFormation stacks; Kubernetes add-ons are installed with `kubectl`/`helm` steps inside the workflow.
 
-Reference clone (read-only for this plan):
-`sample-genai-on-eks-starter-kit/` — its `terraform/`, `components/` and `docs/` are the source material.
+Reference (read-only): the upstream clone at `sample-genai-on-eks-starter-kit/` — use its `components/`, `docs/`, and `terraform/modules/` as source material (rewrite Terraform as CloudFormation).
 
 ---
 
@@ -13,317 +10,266 @@ Reference clone (read-only for this plan):
 
 | # | Rule | Why |
 |---|------|-----|
-| R1 | **One stage = one workflow file = one concept.** Stages run strictly in order. | Each stage can be understood, verified and reverted alone. |
-| R2 | **Every workflow is `workflow_dispatch` only.** No `push` triggers that create AWS resources. | You decide when money is spent. |
-| R3 | Every workflow has `action: plan \| apply \| destroy` and a **typed confirmation** for `apply`/`destroy`. | Plan first, always. |
-| R4 | Every stage has its own **Terraform state key** in S3 and a shared **concurrency group** `genai-eks`. | No two stages mutate the same state at once. |
-| R5 | **Never create or delete the VPC you bring.** The VPC is an input (`VPC_ID`), not an output. | Your existing network must survive every teardown. |
-| R6 | Secrets only in **GitHub Secrets**. Nothing secret in git. `.env` stays ignored. | Keys in git are leaked keys. |
-| R7 | Each stage ends with a **verification step** (a command that proves it works) and a **teardown note**. | "It applied" is not "it works". |
-| R8 | Commit only when you say so: `commit stage NN`. Commit message = `feat(stage-NN): <title>`. | You control the history. |
+| R1 | One stage = one workflow = one stack (or one script). Stages run strictly in order. | Each stage is understandable and revertible alone. |
+| R2 | Every workflow is `workflow_dispatch` only. | You decide when money is spent. |
+| R3 | Every workflow has `action: plan | apply` and `confirm: APPLY` for apply. Plan = create a change set and show it. | Review before change. |
+| R4 | Every stack is named `genai-eks-NN-<name>`. Concurrency group `genai-eks` on all workflows. | Predictable names; no parallel changes. |
+| R5 | Never create or delete the VPC you bring (`VPC_ID` is an input). | Your network survives every teardown. |
+| R6 | Secrets only in GitHub Secrets. Nothing secret in git. | Keys in git are leaked keys. |
+| R7 | Each stage ends with a verification step and a teardown note. | "Deployed" is not "works". |
+| R8 | Commit only when you say so: `commit stage NN`. Message `feat(stage-NN): <title>`. | You control history. |
 
 ---
 
-## 2. One-time setup (Stage 00 prerequisites — do these yourself, once)
+## 2. One-time setup (you do this)
 
-**Ownership:** you do the AWS account items (IAM user, access key, budget, GPU quota, VPC ID) and the GitHub secrets, variables and `sandbox` environment. The assistant writes the workflows and scripts; you run them from the Actions tab.
+**Ownership:** you do the AWS account items (IAM user, access key, budget, GPU quota, VPC ID) and GitHub secrets, variables, and the `sandbox` environment. The assistant writes the workflows, templates, and scripts; you run them from the Actions tab.
 
 ### 2.1 AWS side
-1. **Account & region.** Region is `us-east-1` (you chose it). Use it everywhere.
-2. **IAM user for CI** (`Trading-Services-AWS-GenAI-Platform`). Start with an access key (as you asked); attach a policy scoped to the services in this plan. Upgrade to **GitHub OIDC + an assumable role** later (see Stage 19 hardening).
-3. **Budget alarm.** AWS Budgets → monthly cost budget (e.g., $100) with email alerts at 50/80/100 %. GPU stages are the expensive ones.
-4. **Service quota check.** Service Quotas → *Amazon EC2* → "Running On-Demand G and VT instances" must be ≥ 4 vCPU for the GPU stage. Request an increase early; approval can take days.
-5. **Your VPC.** Note `VPC_ID`. It must have ≥ 2 AZs, private subnets with a route to a NAT gateway (or egress), and at least one public subnet for internet-facing load balancers.
+1. **Region:** `us-east-1`. Use it everywhere.
+2. **CI IAM user:** `Trading-Services-AWS-GenAI-Platform`, access key, policy `Trading-Services-AWS-GenAI-Platform` built from `iam/ci-policy.json`. Extended per stage.
+3. **Budget alarm:** monthly budget (e.g. $100) with alerts at 50/80/100%. GPU stages are the expensive ones.
+4. **GPU quota:** Service Quotas → Amazon EC2 → "Running On-Demand G and VT instances" ≥ 4 vCPU. Request early; approval can take days. (Current value in this account: 520 vCPUs.)
+5. **VPC:** `vpc-5514cf32` (172.30.0.0/16). Has ≥ 2 AZs and public subnets with an internet gateway. It has **no private subnets and no NAT gateway**.
 
 ### 2.2 GitHub side
-1. Create the repo (private recommended), push this scaffold.
-2. **Settings → Secrets and variables → Actions**
-   - Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
-   - Variables: `AWS_REGION` (e.g. `us-east-1`), `VPC_ID` (e.g. `vpc-0abc...`), `CLUSTER_NAME` (e.g. `genai-on-eks`)
-   - Later secrets: `HF_TOKEN` (Stage 11), `DOMAIN` only if you own a Route 53 zone (Stage 08).
-3. **Settings → Environments → New: `sandbox`.** Add yourself as a required reviewer. Each `apply`/`destroy` job uses `environment: sandbox`, so GitHub pauses for your approval.
+- Secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
+- Variables: `AWS_REGION` = `us-east-1`, `VPC_ID` = `vpc-5514cf32`
+- Environment `sandbox` with you as required reviewer
+- Later: `HF_TOKEN` (Stage 11), `DOMAIN` only if you own a Route 53 zone (Stage 08)
 
-### 2.3 Local tools (for your own verification only)
-AWS CLI v2, Terraform ≥ 1.10 (needed for S3 native locking), kubectl, Helm, Git.
+### 2.3 Learning-mode decision
+EKS nodes run in the **public subnets** of `vpc-5514cf32`. No NAT gateway, so no hourly cost. Nodes get public IPs — acceptable for a sandbox that is torn down; production needs private subnets with NAT egress.
 
 ---
 
-## 3. Workflow conventions (apply to every stage)
+## 3. Conventions
 
 ```
-.github/workflows/NN-<name>.yml          # one workflow per stage
-stages/NN-<name>/                        # Terraform (or manifests) for that stage
-  main.tf | values.yaml | ...
-  README.md                              # what it is, cost, verify, teardown
+.github/workflows/NN-<name>.yml     # one workflow per stage (NN = stage number)
+stages/NN-<name>/template.yaml      # CloudFormation template (if the stage creates AWS resources)
+stages/NN-<name>/*.sh               # scripts (preflight, tags, kubectl/helm steps)
+stages/NN-<name>/README.md          # cost, verify, teardown
 ```
 
-Standard inputs for every stage workflow:
-
+Standard inputs:
 ```yaml
 on:
   workflow_dispatch:
     inputs:
       action:
         type: choice
-        options: [plan, apply, destroy]
+        options: [plan, apply]
         default: plan
       confirm:
-        description: 'Type APPLY or DESTROY to proceed past plan'
+        description: 'Type APPLY to execute the change set'
         required: false
 ```
 
-Standard job skeleton (described, not yet written — you will write each one in its stage):
+Standard job flow for a CloudFormation stage:
+1. checkout → configure AWS credentials → lint (`cfn-lint`)
+2. **plan:** `aws cloudformation create-change-set --change-set-type` (CREATE or UPDATE) → `describe-change-set` → print the changes to the job summary → delete the change set
+3. **apply** (`environment: sandbox`, only if `confirm = APPLY`): `aws cloudformation deploy --stack-name genai-eks-NN-<name> --template-file stages/NN-<name>/template.yaml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides ... --no-fail-on-empty-changeset`
+4. Verify step (the proof command) and job summary (outputs and the teardown command)
 
-1. `checkout` → `configure-aws-credentials` (from secrets) → `setup-terraform`
-2. `terraform init` with the S3 backend and key `stages/NN-<name>/terraform.tfstate`
-3. `terraform plan -out=tfplan` → upload plan as artifact → print summary
-4. If `action=apply` and `confirm=APPLY`: job waits on `environment: sandbox` → `terraform apply tfplan`
-5. Verify step (the proof command for that stage)
-6. Job summary (`$GITHUB_STEP_SUMMARY`) with outputs and the teardown command
+Deleting a stage = `aws cloudformation delete-stack` in reverse order (Stage 99 does this).
 
 ---
 
-## 4. Stage map at a glance
+## 4. Stage map
 
-| Stage | Phase | Workflow | Creates AWS resources? | Est. cost while running | Commit point |
-|------:|-------|----------|:---:|---|---|
-| 00 | Foundations | `00-preflight.yml` | No (read-only) | $0 | `commit stage 00` |
-| 01 | Foundations | `01-state-backend.yml` | Yes — S3 bucket | ~$0 | `commit stage 01` |
-| 02 | Network | `02-vpc-adopt.yml` | Tags only on your VPC | $0 | `commit stage 02` |
-| 03 | Storage | `03-efs.yml` | Yes — EFS + mount targets | low, per GB | `commit stage 03` |
-| 04 | Control plane | `04-eks-cluster.yml` | Yes — EKS cluster + IAM | ~$0.10/h + nodes | `commit stage 04` |
-| 05 | Cluster add-ons | `05-addon-efs-csi.yml` | K8s + IAM | minor | `commit stage 05` |
-| 06 | Cluster add-ons | `06-addon-lb-controller.yml` | K8s + IAM + ALB (on use) | ALB hourly | `commit stage 06` |
-| 07 | Cluster add-ons | `07-addon-ingress-nginx.yml` | K8s + NLB/ALB | ALB/NLB hourly | `commit stage 07` |
-| 08 | Cluster add-ons | `08-addon-external-dns.yml` | Route 53 records (needs domain) | minor | `commit stage 08` |
-| 09 | Smoke test | `09-smoke-app.yml` | K8s + ALB | ALB hourly | `commit stage 09` |
-| 10 | Compute | `10-gpu-nodepool.yml` | K8s NodePool → EC2 GPU on demand | **high** ($/h per GPU) | `commit stage 10` |
-| 11 | LLM serving | `11-vllm-model.yml` | K8s pods on GPU | high (GPU hours) | `commit stage 11` |
-| 12 | AI gateway | `12-litellm.yml` | K8s + ALB | low | `commit stage 12` |
-| 13 | GUI | `13-openwebui.yml` | K8s + ALB | low | `commit stage 13` |
-| 14 | Embeddings | `14-tei-embedding.yml` | K8s (CPU) | low | `commit stage 14` |
-| 15 | Vector DB | `15-qdrant.yml` | K8s + EBS | low | `commit stage 15` |
-| 16 | Container images | `16-ecr-and-build.yml` | ECR repo + build | low | `commit stage 16` |
-| 17 | Agent | `17-strands-calculator-agent.yml` | K8s | low | `commit stage 17` |
-| 18 | Observability | `18-langfuse.yml` *(optional)* | K8s + storage | low | `commit stage 18` |
-| 19 | Hardening | `19-oidc-role.yml` | IAM OIDC provider + role | $0 | `commit stage 19` |
-| 99 | Teardown | `99-teardown.yml` | Destroys in reverse order | — | `commit stage 99` |
+| Stage | Workflow | What it creates | Est. cost while running | Commit |
+|---:|---|---|---|---|
+| 00 | `00-preflight.yml` | Nothing (read-only) | $0 | `commit stage 00` |
+| 02 | `02-vpc-subnet-tags.yml` | Tags on your existing subnets (CLI script, not a stack) | $0 | `commit stage 02` |
+| 03 | `03-efs.yml` | Stack: EFS, mount targets, security group | low, per GB | `commit stage 03` |
+| 04 | `04-eks-cluster.yml` | Stack: EKS cluster (Auto Mode), cluster and node IAM roles, access entries | ~$0.10/h + nodes | `commit stage 04` |
+| 05 | `05-addon-efs-csi.yml` | Stack: Pod Identity role/association; Helm: EFS CSI driver; StorageClass | minor | `commit stage 05` |
+| 06 | `06-addon-lb-controller.yml` | Stack: LB controller IAM + Pod Identity; Helm: controller | ALB hourly on use | `commit stage 06` |
+| 07 | `07-addon-ingress-nginx.yml` | Helm: ingress-nginx + basic-auth secret (NLB/ALB) | NLB/ALB hourly | `commit stage 07` |
+| 08 | `08-addon-external-dns.yml` | Stack: Route 53 role; Helm: external-dns (optional, needs domain) | minor | `commit stage 08` |
+| 09 | `09-smoke-app.yml` | kubectl: nginx Deployment, Service, Ingress (ALB) | ALB hourly | `commit stage 09` |
+| 10 | `10-gpu-nodepool.yml` | kubectl: Karpenter GPU NodePool + NodeClass → on-demand GPU EC2 | **high** ($/h per GPU) | `commit stage 10` |
+| 11 | `11-vllm-model.yml` | kubectl: HF secret, vLLM Deployment + Service on GPU | high | `commit stage 11` |
+| 12 | `12-litellm.yml` | kubectl: LiteLLM gateway + key secret | low | `commit stage 12` |
+| 13 | `13-openwebui.yml` | kubectl: Open WebUI + Ingress | low | `commit stage 13` |
+| 14 | `14-tei-embedding.yml` | kubectl: TEI on CPU | low | `commit stage 14` |
+| 15 | `15-qdrant.yml` | kubectl: Qdrant StatefulSet + EBS PVC | low | `commit stage 15` |
+| 16 | `16-ecr-and-build.yml` | Stack: ECR repo (immutable tags, scan on push); build job | low | `commit stage 16` |
+| 17 | `17-strands-calculator-agent.yml` | kubectl: agent + MCP calculator | low | `commit stage 17` |
+| 18 | `18-langfuse.yml` *(optional)* | kubectl/helm: Langfuse + Postgres | low | `commit stage 18` |
+| 19 | `19-oidc-role.yml` | Stack: GitHub OIDC provider + deploy role | $0 | `commit stage 19` |
+| 99 | `099-aws-destroy-all.yml` | Deletes stacks and Helm releases in reverse order | — | `commit stage 99` |
 
-> Costs are directional. Check the AWS Pricing Calculator for your region before running GPU stages.
+Stage 01 (Terraform state bucket) was removed: CloudFormation keeps its own state.
 
 ---
 
 ## 5. Stage details
 
-Each stage lists: **Goal · Build · Verify · Learn · Teardown**.
-
 ### Stage 00 — Preflight (read-only)
-- **Goal:** Prove the CI credentials, region and your VPC are usable before anything is created.
-- **Build:** `00-preflight.yml` runs `aws sts get-caller-identity`, `aws ec2 describe-vpcs --vpc-ids $VPC_ID`, lists its subnets with AZ and `MapPublicIpOnLaunch`, checks each private subnet's route table for a `0.0.0.0/0` → NAT route, and checks the GPU vCPU service quota.
-- **Verify:** Job summary shows account ID, VPC CIDR, ≥ 2 AZs, NAT route present, quota value.
-- **Learn:** IAM identity, VPC anatomy (subnets, route tables, NAT), Service Quotas.
-- **Teardown:** None (no resources).
+- **Goal:** prove credentials, VPC, subnets, and GPU quota before anything is created.
+- **Build:** `00-preflight.yml` → `stages/00-preflight/preflight.sh`: checks identity, VPC, AZs, public/NAT routes, GPU quota.
+- **Verify:** job summary shows PASS/WARN/FAIL per check.
+- **Learn:** IAM identity, VPC anatomy, Service Quotas.
 
-### Stage 01 — Terraform remote state
-- **Goal:** Persistent, locked state that survives ephemeral GitHub runners.
-- **Build:** `01-state-backend.yml` creates an S3 bucket `genai-eks-tfstate-<account>` with versioning, SSE-S3 encryption, public access blocked, and `use_lockfile = true` in every backend block (S3 native locking; no DynamoDB needed on Terraform ≥ 1.10).
-- **Verify:** `aws s3api get-bucket-versioning` returns `Enabled`; a dummy `terraform init` against the backend succeeds.
-- **Learn:** Why state is remote, what locking prevents, bootstrap-chicken-and-egg.
-- **Teardown:** Only in Stage 99, last step, and only after all state is destroyed.
+### Stage 02 — Tag your existing subnets (not a stack)
+- **Goal:** EKS, ALBs and Karpenter find subnets through tags, without recreating the VPC.
+- **Build:** a script (`aws ec2 create-tags`) adds `kubernetes.io/role/elb=1` to public subnets and `karpenter.sh/discovery=genai-eks` to the subnets EKS nodes will use (public, in learning mode). CloudFormation cannot tag existing resources without importing them, so this stage stays a CLI script.
+- **Verify:** `aws ec2 describe-subnets --filters Name=vpc-id,Values=vpc-5514cf32` shows the tags.
+- **Teardown:** the script removes only the tags it added. The VPC stays.
 
-### Stage 02 — Adopt your VPC (tags only)
-- **Goal:** Make *your* VPC usable by EKS, ALBs and Karpenter without recreating it.
-- **Build:** Terraform uses `data "aws_vpc"` and `data "aws_subnets"` (filtered by `vpc-id`) — **no `module "vpc"`**, unlike the kit's `terraform/vpc.tf`. It then tags subnets:
-  - public subnets: `kubernetes.io/role/elb = 1`
-  - private subnets: `kubernetes.io/role/internal-elb = 1`, `karpenter.sh/discovery = <CLUSTER_NAME>`
-  - Plan shows the tag diffs; apply requires `APPLY` confirmation.
-- **Verify:** `aws ec2 describe-subnets --filters Name=vpc-id,Values=$VPC_ID` shows the tags.
-- **Learn:** Subnet tags are how AWS controllers discover where to place load balancers and nodes. Data sources vs. managed resources (you do not own what you did not create).
-- **Teardown:** Remove only the tags this stage added (`destroy` action). Never delete the VPC.
+### Stage 03 — EFS (stack)
+- **Template:** EFS file system (encrypted), one mount target per subnet, security group allowing TCP 2049 from `172.30.0.0/16`.
+- **Verify:** mount targets `available`.
+- **Learn:** mount targets, security groups as access control, EFS vs EBS.
+- **Teardown:** delete after Stage 05's PVCs are gone (EFS data deletion is irreversible).
 
-### Stage 03 — EFS shared storage
-- **Goal:** One ReadWriteMany filesystem for model caches.
-- **Build:** EFS file system (encrypted), one mount target per private subnet, security group allowing TCP 2049 from the VPC CIDR only.
-- **Verify:** `aws efs describe-mount-targets` → all `LifeCycleState = available`. Output `EFS_FILE_SYSTEM_ID` to the job summary.
-- **Learn:** Mount targets live in subnets; SG rules are the access control; why EFS (shared) vs EBS (single-node).
-- **Teardown:** `destroy` after Stage 05 and any PVC using it is gone (EFS deletion with data is irreversible).
+### Stage 04 — EKS cluster in Auto Mode (stack)
+- **Template:** `AWS::EKS::Cluster` with Auto Mode compute, cluster role, node role, access entry for the CI user, subnets from Stage 02.
+- **Verify:** workflow runs `aws eks update-kubeconfig` then `kubectl get nodepools` and `kubectl get nodes`.
+- **Learn:** control plane vs data plane, Auto Mode, IAM roles for cluster and nodes, access entries.
+- **Teardown:** Stage 99 deletes the stack after all workloads are gone.
 
-### Stage 04 — EKS control plane (Auto Mode first)
-- **Goal:** A running EKS cluster in your VPC.
-- **Build:** Copy the kit's `terraform/modules/eks-auto-mode/` into `stages/04-eks-cluster/`, keep its MIT notice, and call it with **your subnet IDs** from Stage 02 (the kit feeds `module.vpc.private_subnets`; you feed the data source). Start with the **default node pool only** — GPU comes in Stage 10.
-- **Verify:** Workflow runs `aws eks update-kubeconfig` and `kubectl get nodes` (Auto Mode nodes appear on demand; `kubectl get nodepools` shows `general-purpose`). Upload kubeconfig as a short-lived artifact only if you need it locally — prefer re-running `update-kubeconfig`.
-- **Learn:** Control plane vs data plane, Auto Mode vs self-managed node groups, cluster IAM role and node IAM role, access entries (who can `kubectl`).
-- **Teardown:** Stage 99 destroys it after every workload above it.
+### Stage 05 — EFS CSI driver
+- **Template:** Pod Identity role and `AWS::EKS::PodIdentityAssociation`.
+- **Helm:** `aws-efs-csi-driver`. StorageClass `efs` points at the Stage 03 file system ID (read from stack outputs).
+- **Verify:** test PVC `Bound`; data survives a pod restart.
+- **Learn:** Pod Identity, CSI, RWX.
 
-### Stage 05 — Add-on: EFS CSI driver
-- **Goal:** Pods can mount EFS.
-- **Build:** IAM role for the EFS CSI driver bound with **EKS Pod Identity** (`aws_eks_pod_identity_association`), Helm install of `aws-efs-csi-driver`, a `StorageClass efs` pointing at the Stage 03 filesystem ID.
-- **Verify:** A test PVC with `storageClassName: efs` reaches `Bound`; a pod writes a file and it persists across pod restarts.
-- **Learn:** Pod Identity vs IRSA, CSI concepts (StorageClass, PVC, PV), RWX.
-- **Teardown:** Delete test PVC, then `destroy`.
+### Stage 06 — AWS Load Balancer Controller
+- **Template:** controller IAM role + Pod Identity association.
+- **Helm:** controller with `clusterName`, `vpcId`, `region`; IngressClass for the shared ALB.
+- **Verify:** controller `Available`, no IAM errors in logs.
+- **Teardown:** delete Ingresses first — the controller creates the ALBs, and CloudFormation can't remove them.
 
-### Stage 06 — Add-on: AWS Load Balancer Controller
-- **Goal:** Kubernetes `Ingress` creates ALBs.
-- **Build:** IAM policy + Pod Identity, Helm `aws-load-balancer-controller` with `clusterName`, `vpcId` (your `VPC_ID`) and `region`. Create an `IngressClass` for the shared internet-facing ALB.
-- **Verify:** Controller deployment `Available`; logs show no IAM errors. Full proof comes in Stage 09.
-- **Learn:** Ingress → ALB mapping, annotations, why `vpcId` must be passed explicitly.
-- **Teardown:** Remove Ingresses first (ALBs are created by the controller; Terraform cannot clean them up if the controller is gone).
+### Stage 07 — ingress-nginx with basic auth
+- **Helm:** ingress-nginx (one `Service type=LoadBalancer`); basic-auth Secret from GitHub Secrets.
+- **Verify:** `curl -u user:wrong` → 401; `curl -u user:right` → 404 (no backend yet).
+- **Teardown:** `helm uninstall` releases the load balancer.
 
-### Stage 07 — Add-on: ingress-nginx (basic auth gateway)
-- **Goal:** In-cluster HTTP Basic auth for admin UIs (Qdrant, Milvus, dashboards), like the kit's `enable_nginx`.
-- **Build:** Helm `ingress-nginx`, one `Service type=LoadBalancer`, a basic-auth `Secret` (credentials from GitHub Secrets, never in git).
-- **Verify:** `curl -u user:wrong` → 401; `curl -u user:right` → 404 (no backend yet), proving auth works.
-- **Learn:** Ingress controllers vs ALB controller, annotation-based auth, secret handling in CI.
-- **Teardown:** Helm uninstall, then Service LB is released.
+### Stage 08 — ExternalDNS (optional, needs a Route 53 zone)
+- **Template:** role scoped to one hosted zone + Pod Identity.
+- **Helm:** `external-dns` with `domainFilters` set to `DOMAIN`.
+- **Verify:** test Ingress for `smoke.<DOMAIN>` resolves to the ALB.
+- **Skip if** you don't own a domain.
 
-### Stage 08 — Add-on: ExternalDNS *(optional — requires a Route 53 hosted zone)*
-- **Goal:** Ingress hostnames become DNS records automatically.
-- **Build:** IAM role scoped to one hosted-zone ARN, Pod Identity, Helm `external-dns` with `domainFilters` set to your `DOMAIN`.
-- **Verify:** Create a test Ingress for `smoke.<DOMAIN>` → `dig` returns the ALB.
-- **Learn:** Declarative DNS, least-privilege zone scoping.
-- **Skip if:** you do not own a domain. Use HTTP per-service ALBs instead and continue.
+### Stage 09 — Smoke test behind an ALB
+- **kubectl:** nginx Deployment, Service, Ingress.
+- **Verify:** `curl http://<ALB_DNS>/` returns the body; URL printed in the summary.
+- **Teardown:** delete the Ingress first, so the ALB is released.
 
-### Stage 09 — Smoke test: a plain web app behind an ALB
-- **Goal:** End-to-end proof that network → cluster → ALB → pod works before adding GPUs.
-- **Build:** `09-smoke-app.yml` deploys `nginx` (or `hashicorp/http-echo`) with a Deployment, Service and Ingress.
-- **Verify:** `curl http://<ALB_DNS>/` returns the expected body. Job summary prints the URL.
-- **Learn:** Deployment → ReplicaSet → Pod, Service vs Ingress, health checks.
-- **Teardown:** `kubectl delete -f` (workflow `destroy` action) — **delete the Ingress first** so the ALB is released.
+### Stage 10 — GPU node pool (Karpenter)
+- **kubectl:** NodePool + NodeClass for one GPU family (`g6e` to start), on-demand, with taint `nvidia.com/gpu`. Copy the shape from `components/nvidia-platform` / the kit's `eks-auto-mode/eks-addons.tf`.
+- **Verify:** a throwaway pod requesting `nvidia.com/gpu: 1` gets a node; deleting it removes the node after consolidation.
+- **Teardown:** delete the NodePool; check the EC2 console afterwards.
 
-### Stage 10 — GPU node pool
-- **Goal:** GPU nodes on demand.
-- **Build:** A Karpenter `NodePool` + `NodeClass` for GPU instances (`g6e`, `g6`, `g5` to start — copy the kit's `karpenter_nodepool_gpu` shape from `modules/eks-auto-mode/eks-addons.tf`), restricted to **one** family and **on-demand** capacity while you learn. Add a taint `nvidia.com/gpu` so only GPU pods land there.
-- **Verify:** Apply a throwaway pod requesting `nvidia.com/gpu: 1`; `kubectl get nodeclaims` shows a node created; `kubectl describe node` shows the GPU; delete the pod and the node disappears after consolidation.
-- **Learn:** Node autoscaling, taints/tolerations, GPU resource requests, consolidation cost behaviour.
-- **Teardown:** Delete the NodePool → Karpenter terminates nodes. **Check EC2 console** afterwards.
+### Stage 11 — First model: vLLM
+- **Secret:** `HF_TOKEN` from GitHub Secrets → Kubernetes Secret.
+- **kubectl:** one vLLM Deployment + Service on the GPU pool, cache on the EFS PVC. Start with the smallest model: `components/llm-model/vllm/model-deepseek-r1-qwen3-8b.template.yaml`.
+- **Verify:** `GET /v1/models` lists the model; a chat completion returns text.
+- **Teardown:** scale to zero, then delete.
 
-### Stage 11 — First model: vLLM serving
-- **Goal:** An OpenAI-compatible LLM endpoint inside your cluster.
-- **Build:** `HF_TOKEN` (GitHub Secret) → Kubernetes Secret. Deploy one vLLM `Deployment` + `Service` on the GPU pool, model cache on the Stage 05 EFS PVC. **Start with the smallest model you can afford**, not the kit's 30B default. Compare `components/llm-model/vllm/model-*.template.yaml` and pick one; the `deepseek-r1-qwen3-8b` template is a smaller starting point.
-- **Verify:** Port-forward or in-cluster `curl` → `GET /v1/models` lists the model; `POST /v1/chat/completions` returns text.
-- **Learn:** Model download and caching, GPU memory vs model size, OpenAI-compatible API, readiness probes that wait for model load (this takes minutes).
-- **Teardown:** Scale to zero first (stops GPU billing via Stage 10 consolidation), then delete.
+### Stage 12 — LiteLLM gateway
+- **kubectl:** LiteLLM Deployment + config mapping `vllm/<model>` to the vLLM Service; master key from Secrets.
+- **Verify:** request with key → answer; without key → 401.
 
-### Stage 12 — LiteLLM AI gateway
-- **Goal:** One API surface and key management in front of vLLM (and later Bedrock).
-- **Build:** LiteLLM deployment + config mapping `vllm/<model>` to the vLLM Service; master key from GitHub Secrets.
-- **Verify:** `curl` the gateway with the key → same answer as Stage 11; without key → 401.
-- **Learn:** Gateway pattern, virtual keys, routing config.
-- **Teardown:** Helm/kubectl delete.
-
-### Stage 13 — Open WebUI (chat UI)
-- **Goal:** A browser chat interface wired to LiteLLM.
-- **Build:** Open WebUI deployment, `OPENAI_API_BASE_URL` → LiteLLM, admin account from Secrets, Ingress via the Stage 06 controller.
-- **Verify:** Log in, send a message, get a streamed reply.
-- **Learn:** Frontend/back-end split, env-based configuration, persistent volume for the UI DB.
+### Stage 13 — Open WebUI
+- **kubectl:** Deployment, `OPENAI_API_BASE_URL` → LiteLLM, admin from Secrets, Ingress via the ALB controller.
+- **Verify:** log in and get a streamed reply.
 
 ### Stage 14 — Embeddings on CPU (TEI)
-- **Goal:** A text-embedding endpoint that does not need a GPU.
-- **Build:** Text Embeddings Inference on CPU with the smallest embedding model (`qwen3-embedding-06b-bf16-cpu` template in the kit).
-- **Verify:** `POST /embed` returns a vector of the expected dimension.
-- **Learn:** Embeddings, CPU vs GPU trade-off, model-specific dimensions.
+- **kubectl:** TEI with `qwen3-embedding-06b-bf16-cpu`.
+- **Verify:** `POST /embed` returns a vector.
 
-### Stage 15 — Vector database (Qdrant)
-- **Goal:** Store and search embeddings.
-- **Build:** Qdrant StatefulSet with an EBS `gp3` PVC (single-node); API key from Secrets; Ingress behind basic auth (Stage 07).
-- **Verify:** Create a collection, insert one vector from Stage 14, search and get it back.
-- **Learn:** StatefulSets, stable identity, EBS vs EFS for databases.
+### Stage 15 — Qdrant
+- **kubectl:** StatefulSet + EBS gp3 PVC; API key from Secrets; Ingress behind basic auth.
+- **Verify:** create collection, insert and search one vector.
 
-### Stage 16 — Container images with ECR
-- **Goal:** Build your own images in CI instead of pulling only upstream ones.
-- **Build:** `16-ecr-and-build.yml`: create an ECR repo (`immutable` tags, scan on push), then a `docker buildx` job that builds from a `Dockerfile` in `stages/16-*/` and pushes with the git SHA as tag.
-- **Verify:** `aws ecr describe-images` shows the SHA tag and a scan result.
-- **Learn:** Image tagging, immutability, scanning, why not `:latest`.
+### Stage 16 — ECR and image build
+- **Template:** ECR repo (`ImageTagMutability: IMMUTABLE`, scan on push).
+- **Build:** `docker buildx` in the workflow, push with the git SHA as tag.
+- **Verify:** `aws ecr describe-images` shows the tag and a scan result.
 
-### Stage 17 — First agent: Strands calculator agent
-- **Goal:** An agent that calls tools (MCP) and the LLM through LiteLLM.
-- **Build:** Use Stage 16 to build the agent image; deploy with env `LITELLM_BASE_URL`, `LITELLM_MODEL_NAME`; add a small MCP calculator server as a second Deployment.
-- **Verify:** Ask it "what is 17 × 23?" and confirm the tool call in logs.
-- **Learn:** Agent loop, tool calling, MCP, how agents depend on gateway + model.
+### Stage 17 — Strands calculator agent
+- **kubectl:** agent Deployment (image from Stage 16) + MCP calculator server; env `LITELLM_BASE_URL`, `LITELLM_MODEL_NAME`.
+- **Verify:** "what is 17 × 23?" triggers a tool call visible in logs.
 
-### Stage 18 — Observability (optional): Langfuse
-- **Goal:** Trace every LLM call.
-- **Build:** Langfuse + Postgres (or use the kit's chart), keys into LiteLLM callbacks.
-- **Verify:** One chat in Stage 13 shows a trace with tokens and latency.
-- **Learn:** Traces, spans, token accounting.
+### Stage 18 — Langfuse (optional)
+- **helm:** Langfuse + Postgres; keys wired into LiteLLM callbacks.
+- **Verify:** one chat shows a trace with tokens and latency.
 
-### Stage 19 — Hardening: OIDC instead of access keys
-- **Goal:** Remove long-lived AWS keys from GitHub.
-- **Build:** IAM OIDC identity provider for `token.actions.githubusercontent.com`; a role trusting only your repo + `sandbox` environment; switch every workflow to `role-to-assume` with `permissions: id-token: write`; delete the access key.
-- **Verify:** A workflow run assumes the role (`sts get-caller-identity` shows the assumed-role ARN) with no secret keys in use.
-- **Learn:** OIDC federation, trust policy conditions, rotating/deleting keys.
-- **Do this before** you leave the sandbox running for long.
+### Stage 19 — OIDC instead of access keys
+- **Template:** `AWS::IAM::OIDCProvider` for `token.actions.githubusercontent.com` + deploy role trusting only this repo and the `sandbox` environment.
+- **Build:** workflows use `role-to-assume` with `permissions: id-token: write`.
+- **Verify:** `aws sts get-caller-identity` shows the assumed role; delete the access key afterwards.
 
 ---
 
 ## 6. Stage 99 — Teardown (reverse order, never the VPC)
 
-`99-teardown.yml` (manual, `destroy`, typed `DESTROY`) runs jobs in this order:
-
-1. Delete test/demo Ingresses and Services of type LoadBalancer → waits until ALBs/NLBs are gone.
-2. Delete Deployments using GPUs (Stages 11, 17) → Karpenter drains GPU nodes.
+`099-aws-destroy-all.yml` (manual, type `DESTROY`, sandbox approval):
+1. Delete demo/test Ingresses and LoadBalancer Services; wait until ALBs and NLBs are gone.
+2. Delete GPU workloads (Stages 11, 17); Karpenter drains GPU nodes.
 3. Delete the GPU NodePool (Stage 10).
-4. Delete add-ons in reverse: 15 → 14 → 13 → 12 → 08 → 07 → 06 → 05.
-5. Delete EFS (Stage 03) — **only after PVCs are released**.
-6. Destroy EKS (Stage 04).
-7. Remove subnet tags added in Stage 02 (your VPC stays).
-8. Delete ECR repo (Stage 16) if you want zero cost.
-9. Empty and delete the state bucket (Stage 01) **last**, and only when you are done with the whole course.
+4. Helm uninstall in reverse: 15 → 14 → 13 → 12 → 08 → 07 → 06 → 05.
+5. Delete stacks in reverse: 16 (ECR) → 04 (EKS) → 03 (EFS). Delete EFS only after PVCs are gone.
+6. Remove the subnet tags from Stage 02. The VPC stays.
 
-After teardown, verify manually: EC2 instances, Load Balancers, EFS, EKS clusters, NAT gateways (if you created any — you should not have, since the VPC is yours), Elastic IPs.
+After teardown, check manually in the console: EC2 instances, load balancers, EFS, EKS clusters, leftover ENIs, and any NAT gateways (you should have none).
 
 ---
 
 ## 7. Commit protocol
 
-- Work happens on `main` in your own repo (or a branch per stage if you prefer PRs).
-- You say: **`commit stage NN`** → I stage only that stage's files plus its workflow, run a quick local lint (`terraform fmt -check`, `actionlint` if available), and commit with:
+- You say **`commit stage NN`** → I stage only that stage's files and commit with:
   ```
   feat(stage-NN): <title>
 
-  <2–4 bullet summary of what it creates and how it was verified>
+  <2–4 bullets: what it creates and how it was verified>
 
   Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
   ```
-- `.env`, `*.tfstate*`, `.terraform/`, `tfplan`, kubeconfig files are ignored by `.gitignore` and must never be committed.
-- Pushing to GitHub is a separate explicit step you request.
+- `.env`, kubeconfig files, keys, and tokens are never committed.
+- Pushing is a separate explicit step you request.
 
 ---
 
 ## 8. Progress tracker
 
-| Stage | Status | Verified on | Notes |
-|---|---|---|---|
-| 00 Preflight | ☐ | | |
-| 01 State backend | ☐ | | |
-| 02 VPC adopt | ☐ | | |
-| 03 EFS | ☐ | | |
-| 04 EKS cluster | ☐ | | |
-| 05 EFS CSI | ☐ | | |
-| 06 LB controller | ☐ | | |
-| 07 ingress-nginx | ☐ | | |
-| 08 ExternalDNS (optional) | ☐ | | |
-| 09 Smoke app | ☐ | | |
-| 10 GPU NodePool | ☐ | | |
-| 11 vLLM | ☐ | | |
-| 12 LiteLLM | ☐ | | |
-| 13 Open WebUI | ☐ | | |
-| 14 TEI embeddings | ☐ | | |
-| 15 Qdrant | ☐ | | |
-| 16 ECR + build | ☐ | | |
-| 17 Strands agent | ☐ | | |
-| 18 Langfuse (optional) | ☐ | | |
-| 19 OIDC hardening | ☐ | | |
-| 99 Teardown | ☐ | | |
+| Stage | Status | Notes |
+|---|---|---|
+| 00 Preflight | written, not run | |
+| 02 Subnet tags | ☐ | |
+| 03 EFS | ☐ | |
+| 04 EKS cluster | ☐ | |
+| 05 EFS CSI | ☐ | |
+| 06 LB controller | ☐ | |
+| 07 ingress-nginx | ☐ | |
+| 08 ExternalDNS (optional) | ☐ | |
+| 09 Smoke app | ☐ | |
+| 10 GPU NodePool | ☐ | |
+| 11 vLLM | ☐ | |
+| 12 LiteLLM | ☐ | |
+| 13 Open WebUI | ☐ | |
+| 14 TEI | ☐ | |
+| 15 Qdrant | ☐ | |
+| 16 ECR + build | ☐ | |
+| 17 Strands agent | ☐ | |
+| 18 Langfuse (optional) | ☐ | |
+| 19 OIDC | ☐ | |
+| 99 Teardown | ☐ | |
 
 ---
 
-## 9. Decisions made in this plan (change any of them)
+## 9. Decisions
 
-1. **Region** `us-east-1` (chosen by you; the kit defaults to `us-west-2`).
-2. **Existing VPC** is a data-source input; the kit's `vpc.tf` (which creates a new VPC) is deliberately not used.
-3. **Remote state in S3** with native locking, one state key per stage.
-4. **Access keys first**, OIDC last (Stage 19), as you asked.
-5. **Smallest model first**, not the kit's 30B demo models, to control GPU cost.
-6. **Auto Mode first**, GPU via Karpenter NodePool in Stage 10.
-7. **ExternalDNS and Langfuse are optional** — they need a domain / extra cost.
+1. **Region** `us-east-1` (you chose it; the kit defaults to `us-west-2`).
+2. **Existing VPC** `vpc-5514cf32` is an input; never created or deleted.
+3. **CloudFormation** for AWS resources, one stack per stage, named `genai-eks-NN-<name>`. Kubernetes add-ons with Helm/kubectl in workflow steps.
+4. **No state bucket.** CloudFormation keeps state; Stage 01 was removed.
+5. **Access keys first**, OIDC in Stage 19.
+6. **Learning mode:** EKS nodes in public subnets, no NAT gateway.
+7. **Smallest model first** (not the kit's 30B demo).
+8. **Auto Mode first**, GPU via Karpenter NodePool in Stage 10.
+9. **ExternalDNS and Langfuse are optional.**

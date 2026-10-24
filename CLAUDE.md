@@ -12,9 +12,11 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 ## Fixed decisions
 - **Region:** `us-east-1`. Use it everywhere. Never hard-code another region.
 - **Existing VPC:** the VPC ID comes from the GitHub variable `VPC_ID`. Never create or delete a VPC.
-  The kit's `terraform/vpc.tf` creates a new VPC, so do not copy it. Use data sources.
-- **Terraform state:** S3 bucket `genai-eks-tfstate-<account_id>` (created in Stage 01), with
-  `use_lockfile = true` and one state key per stage: `stages/NN-<name>/terraform.tfstate`.
+  The kit's `terraform/vpc.tf` creates a new VPC, so do not copy it. Reference the VPC by ID.
+- **Infrastructure:** CloudFormation. One stack per stage, named `genai-eks-NN-<name>`, template at
+  `stages/NN-<name>/template.yaml`. CloudFormation keeps its own state, so there is no state bucket.
+  Kubernetes add-ons use `kubectl`/`helm` steps in the workflow, not stacks.
+  Stage 02 (subnet tags) is a CLI script because CloudFormation can't tag existing subnets.
 - **Credentials:** long-lived access keys in GitHub Secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`)
   until Stage 19 switches to OIDC. No key is ever written to a file in this repo.
 - **Concurrency:** every workflow uses `concurrency: group: genai-eks`, `cancel-in-progress: false`.
@@ -23,8 +25,9 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 - File name: `.github/workflows/NN-<name>.yml`. Title: `"NN - <Title>"`.
 - Trigger: `workflow_dispatch` only. Never add `push` or `schedule` triggers that touch AWS.
 - Inputs: `action` (`plan` | `apply`, default `plan`) and `confirm` (must equal `APPLY`).
+  `plan` creates a change set and prints it; `apply` executes it via `aws cloudformation deploy`.
   The `apply` job must use `environment: sandbox` and run only when `action == 'apply'`.
-- Logic lives in `stages/NN-<name>/` as scripts or Terraform. Keep the YAML thin. It calls the script.
+- Logic lives in `stages/NN-<name>/` as CloudFormation templates and scripts. Keep the YAML thin.
 - Every script takes its inputs from env vars and fails loudly if one is missing (`: "${VAR:?...}"`).
 - Every stage writes a human-readable summary to `$GITHUB_STEP_SUMMARY`.
 - Every stage ends with a verification step that proves the result, not just "apply succeeded".
@@ -47,7 +50,7 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 - Never run `terraform apply`, `aws` mutations, or `kubectl apply` on the user's AWS account from
   the local shell. All AWS changes go through the GitHub workflow. Local `aws` calls are read-only
   and only for diagnosis, with the user's approval.
-- Destroying anything (Stage 99 or any `destroy` action) requires the user to ask for it explicitly.
+- Destroying anything (Stage 99 or any delete) requires the user to ask for it explicitly.
 - Before changing an existing subnet, route table, or tag on the user's VPC, show the plan.
 - Costs: GPU stages (10, 11) and the EKS control plane are the expensive ones. Say so before running them.
 
@@ -59,7 +62,8 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 
 ## Current status
 - Stage 00 (preflight, read-only): written, not yet run.
-- Stage 01 (state bucket): written, not yet run.
-- Stages 02+: not started. Each one is written after the previous stage is verified.
-- User-owned prerequisites: IAM user `Trading-Services-AWS-GenAI-Platform` with `iam/ci-policy.json`, GitHub secrets and
+- Stage 01 was removed (CloudFormation replaces the state bucket).
+- Stage 02 onward: not started. Each one is written after the previous stage is verified.
+- Teardown: `099-aws-destroy-all.yml` has only a placeholder until stacks exist.
+- User-owned prerequisites: IAM user `Trading-Services-AWS-GenAI-Platform` with policy `Trading-Services-AWS-GenAI-Platform` (from `iam/ci-policy.json`), GitHub secrets and
   variables, `sandbox` environment, budget alarm, GPU vCPU quota request, and the VPC ID.
