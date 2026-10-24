@@ -1,7 +1,7 @@
 name: "099-AWS-Destroy-All"
 
 # Tears down every stage, newest first, by calling each stage's destroy path through _stage.yml.
-# Each destroy job waits for sandbox approval. The VPC is never deleted.
+# Stage 19 (OIDC role) and the VPC are not touched. The VPC is never deleted.
 on:
   workflow_dispatch:
     inputs:
@@ -28,56 +28,92 @@ jobs:
             exit 1
           fi
 
-  d11:
+  d017:
     needs: guard
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 11-vllm-model, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 017-strands-calculator-agent, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d10:
-    needs: d11
+  d016:
+    needs: d017
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 10-gpu-nodepool, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 016-ecr-and-build, action: destroy, confirm: DESTROY, needs_cluster: false}
     secrets: inherit
 
-  d09:
-    needs: d10
+  d015:
+    needs: d016
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 09-smoke-app, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 015-qdrant, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d07:
-    needs: d09
+  d014:
+    needs: d015
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 07-addon-ingress-nginx, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 014-tei-embedding, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d06:
-    needs: d07
+  d013:
+    needs: d014
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 06-addon-lb-controller, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 013-openwebui, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d05:
-    needs: d06
+  d012:
+    needs: d013
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 05-addon-efs-csi, action: destroy, confirm: DESTROY, needs_cluster: true}
+    with: {stage_dir: 012-litellm, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d04:
-    needs: d05
+  d011:
+    needs: d012
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 04-eks-cluster, action: destroy, confirm: DESTROY, needs_cluster: false}
+    with: {stage_dir: 011-vllm-model, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d03:
-    needs: d04
+  d010:
+    needs: d011
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 03-efs, action: destroy, confirm: DESTROY, needs_cluster: false}
+    with: {stage_dir: 010-gpu-nodepool, action: destroy, confirm: DESTROY, needs_cluster: true}
     secrets: inherit
 
-  d02:
-    needs: d03
+  d009:
+    needs: d010
     uses: ./.github/workflows/_stage.yml
-    with: {stage_dir: 02-vpc-subnet-tags, action: destroy, confirm: DESTROY, needs_cluster: false}
+    with: {stage_dir: 009-smoke-app, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d007:
+    needs: d009
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 007-addon-ingress-nginx, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d006:
+    needs: d007
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 006-addon-lb-controller, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d005:
+    needs: d006
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 005-addon-efs-csi, action: destroy, confirm: DESTROY, needs_cluster: true}
+    secrets: inherit
+
+  d004:
+    needs: d005
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 004-eks-cluster, action: destroy, confirm: DESTROY, needs_cluster: false}
+    secrets: inherit
+
+  d003:
+    needs: d004
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 003-efs, action: destroy, confirm: DESTROY, needs_cluster: false}
+    secrets: inherit
+
+  d002:
+    needs: d003
+    uses: ./.github/workflows/_stage.yml
+    with: {stage_dir: 002-vpc-subnet-tags, action: destroy, confirm: DESTROY, needs_cluster: false}
     secrets: inherit

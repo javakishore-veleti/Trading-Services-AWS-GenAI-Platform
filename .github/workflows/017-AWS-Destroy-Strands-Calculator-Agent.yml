@@ -1,0 +1,23 @@
+name: "017-AWS-Destroy-Strands-Calculator-Agent"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 17-strands-calculator-agent
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

@@ -99,3 +99,18 @@ cfn_destroy() {
   aws cloudformation wait stack-delete-complete --region "$AWS_REGION" --stack-name "$stack"
   summary "**Deleted** stack \`$stack\`."
 }
+
+# ensure_secret NS NAME KEY — create a random key-value secret once; never prints the value.
+ensure_secret() {
+  local ns=$1 name=$2 key=$3
+  if ! kubectl -n "$ns" get secret "$name" >/dev/null 2>&1; then
+    kubectl -n "$ns" create secret generic "$name" --from-literal="${key}=sk-$(openssl rand -hex 24)"
+  fi
+}
+
+# in_cluster_curl NS URL [curl args...] — run curl from inside the cluster and print the response.
+in_cluster_curl() {
+  local ns=$1 url=$2; shift 2
+  kubectl run "verify-$RANDOM" -n "$ns" --rm -i --restart=Never --quiet \
+    --image=curlimages/curl:8.10.1 -- curl -sS --max-time 30 "$@" "$url"
+}

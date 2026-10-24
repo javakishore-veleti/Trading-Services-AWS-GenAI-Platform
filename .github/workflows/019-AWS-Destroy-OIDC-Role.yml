@@ -1,0 +1,23 @@
+name: "019-AWS-Destroy-OIDC-Role"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 19-oidc-role
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: false
+    secrets: inherit

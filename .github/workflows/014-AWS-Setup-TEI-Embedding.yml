@@ -1,0 +1,28 @@
+name: "014-AWS-Setup-TEI-Embedding"
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "plan (no changes) or apply"
+        type: choice
+        options: [plan, apply]
+        default: plan
+      confirm:
+        description: "Type APPLY to apply"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 14-tei-embedding
+      action: ${{ inputs.action }}
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

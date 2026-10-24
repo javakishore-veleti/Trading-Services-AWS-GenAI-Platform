@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: litellm
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: litellm-config
+  namespace: litellm
+data:
+  config.yaml: |
+    model_list:
+      - model_name: deepseek-r1-qwen3-8b
+        litellm_params:
+          model: openai/deepseek-r1-qwen3-8b
+          api_base: http://deepseek-r1-qwen3-8b.vllm.svc.cluster.local:8000/v1
+          api_key: none
+    general_settings:
+      master_key: os.environ/LITELLM_MASTER_KEY
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litellm
+  namespace: litellm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: litellm
+  template:
+    metadata:
+      labels:
+        app: litellm
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: litellm
+          image: ghcr.io/berriai/litellm:main-stable
+          args: ["--config", "/app/config.yaml", "--port", "4000"]
+          env:
+            - name: LITELLM_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: litellm-key
+                  key: LITELLM_MASTER_KEY
+          ports:
+            - containerPort: 4000
+          readinessProbe:
+            httpGet:
+              path: /health/liveliness
+              port: 4000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              memory: 1Gi
+          volumeMounts:
+            - name: config
+              mountPath: /app/config.yaml
+              subPath: config.yaml
+      volumes:
+        - name: config
+          configMap:
+            name: litellm-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: litellm
+  namespace: litellm
+spec:
+  selector:
+    app: litellm
+  ports:
+    - port: 4000
+      targetPort: 4000

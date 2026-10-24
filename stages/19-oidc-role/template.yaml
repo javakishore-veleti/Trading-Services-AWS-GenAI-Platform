@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: genai-eks stage 19 - GitHub OIDC provider and a deploy role for the sandbox environment
+Parameters:
+  GithubRepo:
+    Type: String
+    Default: javakishore-veleti/Trading-Services-AWS-GenAI-Platform
+Resources:
+  GithubOidcProvider:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+      ThumbprintList: [6938fd4d98bab03faadb97b34396831e3780aea1]
+  GithubDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: genai-eks-github-deploy-role
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref GithubOidcProvider
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub repo:${GithubRepo}:*
+      ManagedPolicyArns:
+        - !Sub arn:aws:iam::${AWS::AccountId}:policy/Trading-Services-AWS-GenAI-Platform
+Outputs:
+  DeployRoleArn:
+    Value: !GetAtt GithubDeployRole.Arn

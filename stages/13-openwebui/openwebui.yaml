@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openwebui
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-webui
+  namespace: openwebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-webui
+  template:
+    metadata:
+      labels:
+        app: open-webui
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: open-webui
+          image: ghcr.io/open-webui/open-webui:main
+          env:
+            - name: OPENAI_API_BASE_URL
+              value: http://litellm.litellm.svc.cluster.local:4000/v1
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: litellm-key
+                  key: LITELLM_MASTER_KEY
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              memory: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-webui
+  namespace: openwebui
+spec:
+  selector:
+    app: open-webui
+  ports:
+    - port: 8080
+      targetPort: 8080

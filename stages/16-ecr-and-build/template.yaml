@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: genai-eks stage 16 - ECR repository for the agent image
+Resources:
+  AgentRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: genai-eks-agent
+      ImageTagMutability: MUTABLE
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+Outputs:
+  RepositoryUri:
+    Value: !GetAtt AgentRepository.RepositoryUri

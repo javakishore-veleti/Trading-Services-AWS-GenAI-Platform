@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tei
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tei-qwen3-embedding
+  namespace: tei
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tei-qwen3-embedding
+  template:
+    metadata:
+      labels:
+        app: tei-qwen3-embedding
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: tei
+          image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.8
+          args: ["--model-id", "Qwen/Qwen3-Embedding-0.6B", "--port", "80"]
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "2"
+              memory: 4Gi
+            limits:
+              memory: 6Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tei-qwen3-embedding
+  namespace: tei
+spec:
+  selector:
+    app: tei-qwen3-embedding
+  ports:
+    - port: 80
+      targetPort: 80
