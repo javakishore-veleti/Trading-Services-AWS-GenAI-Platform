@@ -1,4 +1,4 @@
-SCREEN_TEAM = "222044-sales-bffs"
+SCREEN_TEAM = "BU1001-trading-desk-bffs"
 BLOCKED_FIELDS = {
     "discount_bps": True,
     "spread_bps": True,
@@ -75,5 +75,5 @@ def apply_guardrail(inputs, request_data, input_type):
     for payload in collect_payloads(inputs):
         field = find_blocked_field(payload)
         if field is not None:
-            return block("A sales screen can carry the request. It cannot set the discount or the upgrade timing.")
+            return block("A trading desk screen can carry the request. It cannot set the discount or the upgrade timing.")
     return allow()

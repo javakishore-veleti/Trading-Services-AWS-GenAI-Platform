@@ -1,6 +1,0 @@
-{
-  "name": "sales-bffs",
-  "version": "1.0.0",
-  "description": "Serve the sales screens. Advisor, Partner, Dealer, Mobile, Web, and Kiosk call this backend.",
-  "skills": "./skills"
-}

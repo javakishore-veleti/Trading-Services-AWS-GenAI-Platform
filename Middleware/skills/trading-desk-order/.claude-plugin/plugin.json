@@ -1,0 +1,6 @@
+{
+  "name": "trading-desk-order",
+  "version": "1.0.0",
+  "description": "Book a FOREX new order, cancel, upgrade, or downgrade. An upgrade or downgrade is an immediate cancel of the current order or a bill-through date, never an edit in place. New risk waits when the book has stopped for the day, and the notional cannot exceed the quote.",
+  "skills": "./skills"
+}

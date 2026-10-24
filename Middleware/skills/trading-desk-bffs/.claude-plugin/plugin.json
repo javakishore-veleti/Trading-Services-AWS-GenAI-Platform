@@ -1,0 +1,6 @@
+{
+  "name": "trading-desk-bffs",
+  "version": "1.0.0",
+  "description": "Carry Advisor, Partner, Dealer, Mobile, Web, and Kiosk requests to the FOREX offer book and the order book, then show the all-in and the change those books returned. This backend does not compute a second price and does not pick immediate or bill-through.",
+  "skills": "./skills"
+}

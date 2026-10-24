@@ -1,6 +1,0 @@
-{
-  "name": "sales-order",
-  "version": "1.0.0",
-  "description": "Place, cancel, upgrade, or downgrade an order. An upgrade or downgrade is immediate or bill-through.",
-  "skills": "./skills"
-}

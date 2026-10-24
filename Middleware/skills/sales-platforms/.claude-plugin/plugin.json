@@ -1,6 +1,0 @@
-{
-  "name": "sales-platforms",
-  "version": "1.0.0",
-  "description": "Keep external selling platforms, including Salesforce CRM and Shopify, in step with the offer and the order.",
-  "skills": "./skills"
-}

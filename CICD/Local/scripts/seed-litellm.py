@@ -60,33 +60,33 @@ MCP_TOOLS = {
 SKILL_REPO = "https://github.com/javakishore-veleti/Trading-Services-AWS-GenAI-Platform.git"
 SKILLS = [
     (
-        "sales-offers",
+        "trading-desk-offers",
         "offers",
-        "Price an FX trade from the customer rating, the rating discount, and the all-in quote.",
-        ["fx", "quote", "rating", "discount", "all-in"],
+        "Build the FOREX all-in from the customer rating band, the product spread, and a fresh mid. AAA removes 8 basis points, BB removes 1, and the net never prints below 0.5. A missing mid, a due data release, or an unknown product is no quote.",
+        ["forex", "all-in", "rating-band", "basis-points", "mid"],
     ),
     (
-        "sales-bffs",
+        "trading-desk-bffs",
         "screen-apis",
-        "Serve the sales screens. Advisor, Partner, Dealer, Mobile, Web, and Kiosk call this backend.",
+        "Carry Advisor, Partner, Dealer, Mobile, Web, and Kiosk requests to the FOREX offer book and the order book, then show the all-in and the change those books returned. This backend does not compute a second price and does not pick immediate or bill-through.",
         ["advisor", "partner", "dealer", "mobile", "web", "kiosk"],
     ),
     (
-        "sales-order",
+        "trading-desk-order",
         "orders",
-        "Place, cancel, upgrade, or downgrade an order. An upgrade or downgrade is immediate or bill-through.",
+        "Book a FOREX new order, cancel, upgrade, or downgrade. An upgrade or downgrade is an immediate cancel of the current order or a bill-through date, never an edit in place. New risk waits when the book has stopped for the day, and the notional cannot exceed the quote.",
         ["new-order", "cancel", "upgrade", "downgrade", "bill-through"],
     ),
     (
-        "sales-io",
+        "trading-desk-io",
         "international-operations",
-        "Run catalog, offer, and order as one business for the international countries.",
+        "Run product, price, and order as one FOREX book for South Korea, Japan, China, Australia, New Zealand, Brazil, Belgium, and France. Take a new mid when a release is due for that country, and keep an upgrade or downgrade on immediate or bill-through timing.",
         ["south-korea", "japan", "china", "australia", "new-zealand", "brazil", "belgium", "france"],
     ),
     (
-        "sales-platforms",
+        "trading-desk-platforms",
         "platforms",
-        "Keep external selling platforms, including Salesforce CRM and Shopify, in step with the offer and the order.",
+        "Pass a Salesforce CRM or Shopify request that names a FOREX customer, pair, and change to the offer book and the order book, then store their result on the platform. The platform supplies no discount, no all-in, and no timing.",
         ["salesforce", "shopify", "crm"],
     ),
 ]
@@ -95,7 +95,7 @@ GUARDRAILS = [
     ("offer-price", ["post_call"], "Block an FX quote whose net spread breaks the rating discount or the 0.5 basis point floor."),
     ("order-change", ["pre_call", "pre_mcp_call"], "An order change is new, cancel, upgrade, or downgrade. Upgrade and downgrade name immediate or bill-through."),
     ("international-country", ["pre_call", "pre_mcp_call"], "International operations runs only for its eight countries."),
-    ("screen-boundary", ["pre_call", "pre_mcp_call"], "A sales screen can carry a request. It cannot set the discount or the upgrade timing."),
+    ("screen-boundary", ["pre_call", "pre_mcp_call"], "A trading desk screen can carry a request. It cannot set the discount or the upgrade timing."),
     ("platform-boundary", ["pre_call", "pre_mcp_call"], "A selling platform can carry the change. It cannot set the price or the timing."),
     ("analytics-read-only", ["pre_call", "pre_mcp_call"], "Analytics allows an end-of-day, intraday, or hourly read. A write is blocked."),
     ("team-tools", ["pre_call", "pre_mcp_call"], "A team key can call only the tools for its own business."),
@@ -264,7 +264,7 @@ def ensure_vector_stores():
     keys = catalog_keys()
     stores = {store.get("vector_store_id"): store for store in list_vector_stores()}
     for name in names:
-        if any(char not in "abcdefghijklmnopqrstuvwxyz0123456789-" for char in name):
+        if any(char not in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-" for char in name):
             raise SystemExit(f"Unsafe team id {name}.")
         connector_key = keys.get(name)
         if not connector_key:
@@ -425,8 +425,8 @@ def ensure_skills():
             "version": "1.0.0",
             "description": description,
             "keywords": keywords,
-            "category": "Sales",
-            "domain": "Sales",
+            "category": "FOREX",
+            "domain": "Trading Desk",
             "namespace": namespace,
         }
         found = by_name.get(name)

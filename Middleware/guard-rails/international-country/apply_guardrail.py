@@ -1,4 +1,4 @@
-IO_TEAM = "222045-sales-io"
+IO_TEAM = "BU1002-trading-desk-io"
 COUNTRIES = {
     "south korea": True,
     "korea": True,

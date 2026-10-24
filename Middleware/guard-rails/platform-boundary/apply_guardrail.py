@@ -1,4 +1,4 @@
-PLATFORM_TEAM = "222045-sales-platforms"
+PLATFORM_TEAM = "BU1004-trading-desk-platforms"
 BLOCKED_FIELDS = {
     "discount_bps": True,
     "spread_bps": True,

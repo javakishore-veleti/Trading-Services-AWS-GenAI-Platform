@@ -26,11 +26,11 @@ load_env() {
 load_env
 
 LOCAL_TEAMS=(
-  "222043-sales-offers"
-  "222044-sales-bffs"
-  "222045-sales-io"
-  "221373-sales-order"
-  "222045-sales-platforms"
+  "BU1000-trading-desk-offers"
+  "BU1001-trading-desk-bffs"
+  "BU1002-trading-desk-io"
+  "BU1003-trading-desk-order"
+  "BU1004-trading-desk-platforms"
 )
 export LOCAL_TEAM_NAMES="$(printf '%s\n' "${LOCAL_TEAMS[@]}")"
 

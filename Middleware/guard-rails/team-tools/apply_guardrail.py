@@ -1,9 +1,9 @@
 TEAMS = {
-    "222043-sales-offers": ["trades_offers_mcp"],
-    "221373-sales-order": ["trades_orders_mcp"],
-    "222045-sales-io": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
-    "222044-sales-bffs": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
-    "222045-sales-platforms": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
+    "BU1000-trading-desk-offers": ["trades_offers_mcp"],
+    "BU1003-trading-desk-order": ["trades_orders_mcp"],
+    "BU1002-trading-desk-io": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
+    "BU1001-trading-desk-bffs": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
+    "BU1004-trading-desk-platforms": ["trades_catalog_mcp", "trades_offers_mcp", "trades_orders_mcp"],
 }
 
 

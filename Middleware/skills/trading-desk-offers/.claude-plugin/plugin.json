@@ -1,0 +1,6 @@
+{
+  "name": "trading-desk-offers",
+  "version": "1.0.0",
+  "description": "Build the FOREX all-in from the customer rating band, the product spread, and a fresh mid. AAA removes 8 basis points, BB removes 1, and the net never prints below 0.5. A missing mid, a due data release, or an unknown product is no quote.",
+  "skills": "./skills"
+}

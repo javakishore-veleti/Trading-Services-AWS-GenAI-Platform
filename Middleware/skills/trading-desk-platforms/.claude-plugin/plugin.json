@@ -1,0 +1,6 @@
+{
+  "name": "trading-desk-platforms",
+  "version": "1.0.0",
+  "description": "Pass a Salesforce CRM or Shopify request that names a FOREX customer, pair, and change to the offer book and the order book, then store their result on the platform. The platform supplies no discount, no all-in, and no timing.",
+  "skills": "./skills"
+}

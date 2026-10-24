@@ -1,0 +1,6 @@
+{
+  "name": "trading-desk-io",
+  "version": "1.0.0",
+  "description": "Run product, price, and order as one FOREX book for South Korea, Japan, China, Australia, New Zealand, Brazil, Belgium, and France. Take a new mid when a release is due for that country, and keep an upgrade or downgrade on immediate or bill-through timing.",
+  "skills": "./skills"
+}
