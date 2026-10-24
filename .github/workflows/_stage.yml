@@ -106,5 +106,13 @@ jobs:
           BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
           BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
         run: |
-          if [ "${{ inputs.needs_cluster }}" = "true" ]; then aws eks update-kubeconfig --region "$AWS_REGION" --name "$CLUSTER_NAME" || true; fi
+          if [ "${{ inputs.needs_cluster }}" = "true" ]; then
+            if aws eks describe-cluster --region "$AWS_REGION" --name "$CLUSTER_NAME" >/dev/null 2>&1; then
+              aws eks wait cluster-active --region "$AWS_REGION" --name "$CLUSTER_NAME" || true
+              aws eks update-kubeconfig --region "$AWS_REGION" --name "$CLUSTER_NAME"
+            else
+              echo "Cluster $CLUSTER_NAME not found; in-cluster resources are already gone."
+              exit 0
+            fi
+          fi
           bash "stages/${{ inputs.stage_dir }}/stage.sh" destroy
