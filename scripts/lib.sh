@@ -76,6 +76,16 @@ cfn_plan() {
 # cfn_apply STACK TEMPLATE [Key=Value ...] — create or update the stack.
 cfn_apply() {
   local stack=$1 template=$2; shift 2
+  # A stack that failed its first create cannot be updated; remove it so the create can run again.
+  local status
+  status=$(aws cloudformation describe-stacks --region "$AWS_REGION" --stack-name "$stack" \
+    --query 'Stacks[0].StackStatus' --output text 2>/dev/null || echo "")
+  case "$status" in
+    ROLLBACK_COMPLETE|CREATE_FAILED|ROLLBACK_FAILED|DELETE_FAILED)
+      summary "Stack \`$stack\` is ${status}; deleting it before retrying."
+      aws cloudformation delete-stack --region "$AWS_REGION" --stack-name "$stack"
+      aws cloudformation wait stack-delete-complete --region "$AWS_REGION" --stack-name "$stack" ;;
+  esac
   aws cloudformation deploy --region "$AWS_REGION" --stack-name "$stack" --template-file "$template" \
     --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides "$@"
   summary "**Applied** stack \`$stack\`."
