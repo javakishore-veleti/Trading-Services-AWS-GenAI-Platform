@@ -1,0 +1,10 @@
+[project]
+name = "trades-orders-mcp"
+version = "0.1.0"
+description = "FX orders MCP server"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp==2.14.7",
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+]

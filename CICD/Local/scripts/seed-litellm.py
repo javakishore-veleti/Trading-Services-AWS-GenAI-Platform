@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the local teams, budgets, vector stores, indexes, and admin login."""
+"""Create the local teams, budgets, vector stores, indexes, MCP servers, and admin login."""
 
 import base64
 import json
@@ -26,6 +26,16 @@ master = env["LITELLM_MASTER_KEY"]
 email = env.get("UI_ADMIN_EMAIL", "admin@localhost")
 password = env["UI_ADMIN_PASSWORD"]
 names = [line for line in os.environ["LOCAL_TEAM_NAMES"].splitlines() if line]
+
+# The proxy runs in Docker and calls these later. Registration does not connect.
+MCP_SERVERS = [
+    ("trades-catalog-mcp", "8101", "FX product catalog for customers"),
+    ("trades-offers-mcp", "8102", "Customer ratings, discounts, and all-in FX pricing"),
+    ("trades-orders-mcp", "8103", "Create and retrieve FX orders"),
+    ("trades-partners-mcp", "8104", "Correspondent banks on FX integrations"),
+    ("traders-master-data-mcp", "8105", "Traders, books, channels, and desk installations"),
+    ("traders-analytics-mcp", "8106", "Read-only end-of-day, intraday, and hourly analytics"),
+]
 
 
 def call(method, path, body=None, token=None):
@@ -260,6 +270,39 @@ def ensure_indexes():
         print("index " + name)
 
 
+def ensure_mcp_servers():
+    status, existing = call("GET", "/v1/mcp/server")
+    if status != 200 or not isinstance(existing, list):
+        raise SystemExit("Could not list MCP servers.")
+    by_id = {row.get("server_id"): row for row in existing}
+    by_name = {row.get("server_name"): row for row in existing}
+    for name, port, description in MCP_SERVERS:
+        url = "http://host.docker.internal:" + port + "/mcp"
+        body = {
+            "server_id": name,
+            "server_name": name,
+            "alias": name,
+            "description": description,
+            "url": url,
+            "transport": "http",
+            "auth_type": "none",
+        }
+        found = by_id.get(name) or by_name.get(name)
+        if found and found.get("url") == url and found.get("transport") == "http":
+            print("mcp server " + name)
+            continue
+        if found:
+            body["server_id"] = found["server_id"]
+            status, _result = call("PUT", "/v1/mcp/server", body)
+            ok = status in (200, 202)
+        else:
+            status, _result = call("POST", "/v1/mcp/server", body)
+            ok = status in (200, 201)
+        if not ok:
+            raise SystemExit(f"Could not register MCP server {name}.")
+        print("mcp server " + name)
+
+
 def ensure_admin():
     if login(password):
         return
@@ -323,6 +366,7 @@ def main():
     ensure_budgets()
     ensure_vector_stores()
     ensure_indexes()
+    ensure_mcp_servers()
     ensure_admin()
 
 

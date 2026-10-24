@@ -3,6 +3,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$DIR/scripts/env.sh"
 POSTGRES_FILE="$DIR/Postgres/docker-compose.yaml"
 REDIS_FILE="$DIR/Redis/docker-compose.yaml"
 PGVECTOR_FILE="$DIR/pgvector/docker-compose.yaml"
