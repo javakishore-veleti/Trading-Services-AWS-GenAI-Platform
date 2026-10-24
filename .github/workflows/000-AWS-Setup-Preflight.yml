@@ -1,4 +1,4 @@
-name: "00 - Preflight (read-only)"
+name: "000-AWS-Setup-Preflight"
 
 # Read-only. Creates nothing. Run this first and whenever a check changes.
 on:

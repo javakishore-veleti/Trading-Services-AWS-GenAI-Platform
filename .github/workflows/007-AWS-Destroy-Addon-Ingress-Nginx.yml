@@ -1,0 +1,23 @@
+name: "007-AWS-Destroy-Addon-Ingress-Nginx"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 07-addon-ingress-nginx
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

@@ -1,15 +1,10 @@
-name: "10 - gpu nodepool"
+name: "011-AWS-Destroy-vLLM-Model"
 
 on:
   workflow_dispatch:
     inputs:
-      action:
-        description: "plan, apply or destroy"
-        type: choice
-        options: [plan, apply, destroy]
-        default: plan
       confirm:
-        description: "APPLY for apply, DESTROY for destroy"
+        description: "Type DESTROY to delete this stage"
         type: string
         default: ""
 
@@ -21,8 +16,8 @@ jobs:
   stage:
     uses: ./.github/workflows/_stage.yml
     with:
-      stage_dir: 10-gpu-nodepool
-      action: ${{ inputs.action }}
+      stage_dir: 11-vllm-model
+      action: destroy
       confirm: ${{ inputs.confirm }}
       needs_cluster: true
     secrets: inherit

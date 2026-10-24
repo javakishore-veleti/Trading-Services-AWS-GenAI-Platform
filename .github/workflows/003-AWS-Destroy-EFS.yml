@@ -1,0 +1,23 @@
+name: "003-AWS-Destroy-EFS"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 03-efs
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: false
+    secrets: inherit

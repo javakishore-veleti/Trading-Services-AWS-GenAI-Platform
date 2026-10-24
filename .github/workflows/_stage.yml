@@ -1,4 +1,4 @@
-name: "Reusable stage runner"
+name: "AWS-Stage-Runner (reusable, do not run directly)"
 
 # Called by every stage workflow and by 099. Runs stages/<stage_dir>/stage.sh <action>.
 # plan    -> no AWS changes (change sets are created, shown, and deleted)

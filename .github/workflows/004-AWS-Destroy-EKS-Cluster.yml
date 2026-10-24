@@ -1,15 +1,10 @@
-name: "04 - eks cluster"
+name: "004-AWS-Destroy-EKS-Cluster"
 
 on:
   workflow_dispatch:
     inputs:
-      action:
-        description: "plan, apply or destroy"
-        type: choice
-        options: [plan, apply, destroy]
-        default: plan
       confirm:
-        description: "APPLY for apply, DESTROY for destroy"
+        description: "Type DESTROY to delete this stage"
         type: string
         default: ""
 
@@ -22,7 +17,7 @@ jobs:
     uses: ./.github/workflows/_stage.yml
     with:
       stage_dir: 04-eks-cluster
-      action: ${{ inputs.action }}
+      action: destroy
       confirm: ${{ inputs.confirm }}
       needs_cluster: false
     secrets: inherit

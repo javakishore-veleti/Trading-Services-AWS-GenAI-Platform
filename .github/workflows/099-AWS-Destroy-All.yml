@@ -1,4 +1,4 @@
-name: "099 - Destroy all (reverse order)"
+name: "099-AWS-Destroy-All"
 
 # Tears down every stage, newest first, by calling each stage's destroy path through _stage.yml.
 # Each destroy job waits for sandbox approval. The VPC is never deleted.

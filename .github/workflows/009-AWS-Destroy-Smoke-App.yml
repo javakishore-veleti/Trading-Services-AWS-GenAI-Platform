@@ -1,0 +1,23 @@
+name: "009-AWS-Destroy-Smoke-App"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 09-smoke-app
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

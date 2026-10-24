@@ -1,15 +1,15 @@
-name: "06 - addon lb controller"
+name: "011-AWS-Setup-vLLM-Model"
 
 on:
   workflow_dispatch:
     inputs:
       action:
-        description: "plan, apply or destroy"
+        description: "plan (no changes) or apply"
         type: choice
-        options: [plan, apply, destroy]
+        options: [plan, apply]
         default: plan
       confirm:
-        description: "APPLY for apply, DESTROY for destroy"
+        description: "Type APPLY to apply"
         type: string
         default: ""
 
@@ -21,7 +21,7 @@ jobs:
   stage:
     uses: ./.github/workflows/_stage.yml
     with:
-      stage_dir: 06-addon-lb-controller
+      stage_dir: 11-vllm-model
       action: ${{ inputs.action }}
       confirm: ${{ inputs.confirm }}
       needs_cluster: true

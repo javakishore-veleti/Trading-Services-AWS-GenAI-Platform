@@ -80,17 +80,17 @@ Deleting a stage = `aws cloudformation delete-stack` in reverse order (Stage 99 
 
 | Stage | Workflow | What it creates | Est. cost while running | Commit |
 |---:|---|---|---|---|
-| 00 | `00-preflight.yml` | Nothing (read-only) | $0 | `commit stage 00` |
-| 02 | `02-vpc-subnet-tags.yml` | Tags on your existing subnets (CLI script, not a stack) | $0 | `commit stage 02` |
-| 03 | `03-efs.yml` | Stack: EFS, mount targets, security group | low, per GB | `commit stage 03` |
-| 04 | `04-eks-cluster.yml` | Stack: EKS cluster (Auto Mode), cluster and node IAM roles, access entries | ~$0.10/h + nodes | `commit stage 04` |
-| 05 | `05-addon-efs-csi.yml` | Stack: Pod Identity role/association; Helm: EFS CSI driver; StorageClass | minor | `commit stage 05` |
-| 06 | `06-addon-lb-controller.yml` | Stack: LB controller IAM + Pod Identity; Helm: controller | ALB hourly on use | `commit stage 06` |
-| 07 | `07-addon-ingress-nginx.yml` | Helm: ingress-nginx + basic-auth secret (NLB/ALB) | NLB/ALB hourly | `commit stage 07` |
-| 08 | `08-addon-external-dns.yml` | Stack: Route 53 role; Helm: external-dns (optional, needs domain) | minor | `commit stage 08` |
-| 09 | `09-smoke-app.yml` | kubectl: nginx Deployment, Service, Ingress (ALB) | ALB hourly | `commit stage 09` |
-| 10 | `10-gpu-nodepool.yml` | kubectl: Karpenter GPU NodePool + NodeClass → on-demand GPU EC2 | **high** ($/h per GPU) | `commit stage 10` |
-| 11 | `11-vllm-model.yml` | kubectl: HF secret, vLLM Deployment + Service on GPU | high | `commit stage 11` |
+| 00 | `000-AWS-Setup-Preflight.yml` | Nothing (read-only) | $0 | `commit stage 00` |
+| 02 | `002-AWS-Setup-VPC-Subnet-Tags.yml` | Tags on your existing subnets (CLI script, not a stack) | $0 | `commit stage 02` |
+| 03 | `003-AWS-Setup-EFS.yml` | Stack: EFS, mount targets, security group | low, per GB | `commit stage 03` |
+| 04 | `004-AWS-Setup-EKS-Cluster.yml` | Stack: EKS cluster (Auto Mode), cluster and node IAM roles, access entries | ~$0.10/h + nodes | `commit stage 04` |
+| 05 | `005-AWS-Setup-Addon-EFS-CSI.yml` | Stack: Pod Identity role/association; Helm: EFS CSI driver; StorageClass | minor | `commit stage 05` |
+| 06 | `006-AWS-Setup-Addon-LB-Controller.yml` | Stack: LB controller IAM + Pod Identity; Helm: controller | ALB hourly on use | `commit stage 06` |
+| 07 | `007-AWS-Setup-Addon-Ingress-Nginx.yml` | Helm: ingress-nginx + basic-auth secret (NLB/ALB) | NLB/ALB hourly | `commit stage 07` |
+| 08 | `008-AWS-Setup-Addon-External-DNS.yml` | Stack: Route 53 role; Helm: external-dns (optional, needs domain) | minor | `commit stage 08` |
+| 09 | `009-AWS-Setup-Smoke-App.yml` | kubectl: nginx Deployment, Service, Ingress (ALB) | ALB hourly | `commit stage 09` |
+| 10 | `010-AWS-Setup-GPU-Nodepool.yml` | kubectl: Karpenter GPU NodePool + NodeClass → on-demand GPU EC2 | **high** ($/h per GPU) | `commit stage 10` |
+| 11 | `011-AWS-Setup-vLLM-Model.yml` | kubectl: HF secret, vLLM Deployment + Service on GPU | high | `commit stage 11` |
 | 12 | `12-litellm.yml` | kubectl: LiteLLM gateway + key secret | low | `commit stage 12` |
 | 13 | `13-openwebui.yml` | kubectl: Open WebUI + Ingress | low | `commit stage 13` |
 | 14 | `14-tei-embedding.yml` | kubectl: TEI on CPU | low | `commit stage 14` |
@@ -99,7 +99,7 @@ Deleting a stage = `aws cloudformation delete-stack` in reverse order (Stage 99 
 | 17 | `17-strands-calculator-agent.yml` | kubectl: agent + MCP calculator | low | `commit stage 17` |
 | 18 | `18-langfuse.yml` *(optional)* | kubectl/helm: Langfuse + Postgres | low | `commit stage 18` |
 | 19 | `19-oidc-role.yml` | Stack: GitHub OIDC provider + deploy role | $0 | `commit stage 19` |
-| 99 | `099-aws-destroy-all.yml` | Deletes stacks and Helm releases in reverse order | — | `commit stage 99` |
+| 99 | `099-AWS-Destroy-All.yml` | Deletes stacks and Helm releases in reverse order | — | `commit stage 99` |
 
 Stage 01 (Terraform state bucket) was removed: CloudFormation keeps its own state.
 
@@ -109,7 +109,7 @@ Stage 01 (Terraform state bucket) was removed: CloudFormation keeps its own stat
 
 ### Stage 00 — Preflight (read-only)
 - **Goal:** prove credentials, VPC, subnets, and GPU quota before anything is created.
-- **Build:** `00-preflight.yml` → `stages/00-preflight/preflight.sh`: checks identity, VPC, AZs, public/NAT routes, GPU quota.
+- **Build:** `000-AWS-Setup-Preflight.yml` → `stages/00-preflight/preflight.sh`: checks identity, VPC, AZs, public/NAT routes, GPU quota.
 - **Verify:** job summary shows PASS/WARN/FAIL per check.
 - **Learn:** IAM identity, VPC anatomy, Service Quotas.
 
@@ -208,7 +208,7 @@ Stage 01 (Terraform state bucket) was removed: CloudFormation keeps its own stat
 
 ## 6. Stage 99 — Teardown (reverse order, never the VPC)
 
-`099-aws-destroy-all.yml` (manual, type `DESTROY`, sandbox approval):
+`099-AWS-Destroy-All.yml` (manual, type `DESTROY`, sandbox approval):
 1. Delete demo/test Ingresses and LoadBalancer Services; wait until ALBs and NLBs are gone.
 2. Delete GPU workloads (Stages 11, 17); Karpenter drains GPU nodes.
 3. Delete the GPU NodePool (Stage 10).

@@ -1,0 +1,23 @@
+name: "006-AWS-Destroy-Addon-LB-Controller"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 06-addon-lb-controller
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

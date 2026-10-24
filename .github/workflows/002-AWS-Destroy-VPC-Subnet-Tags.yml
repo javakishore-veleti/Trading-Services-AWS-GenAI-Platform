@@ -1,0 +1,23 @@
+name: "002-AWS-Destroy-VPC-Subnet-Tags"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 02-vpc-subnet-tags
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: false
+    secrets: inherit

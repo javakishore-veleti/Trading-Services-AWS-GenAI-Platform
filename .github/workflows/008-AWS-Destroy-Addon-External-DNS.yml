@@ -1,0 +1,23 @@
+name: "008-AWS-Destroy-Addon-External-DNS"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DESTROY to delete this stage"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 08-addon-external-dns
+      action: destroy
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: true
+    secrets: inherit

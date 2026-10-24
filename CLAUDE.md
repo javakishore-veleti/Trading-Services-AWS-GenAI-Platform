@@ -65,6 +65,6 @@ Use its `terraform/`, `components/`, and `docs/` as source material when buildin
 - Stages 02, 03, 04: written and pushed; not yet applied.
 - Stages 05–11: written and pushed; not yet applied.
 - Stages 12–19: not written yet.
-- Stage 99 teardown: `099-aws-destroy-all.yml` calls each destroy path in reverse order through `_stage.yml`.
+- Stage 99 teardown: `099-AWS-Destroy-All.yml` calls each destroy path in reverse order through `_stage.yml`.
 - Shared code: `scripts/lib.sh` (CloudFormation and subnet helpers), `.github/workflows/_stage.yml` (reusable runner).
 - IAM: `iam/ci-policy.json` has permissions for stages 02–11. It must be published to the IAM user in the console.

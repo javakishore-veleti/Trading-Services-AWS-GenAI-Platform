@@ -1,0 +1,28 @@
+name: "003-AWS-Setup-EFS"
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "plan (no changes) or apply"
+        type: choice
+        options: [plan, apply]
+        default: plan
+      confirm:
+        description: "Type APPLY to apply"
+        type: string
+        default: ""
+
+concurrency:
+  group: genai-eks
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    uses: ./.github/workflows/_stage.yml
+    with:
+      stage_dir: 03-efs
+      action: ${{ inputs.action }}
+      confirm: ${{ inputs.confirm }}
+      needs_cluster: false
+    secrets: inherit
