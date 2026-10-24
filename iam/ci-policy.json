@@ -131,6 +131,20 @@
         "servicequotas:ListServices"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "EniForEfsMountTargets",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterfacePermission"
+      ],
+      "Resource": "*"
     }
   ]
 }
