@@ -1,0 +1,33 @@
+name: trading-services-genai-tei
+
+# Own compose file. The image comes from the Text Embeddings Inference hardware table.
+# This Mac is aarch64, so the default image is cpu-arm64-1.9. Docker uses the CPU, not Metal.
+# Qwen/Qwen3-Embedding-0.6B is the 509M model. The 4B and 8B models are marked very expensive.
+services:
+  tei:
+    image: ${TEI_IMAGE:-ghcr.io/huggingface/text-embeddings-inference:cpu-arm64-1.9}
+    platform: ${TEI_PLATFORM:-linux/arm64}
+    command:
+      - --model-id
+      - ${TEI_MODEL:-Qwen/Qwen3-Embedding-0.6B}
+      - --port
+      - "80"
+    ports:
+      - "127.0.0.1:${TEI_PORT:-8080}:80"
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    volumes:
+      - tei_data:/data
+    networks:
+      local:
+        aliases:
+          - tei
+    restart: unless-stopped
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  tei_data:

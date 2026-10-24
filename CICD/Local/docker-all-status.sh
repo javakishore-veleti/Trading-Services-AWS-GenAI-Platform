@@ -12,6 +12,7 @@ VLLM_FILE="$DIR/vLLM/docker-compose.yaml"
 SGLANG_FILE="$DIR/SGLang/docker-compose.yaml"
 OLLAMA_FILE="$DIR/Ollama/docker-compose.yaml"
 OLLAMA_PROXY_FILE="$DIR/OllamaProxy/docker-compose.yaml"
+TEI_FILE="$DIR/TEI/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
@@ -25,6 +26,7 @@ PGVECTOR_CONNECTOR_PORT="${PGVECTOR_CONNECTOR_PORT:-8001}"
 VLLM_PORT="${VLLM_PORT:-8000}"
 SGLANG_PORT="${SGLANG_PORT:-30000}"
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
+TEI_PORT="${TEI_PORT:-8080}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -68,6 +70,11 @@ else
   docker compose -f "$OLLAMA_PROXY_FILE" ps
 fi
 echo "http://127.0.0.1:${OLLAMA_PORT}"
+
+echo
+echo "TEI"
+docker compose -f "$TEI_FILE" ps
+echo "http://127.0.0.1:${TEI_PORT}/embed"
 
 echo
 echo "LiteLLM"

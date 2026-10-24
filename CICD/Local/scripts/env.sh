@@ -45,6 +45,9 @@ PGVECTOR_CONNECTOR_PORT="${PGVECTOR_CONNECTOR_PORT:-8001}"
 VLLM_PORT="${VLLM_PORT:-8000}"
 SGLANG_PORT="${SGLANG_PORT:-30000}"
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
+TEI_PORT="${TEI_PORT:-8080}"
+TEI_MODEL="${TEI_MODEL:-Qwen/Qwen3-Embedding-0.6B}"
+export TEI_PORT TEI_MODEL
 OLLAMA_MODEL="${OLLAMA_MODEL:-deepseek-r1:8b}"
 # false: a proxy named ollama forwards to Ollama on this computer.
 # true: the Ollama container is that same name. LiteLLM always calls http://ollama:11434.

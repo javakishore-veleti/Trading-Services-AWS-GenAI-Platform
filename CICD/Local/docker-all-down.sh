@@ -13,6 +13,7 @@ VLLM_FILE="$DIR/vLLM/docker-compose.yaml"
 SGLANG_FILE="$DIR/SGLang/docker-compose.yaml"
 OLLAMA_FILE="$DIR/Ollama/docker-compose.yaml"
 OLLAMA_PROXY_FILE="$DIR/OllamaProxy/docker-compose.yaml"
+TEI_FILE="$DIR/TEI/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 echo "Stopping LiteLLM..."
@@ -35,6 +36,9 @@ docker compose -f "$OLLAMA_FILE" down --volumes
 
 echo "Stopping the Ollama proxy..."
 docker compose -f "$OLLAMA_PROXY_FILE" down
+
+echo "Stopping TEI and deleting its model cache..."
+docker compose -f "$TEI_FILE" down --volumes
 
 echo "Stopping Redis and deleting its data volume..."
 docker compose -f "$REDIS_FILE" down --volumes
