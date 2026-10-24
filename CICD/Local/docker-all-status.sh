@@ -15,6 +15,7 @@ OLLAMA_PROXY_FILE="$DIR/OllamaProxy/docker-compose.yaml"
 TEI_FILE="$DIR/TEI/docker-compose.yaml"
 LANGFUSE_FILE="$DIR/Langfuse/docker-compose.yaml"
 PHOENIX_FILE="$DIR/Phoenix/docker-compose.yaml"
+OPENWEBUI_FILE="$DIR/OpenWebUI/docker-compose.yaml"
 LITELLM_FILE="$DIR/LiteLLM/docker-compose.yaml"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
@@ -31,6 +32,7 @@ OLLAMA_PORT="${OLLAMA_PORT:-11434}"
 TEI_PORT="${TEI_PORT:-8080}"
 LANGFUSE_PORT="${LANGFUSE_PORT:-3000}"
 PHOENIX_PORT="${PHOENIX_PORT:-6006}"
+OPENWEBUI_PORT="${OPENWEBUI_PORT:-3001}"
 LITELLM_PORT="${LITELLM_PORT:-4000}"
 
 echo "Postgres"
@@ -89,6 +91,11 @@ echo
 echo "Phoenix"
 docker compose -f "$PHOENIX_FILE" ps
 echo "http://127.0.0.1:${PHOENIX_PORT}"
+
+echo
+echo "Open WebUI"
+docker compose -f "$OPENWEBUI_FILE" ps
+echo "http://127.0.0.1:${OPENWEBUI_PORT}"
 
 echo
 echo "LiteLLM"

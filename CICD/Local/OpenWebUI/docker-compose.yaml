@@ -1,0 +1,29 @@
+name: trading-services-genai-openwebui
+
+# Chat UI from the starter kit. Models come from LiteLLM. Ollama stays behind that gateway.
+# Host port 3001 leaves 3000 for Langfuse.
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${OPENWEBUI_PORT:-3001}:8080"
+    environment:
+      OPENAI_API_BASE_URL: http://litellm:4000/v1
+      OPENAI_API_KEY: ${LITELLM_MASTER_KEY:?set LITELLM_MASTER_KEY}
+      ENABLE_OLLAMA_API: "False"
+      WEBUI_ADMIN_EMAIL: ${OPENWEBUI_ADMIN_EMAIL:-admin@example.com}
+      WEBUI_ADMIN_PASSWORD: ${OPENWEBUI_ADMIN_PASSWORD:-openwebui}
+      WEBUI_SECRET_KEY: openwebui-local-secret
+    volumes:
+      - openwebui_data:/app/backend/data
+    networks:
+      - local
+
+networks:
+  local:
+    name: trading-services-local
+    external: true
+
+volumes:
+  openwebui_data:
