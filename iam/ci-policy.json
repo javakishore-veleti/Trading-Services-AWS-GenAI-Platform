@@ -8,18 +8,11 @@
       "Resource": "*"
     },
     {
-      "Sid": "ReadNetwork",
+      "Sid": "ReadNetworkAndInstances",
       "Effect": "Allow",
       "Action": [
-        "ec2:DescribeVpcs",
-        "ec2:DescribeSubnets",
-        "ec2:DescribeRouteTables",
-        "ec2:DescribeNatGateways",
-        "ec2:DescribeInternetGateways",
-        "ec2:DescribeAvailabilityZones",
-        "ec2:DescribeSecurityGroups",
-        "ec2:DescribeSecurityGroupRules",
-        "ec2:DescribeNetworkInterfaces"
+        "ec2:Describe*",
+        "elasticloadbalancing:Describe*"
       ],
       "Resource": "*"
     },
@@ -33,7 +26,7 @@
       "Resource": "arn:aws:ec2:us-east-1:787193426426:subnet/*"
     },
     {
-      "Sid": "EfsSecurityGroupForEfs",
+      "Sid": "SecurityGroupsForEfs",
       "Effect": "Allow",
       "Action": [
         "ec2:CreateSecurityGroup",
@@ -45,30 +38,40 @@
       "Resource": "*"
     },
     {
-      "Sid": "Efs",
+      "Sid": "NetworkInterfacesForEfsMountTargets",
       "Effect": "Allow",
       "Action": [
-        "elasticfilesystem:*"
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:DeleteNetworkInterfacePermission"
       ],
       "Resource": "*"
     },
     {
-      "Sid": "EksClusters",
+      "Sid": "Efs",
+      "Effect": "Allow",
+      "Action": "elasticfilesystem:*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "EksAll",
       "Effect": "Allow",
       "Action": "eks:*",
       "Resource": "arn:aws:eks:us-east-1:787193426426:*"
     },
     {
-      "Sid": "EksDescribe",
+      "Sid": "EksList",
       "Effect": "Allow",
       "Action": [
-        "eks:DescribeAddonVersions",
-        "eks:ListClusters"
+        "eks:ListClusters",
+        "eks:DescribeAddonVersions"
       ],
       "Resource": "*"
     },
     {
-      "Sid": "GenaiEksRolesOnly",
+      "Sid": "GenaiEksRoles",
       "Effect": "Allow",
       "Action": [
         "iam:CreateRole",
@@ -89,7 +92,7 @@
       "Resource": "arn:aws:iam::787193426426:role/genai-eks-*"
     },
     {
-      "Sid": "EksServiceLinkedRoles",
+      "Sid": "ServiceLinkedRoles",
       "Effect": "Allow",
       "Action": "iam:CreateServiceLinkedRole",
       "Resource": "*",
@@ -98,27 +101,89 @@
           "iam:AWSServiceName": [
             "eks.amazonaws.com",
             "eks-nodegroup.amazonaws.com",
-            "eks-fargate.amazonaws.com",
-            "elasticloadbalancing.amazonaws.com"
+            "elasticfilesystem.amazonaws.com",
+            "elasticloadbalancing.amazonaws.com",
+            "autoscaling.amazonaws.com"
           ]
         }
       }
     },
     {
+      "Sid": "GithubOidcProviderForStage19",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateOpenIDConnectProvider",
+        "iam:GetOpenIDConnectProvider",
+        "iam:DeleteOpenIDConnectProvider",
+        "iam:TagOpenIDConnectProvider",
+        "iam:UpdateOpenIDConnectProviderThumbprint"
+      ],
+      "Resource": "arn:aws:iam::787193426426:oidc-provider/token.actions.githubusercontent.com"
+    },
+    {
+      "Sid": "EfsKmsGrants",
+      "Effect": "Allow",
+      "Action": [
+        "kms:CreateGrant",
+        "kms:DescribeKey",
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:Decrypt"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "kms:ViaService": "elasticfilesystem.us-east-1.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "KmsAliasLookup",
+      "Effect": "Allow",
+      "Action": [
+        "kms:ListAliases",
+        "kms:ListKeys"
+      ],
+      "Resource": "*"
+    },
+    {
       "Sid": "CloudFormationGenaiEksStacks",
       "Effect": "Allow",
       "Action": "cloudformation:*",
-      "Resource": [
-        "arn:aws:cloudformation:us-east-1:787193426426:stack/genai-eks-*/*"
-      ]
+      "Resource": "arn:aws:cloudformation:us-east-1:787193426426:stack/genai-eks-*/*"
     },
     {
-      "Sid": "CloudFormationValidateAndList",
+      "Sid": "CloudFormationList",
       "Effect": "Allow",
       "Action": [
         "cloudformation:ValidateTemplate",
-        "cloudformation:DescribeStacks",
-        "cloudformation:ListStacks"
+        "cloudformation:ListStacks",
+        "cloudformation:DescribeStacks"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EcrForStage16",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:*"
+      ],
+      "Resource": "arn:aws:ecr:us-east-1:787193426426:repository/genai-eks-*"
+    },
+    {
+      "Sid": "EcrAuthToken",
+      "Effect": "Allow",
+      "Action": "ecr:GetAuthorizationToken",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Route53ForStage08",
+      "Effect": "Allow",
+      "Action": [
+        "route53:ListHostedZones",
+        "route53:GetHostedZone",
+        "route53:ChangeResourceRecordSets",
+        "route53:ListResourceRecordSets",
+        "route53:GetChange"
       ],
       "Resource": "*"
     },
@@ -129,20 +194,6 @@
         "servicequotas:ListServiceQuotas",
         "servicequotas:GetServiceQuota",
         "servicequotas:ListServices"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "EniForEfsMountTargets",
-      "Effect": "Allow",
-      "Action": [
-        "ec2:CreateNetworkInterface",
-        "ec2:DeleteNetworkInterface",
-        "ec2:DescribeNetworkInterfaces",
-        "ec2:DescribeNetworkInterfaceAttribute",
-        "ec2:ModifyNetworkInterfaceAttribute",
-        "ec2:CreateNetworkInterfacePermission",
-        "ec2:DeleteNetworkInterfacePermission"
       ],
       "Resource": "*"
     }
