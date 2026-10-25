@@ -1,0 +1,1103 @@
+[
+  {
+    "trader_id": "TRADER-001",
+    "username": "trader001",
+    "display_name": "Trader 001",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-001",
+      "CUST-002",
+      "CUST-021",
+      "CUST-041"
+    ]
+  },
+  {
+    "trader_id": "TRADER-002",
+    "username": "trader002",
+    "display_name": "Trader 002",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-002",
+      "CUST-022",
+      "CUST-042"
+    ]
+  },
+  {
+    "trader_id": "TRADER-003",
+    "username": "trader003",
+    "display_name": "Trader 003",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-003",
+      "CUST-023",
+      "CUST-043"
+    ]
+  },
+  {
+    "trader_id": "TRADER-004",
+    "username": "trader004",
+    "display_name": "Trader 004",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-004",
+      "CUST-024",
+      "CUST-044"
+    ]
+  },
+  {
+    "trader_id": "TRADER-005",
+    "username": "trader005",
+    "display_name": "Trader 005",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-005",
+      "CUST-025",
+      "CUST-045"
+    ]
+  },
+  {
+    "trader_id": "TRADER-006",
+    "username": "trader006",
+    "display_name": "Trader 006",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-006",
+      "CUST-026",
+      "CUST-046"
+    ]
+  },
+  {
+    "trader_id": "TRADER-007",
+    "username": "trader007",
+    "display_name": "Trader 007",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-007",
+      "CUST-027",
+      "CUST-047"
+    ]
+  },
+  {
+    "trader_id": "TRADER-008",
+    "username": "trader008",
+    "display_name": "Trader 008",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-008",
+      "CUST-028",
+      "CUST-048"
+    ]
+  },
+  {
+    "trader_id": "TRADER-009",
+    "username": "trader009",
+    "display_name": "Trader 009",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-009",
+      "CUST-029",
+      "CUST-049"
+    ]
+  },
+  {
+    "trader_id": "TRADER-010",
+    "username": "trader010",
+    "display_name": "Trader 010",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-010",
+      "CUST-030",
+      "CUST-050"
+    ]
+  },
+  {
+    "trader_id": "TRADER-011",
+    "username": "trader011",
+    "display_name": "Trader 011",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-011",
+      "CUST-031",
+      "CUST-051"
+    ]
+  },
+  {
+    "trader_id": "TRADER-012",
+    "username": "trader012",
+    "display_name": "Trader 012",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-012",
+      "CUST-032",
+      "CUST-052"
+    ]
+  },
+  {
+    "trader_id": "TRADER-013",
+    "username": "trader013",
+    "display_name": "Trader 013",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-013",
+      "CUST-033",
+      "CUST-053"
+    ]
+  },
+  {
+    "trader_id": "TRADER-014",
+    "username": "trader014",
+    "display_name": "Trader 014",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-014",
+      "CUST-034",
+      "CUST-054"
+    ]
+  },
+  {
+    "trader_id": "TRADER-015",
+    "username": "trader015",
+    "display_name": "Trader 015",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-015",
+      "CUST-035",
+      "CUST-055"
+    ]
+  },
+  {
+    "trader_id": "TRADER-016",
+    "username": "trader016",
+    "display_name": "Trader 016",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-016",
+      "CUST-036",
+      "CUST-056"
+    ]
+  },
+  {
+    "trader_id": "TRADER-017",
+    "username": "trader017",
+    "display_name": "Trader 017",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-017",
+      "CUST-037",
+      "CUST-057"
+    ]
+  },
+  {
+    "trader_id": "TRADER-018",
+    "username": "trader018",
+    "display_name": "Trader 018",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-018",
+      "CUST-038",
+      "CUST-058"
+    ]
+  },
+  {
+    "trader_id": "TRADER-019",
+    "username": "trader019",
+    "display_name": "Trader 019",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-019",
+      "CUST-039",
+      "CUST-059"
+    ]
+  },
+  {
+    "trader_id": "TRADER-020",
+    "username": "trader020",
+    "display_name": "Trader 020",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-020",
+      "CUST-040",
+      "CUST-060"
+    ]
+  },
+  {
+    "trader_id": "TRADER-021",
+    "username": "trader021",
+    "display_name": "Trader 021",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-021",
+      "CUST-041",
+      "CUST-061"
+    ]
+  },
+  {
+    "trader_id": "TRADER-022",
+    "username": "trader022",
+    "display_name": "Trader 022",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-022",
+      "CUST-042",
+      "CUST-062"
+    ]
+  },
+  {
+    "trader_id": "TRADER-023",
+    "username": "trader023",
+    "display_name": "Trader 023",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-023",
+      "CUST-043",
+      "CUST-063"
+    ]
+  },
+  {
+    "trader_id": "TRADER-024",
+    "username": "trader024",
+    "display_name": "Trader 024",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-024",
+      "CUST-044",
+      "CUST-064"
+    ]
+  },
+  {
+    "trader_id": "TRADER-025",
+    "username": "trader025",
+    "display_name": "Trader 025",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-025",
+      "CUST-045",
+      "CUST-065"
+    ]
+  },
+  {
+    "trader_id": "TRADER-026",
+    "username": "trader026",
+    "display_name": "Trader 026",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-026",
+      "CUST-046",
+      "CUST-066"
+    ]
+  },
+  {
+    "trader_id": "TRADER-027",
+    "username": "trader027",
+    "display_name": "Trader 027",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-027",
+      "CUST-047",
+      "CUST-067"
+    ]
+  },
+  {
+    "trader_id": "TRADER-028",
+    "username": "trader028",
+    "display_name": "Trader 028",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-028",
+      "CUST-048",
+      "CUST-068"
+    ]
+  },
+  {
+    "trader_id": "TRADER-029",
+    "username": "trader029",
+    "display_name": "Trader 029",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-029",
+      "CUST-049",
+      "CUST-069"
+    ]
+  },
+  {
+    "trader_id": "TRADER-030",
+    "username": "trader030",
+    "display_name": "Trader 030",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-030",
+      "CUST-050",
+      "CUST-070"
+    ]
+  },
+  {
+    "trader_id": "TRADER-031",
+    "username": "trader031",
+    "display_name": "Trader 031",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-031",
+      "CUST-051",
+      "CUST-071"
+    ]
+  },
+  {
+    "trader_id": "TRADER-032",
+    "username": "trader032",
+    "display_name": "Trader 032",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-032",
+      "CUST-052",
+      "CUST-072"
+    ]
+  },
+  {
+    "trader_id": "TRADER-033",
+    "username": "trader033",
+    "display_name": "Trader 033",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-033",
+      "CUST-053",
+      "CUST-073"
+    ]
+  },
+  {
+    "trader_id": "TRADER-034",
+    "username": "trader034",
+    "display_name": "Trader 034",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-034",
+      "CUST-054",
+      "CUST-074"
+    ]
+  },
+  {
+    "trader_id": "TRADER-035",
+    "username": "trader035",
+    "display_name": "Trader 035",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-035",
+      "CUST-055",
+      "CUST-075"
+    ]
+  },
+  {
+    "trader_id": "TRADER-036",
+    "username": "trader036",
+    "display_name": "Trader 036",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-036",
+      "CUST-056",
+      "CUST-076"
+    ]
+  },
+  {
+    "trader_id": "TRADER-037",
+    "username": "trader037",
+    "display_name": "Trader 037",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-037",
+      "CUST-057",
+      "CUST-077"
+    ]
+  },
+  {
+    "trader_id": "TRADER-038",
+    "username": "trader038",
+    "display_name": "Trader 038",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-038",
+      "CUST-058",
+      "CUST-078"
+    ]
+  },
+  {
+    "trader_id": "TRADER-039",
+    "username": "trader039",
+    "display_name": "Trader 039",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-039",
+      "CUST-059",
+      "CUST-079"
+    ]
+  },
+  {
+    "trader_id": "TRADER-040",
+    "username": "trader040",
+    "display_name": "Trader 040",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-040",
+      "CUST-060",
+      "CUST-080"
+    ]
+  },
+  {
+    "trader_id": "TRADER-041",
+    "username": "trader041",
+    "display_name": "Trader 041",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-041",
+      "CUST-061",
+      "CUST-081"
+    ]
+  },
+  {
+    "trader_id": "TRADER-042",
+    "username": "trader042",
+    "display_name": "Trader 042",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-042",
+      "CUST-062",
+      "CUST-082"
+    ]
+  },
+  {
+    "trader_id": "TRADER-043",
+    "username": "trader043",
+    "display_name": "Trader 043",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-043",
+      "CUST-063",
+      "CUST-083"
+    ]
+  },
+  {
+    "trader_id": "TRADER-044",
+    "username": "trader044",
+    "display_name": "Trader 044",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-044",
+      "CUST-064",
+      "CUST-084"
+    ]
+  },
+  {
+    "trader_id": "TRADER-045",
+    "username": "trader045",
+    "display_name": "Trader 045",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-045",
+      "CUST-065",
+      "CUST-085"
+    ]
+  },
+  {
+    "trader_id": "TRADER-046",
+    "username": "trader046",
+    "display_name": "Trader 046",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-046",
+      "CUST-066",
+      "CUST-086"
+    ]
+  },
+  {
+    "trader_id": "TRADER-047",
+    "username": "trader047",
+    "display_name": "Trader 047",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-047",
+      "CUST-067",
+      "CUST-087"
+    ]
+  },
+  {
+    "trader_id": "TRADER-048",
+    "username": "trader048",
+    "display_name": "Trader 048",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-048",
+      "CUST-068",
+      "CUST-088"
+    ]
+  },
+  {
+    "trader_id": "TRADER-049",
+    "username": "trader049",
+    "display_name": "Trader 049",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-049",
+      "CUST-069",
+      "CUST-089"
+    ]
+  },
+  {
+    "trader_id": "TRADER-050",
+    "username": "trader050",
+    "display_name": "Trader 050",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-050",
+      "CUST-070",
+      "CUST-090"
+    ]
+  },
+  {
+    "trader_id": "TRADER-051",
+    "username": "trader051",
+    "display_name": "Trader 051",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-051",
+      "CUST-071",
+      "CUST-091"
+    ]
+  },
+  {
+    "trader_id": "TRADER-052",
+    "username": "trader052",
+    "display_name": "Trader 052",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-052",
+      "CUST-072",
+      "CUST-092"
+    ]
+  },
+  {
+    "trader_id": "TRADER-053",
+    "username": "trader053",
+    "display_name": "Trader 053",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-053",
+      "CUST-073",
+      "CUST-093"
+    ]
+  },
+  {
+    "trader_id": "TRADER-054",
+    "username": "trader054",
+    "display_name": "Trader 054",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-054",
+      "CUST-074",
+      "CUST-094"
+    ]
+  },
+  {
+    "trader_id": "TRADER-055",
+    "username": "trader055",
+    "display_name": "Trader 055",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-055",
+      "CUST-075",
+      "CUST-095"
+    ]
+  },
+  {
+    "trader_id": "TRADER-056",
+    "username": "trader056",
+    "display_name": "Trader 056",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-056",
+      "CUST-076",
+      "CUST-096"
+    ]
+  },
+  {
+    "trader_id": "TRADER-057",
+    "username": "trader057",
+    "display_name": "Trader 057",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-057",
+      "CUST-077",
+      "CUST-097"
+    ]
+  },
+  {
+    "trader_id": "TRADER-058",
+    "username": "trader058",
+    "display_name": "Trader 058",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-058",
+      "CUST-078",
+      "CUST-098"
+    ]
+  },
+  {
+    "trader_id": "TRADER-059",
+    "username": "trader059",
+    "display_name": "Trader 059",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-059",
+      "CUST-079",
+      "CUST-099"
+    ]
+  },
+  {
+    "trader_id": "TRADER-060",
+    "username": "trader060",
+    "display_name": "Trader 060",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-060",
+      "CUST-080",
+      "CUST-100"
+    ]
+  },
+  {
+    "trader_id": "TRADER-061",
+    "username": "trader061",
+    "display_name": "Trader 061",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-001",
+      "CUST-061",
+      "CUST-081"
+    ]
+  },
+  {
+    "trader_id": "TRADER-062",
+    "username": "trader062",
+    "display_name": "Trader 062",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-002",
+      "CUST-062",
+      "CUST-082"
+    ]
+  },
+  {
+    "trader_id": "TRADER-063",
+    "username": "trader063",
+    "display_name": "Trader 063",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-003",
+      "CUST-063",
+      "CUST-083"
+    ]
+  },
+  {
+    "trader_id": "TRADER-064",
+    "username": "trader064",
+    "display_name": "Trader 064",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-004",
+      "CUST-064",
+      "CUST-084"
+    ]
+  },
+  {
+    "trader_id": "TRADER-065",
+    "username": "trader065",
+    "display_name": "Trader 065",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-005",
+      "CUST-065",
+      "CUST-085"
+    ]
+  },
+  {
+    "trader_id": "TRADER-066",
+    "username": "trader066",
+    "display_name": "Trader 066",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-006",
+      "CUST-066",
+      "CUST-086"
+    ]
+  },
+  {
+    "trader_id": "TRADER-067",
+    "username": "trader067",
+    "display_name": "Trader 067",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-007",
+      "CUST-067",
+      "CUST-087"
+    ]
+  },
+  {
+    "trader_id": "TRADER-068",
+    "username": "trader068",
+    "display_name": "Trader 068",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-008",
+      "CUST-068",
+      "CUST-088"
+    ]
+  },
+  {
+    "trader_id": "TRADER-069",
+    "username": "trader069",
+    "display_name": "Trader 069",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-009",
+      "CUST-069",
+      "CUST-089"
+    ]
+  },
+  {
+    "trader_id": "TRADER-070",
+    "username": "trader070",
+    "display_name": "Trader 070",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-010",
+      "CUST-070",
+      "CUST-090"
+    ]
+  },
+  {
+    "trader_id": "TRADER-071",
+    "username": "trader071",
+    "display_name": "Trader 071",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-011",
+      "CUST-071",
+      "CUST-091"
+    ]
+  },
+  {
+    "trader_id": "TRADER-072",
+    "username": "trader072",
+    "display_name": "Trader 072",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-012",
+      "CUST-072",
+      "CUST-092"
+    ]
+  },
+  {
+    "trader_id": "TRADER-073",
+    "username": "trader073",
+    "display_name": "Trader 073",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-013",
+      "CUST-073",
+      "CUST-093"
+    ]
+  },
+  {
+    "trader_id": "TRADER-074",
+    "username": "trader074",
+    "display_name": "Trader 074",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-014",
+      "CUST-074",
+      "CUST-094"
+    ]
+  },
+  {
+    "trader_id": "TRADER-075",
+    "username": "trader075",
+    "display_name": "Trader 075",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-015",
+      "CUST-075",
+      "CUST-095"
+    ]
+  },
+  {
+    "trader_id": "TRADER-076",
+    "username": "trader076",
+    "display_name": "Trader 076",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-016",
+      "CUST-076",
+      "CUST-096"
+    ]
+  },
+  {
+    "trader_id": "TRADER-077",
+    "username": "trader077",
+    "display_name": "Trader 077",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-017",
+      "CUST-077",
+      "CUST-097"
+    ]
+  },
+  {
+    "trader_id": "TRADER-078",
+    "username": "trader078",
+    "display_name": "Trader 078",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-018",
+      "CUST-078",
+      "CUST-098"
+    ]
+  },
+  {
+    "trader_id": "TRADER-079",
+    "username": "trader079",
+    "display_name": "Trader 079",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-019",
+      "CUST-079",
+      "CUST-099"
+    ]
+  },
+  {
+    "trader_id": "TRADER-080",
+    "username": "trader080",
+    "display_name": "Trader 080",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-020",
+      "CUST-080",
+      "CUST-100"
+    ]
+  },
+  {
+    "trader_id": "TRADER-081",
+    "username": "trader081",
+    "display_name": "Trader 081",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-001",
+      "CUST-021",
+      "CUST-081"
+    ]
+  },
+  {
+    "trader_id": "TRADER-082",
+    "username": "trader082",
+    "display_name": "Trader 082",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-002",
+      "CUST-022",
+      "CUST-082"
+    ]
+  },
+  {
+    "trader_id": "TRADER-083",
+    "username": "trader083",
+    "display_name": "Trader 083",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-003",
+      "CUST-023",
+      "CUST-083"
+    ]
+  },
+  {
+    "trader_id": "TRADER-084",
+    "username": "trader084",
+    "display_name": "Trader 084",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-004",
+      "CUST-024",
+      "CUST-084"
+    ]
+  },
+  {
+    "trader_id": "TRADER-085",
+    "username": "trader085",
+    "display_name": "Trader 085",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-005",
+      "CUST-025",
+      "CUST-085"
+    ]
+  },
+  {
+    "trader_id": "TRADER-086",
+    "username": "trader086",
+    "display_name": "Trader 086",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-006",
+      "CUST-026",
+      "CUST-086"
+    ]
+  },
+  {
+    "trader_id": "TRADER-087",
+    "username": "trader087",
+    "display_name": "Trader 087",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-007",
+      "CUST-027",
+      "CUST-087"
+    ]
+  },
+  {
+    "trader_id": "TRADER-088",
+    "username": "trader088",
+    "display_name": "Trader 088",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-008",
+      "CUST-028",
+      "CUST-088"
+    ]
+  },
+  {
+    "trader_id": "TRADER-089",
+    "username": "trader089",
+    "display_name": "Trader 089",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-009",
+      "CUST-029",
+      "CUST-089"
+    ]
+  },
+  {
+    "trader_id": "TRADER-090",
+    "username": "trader090",
+    "display_name": "Trader 090",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-010",
+      "CUST-030",
+      "CUST-090"
+    ]
+  },
+  {
+    "trader_id": "TRADER-091",
+    "username": "trader091",
+    "display_name": "Trader 091",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-011",
+      "CUST-031",
+      "CUST-091"
+    ]
+  },
+  {
+    "trader_id": "TRADER-092",
+    "username": "trader092",
+    "display_name": "Trader 092",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-012",
+      "CUST-032",
+      "CUST-092"
+    ]
+  },
+  {
+    "trader_id": "TRADER-093",
+    "username": "trader093",
+    "display_name": "Trader 093",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-013",
+      "CUST-033",
+      "CUST-093"
+    ]
+  },
+  {
+    "trader_id": "TRADER-094",
+    "username": "trader094",
+    "display_name": "Trader 094",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-014",
+      "CUST-034",
+      "CUST-094"
+    ]
+  },
+  {
+    "trader_id": "TRADER-095",
+    "username": "trader095",
+    "display_name": "Trader 095",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-015",
+      "CUST-035",
+      "CUST-095"
+    ]
+  },
+  {
+    "trader_id": "TRADER-096",
+    "username": "trader096",
+    "display_name": "Trader 096",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-016",
+      "CUST-036",
+      "CUST-096"
+    ]
+  },
+  {
+    "trader_id": "TRADER-097",
+    "username": "trader097",
+    "display_name": "Trader 097",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-017",
+      "CUST-037",
+      "CUST-097"
+    ]
+  },
+  {
+    "trader_id": "TRADER-098",
+    "username": "trader098",
+    "display_name": "Trader 098",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-018",
+      "CUST-038",
+      "CUST-098"
+    ]
+  },
+  {
+    "trader_id": "TRADER-099",
+    "username": "trader099",
+    "display_name": "Trader 099",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-019",
+      "CUST-039",
+      "CUST-099"
+    ]
+  },
+  {
+    "trader_id": "TRADER-100",
+    "username": "trader100",
+    "display_name": "Trader 100",
+    "desk": "FX Trading Desk",
+    "customer_ids": [
+      "CUST-020",
+      "CUST-040",
+      "CUST-100"
+    ]
+  }
+]

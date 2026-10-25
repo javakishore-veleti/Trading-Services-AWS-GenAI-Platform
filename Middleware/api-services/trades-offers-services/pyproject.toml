@@ -1,0 +1,9 @@
+[project]
+name = "trades-offers-services"
+version = "0.1.0"
+description = "FX quotes for spot, window forward, and currency futures"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+]

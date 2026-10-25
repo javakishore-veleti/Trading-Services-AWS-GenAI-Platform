@@ -1,0 +1,5745 @@
+[
+  {
+    "order_header": {
+      "order_id": "ORD-000001",
+      "customer_id": "CUST-001",
+      "book_id": "BOOK-01",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 750000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000001-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 750000,
+        "buy_currency": "INR",
+        "buy_amount": 62250000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000001-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 750000,
+        "buy_currency": "INR",
+        "buy_amount": 62250000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000002",
+      "customer_id": "CUST-001",
+      "book_id": "BOOK-01",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 1200000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000002-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 400000,
+        "buy_currency": "INR",
+        "buy_amount": 33200000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000002-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 400000,
+        "buy_currency": "INR",
+        "buy_amount": 33200000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000002-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 400000,
+        "buy_currency": "INR",
+        "buy_amount": 33200000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000003",
+      "customer_id": "CUST-001",
+      "book_id": "BOOK-01",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 900000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000003-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-05-06",
+        "sell_currency": "USD",
+        "sell_amount": 900000,
+        "buy_currency": "INR",
+        "buy_amount": 74700000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000003-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-05-06",
+        "sell_currency": "USD",
+        "sell_amount": 900000,
+        "buy_currency": "INR",
+        "buy_amount": 74700000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000004",
+      "customer_id": "CUST-001",
+      "book_id": "BOOK-01",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 1500000,
+      "currency": "USD",
+      "order_date": "2026-07-01",
+      "settlement_pattern": "multiple settlements over 20 days",
+      "window_start": "2026-07-06",
+      "window_end": "2026-07-27",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000004-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-07-06",
+        "sell_currency": "USD",
+        "sell_amount": 375000,
+        "buy_currency": "INR",
+        "buy_amount": 31125000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000004-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-07-13",
+        "sell_currency": "USD",
+        "sell_amount": 375000,
+        "buy_currency": "INR",
+        "buy_amount": 31125000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000004-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-07-20",
+        "sell_currency": "USD",
+        "sell_amount": 375000,
+        "buy_currency": "INR",
+        "buy_amount": 31125000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000004-4",
+        "line_number": 4,
+        "line_type": "settlement",
+        "value_date": "2026-07-27",
+        "sell_currency": "USD",
+        "sell_amount": 375000,
+        "buy_currency": "INR",
+        "buy_amount": 31125000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000005",
+      "customer_id": "CUST-002",
+      "book_id": "BOOK-01",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 180000,
+      "currency": "USD",
+      "order_date": "2026-02-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000005-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-02-04",
+        "sell_currency": "USD",
+        "sell_amount": 180000,
+        "buy_currency": "INR",
+        "buy_amount": 14940000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000005-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-02-04",
+        "sell_currency": "USD",
+        "sell_amount": 180000,
+        "buy_currency": "INR",
+        "buy_amount": 14940000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000006",
+      "customer_id": "CUST-002",
+      "book_id": "BOOK-01",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 250000,
+      "currency": "USD",
+      "order_date": "2026-06-01",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000006-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-06-03",
+        "sell_currency": "USD",
+        "sell_amount": 250000,
+        "buy_currency": "INR",
+        "buy_amount": 20750000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000006-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-06-03",
+        "sell_currency": "USD",
+        "sell_amount": 250000,
+        "buy_currency": "INR",
+        "buy_amount": 20750000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000007",
+      "customer_id": "CUST-003",
+      "book_id": "BOOK-01",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 103000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000007-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 103000,
+        "buy_currency": "INR",
+        "buy_amount": 8549000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000007-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 103000,
+        "buy_currency": "INR",
+        "buy_amount": 8549000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000008",
+      "customer_id": "CUST-004",
+      "book_id": "BOOK-02",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "EUR",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 104000,
+      "currency": "EUR",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000008-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "EUR",
+        "sell_amount": 34666,
+        "buy_currency": "USD",
+        "buy_amount": 37439.28,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000008-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "EUR",
+        "sell_amount": 34666,
+        "buy_currency": "USD",
+        "buy_amount": 37439.28,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000008-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "EUR",
+        "sell_amount": 34668,
+        "buy_currency": "USD",
+        "buy_amount": 37441.44,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000009",
+      "customer_id": "CUST-004",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "NOK",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000009-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "NOK",
+        "buy_amount": 1605000.0,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000009-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "NOK",
+        "buy_amount": 1605000.0,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000010",
+      "customer_id": "CUST-005",
+      "book_id": "BOOK-03",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "GBP",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 105000,
+      "currency": "GBP",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000010-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "GBP",
+        "sell_amount": 105000,
+        "buy_currency": "USD",
+        "buy_amount": 133350.0,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000010-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "GBP",
+        "sell_amount": 5250.0,
+        "buy_currency": "GBP",
+        "buy_amount": 5250.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000011",
+      "customer_id": "CUST-005",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "DKK",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000011-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "DKK",
+        "buy_amount": 1035000.0,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000011-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "DKK",
+        "buy_amount": 1035000.0,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000012",
+      "customer_id": "CUST-006",
+      "book_id": "BOOK-04",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 106000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000012-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 106000,
+        "buy_currency": "JPY",
+        "buy_amount": 16006000.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000012-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 106000,
+        "buy_currency": "JPY",
+        "buy_amount": 16006000.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000013",
+      "customer_id": "CUST-007",
+      "book_id": "BOOK-05",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "AUD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 107000,
+      "currency": "AUD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000013-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "AUD",
+        "sell_amount": 35666,
+        "buy_currency": "USD",
+        "buy_amount": 23539.56,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000013-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "AUD",
+        "sell_amount": 35666,
+        "buy_currency": "USD",
+        "buy_amount": 23539.56,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000013-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "AUD",
+        "sell_amount": 35668,
+        "buy_currency": "USD",
+        "buy_amount": 23540.88,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000014",
+      "customer_id": "CUST-007",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "CZK",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000014-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "CZK",
+        "buy_amount": 3450000.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000014-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "CZK",
+        "buy_amount": 3450000.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000015",
+      "customer_id": "CUST-008",
+      "book_id": "BOOK-06",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "CAD",
+      "direction": "sell_base",
+      "amount": 108000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000015-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 108000,
+        "buy_currency": "CAD",
+        "buy_amount": 146880.0,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000015-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 5400.0,
+        "buy_currency": "USD",
+        "buy_amount": 5400.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000016",
+      "customer_id": "CUST-008",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "HUF",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000016-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "HUF",
+        "buy_amount": 54750000.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000016-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "HUF",
+        "buy_amount": 54750000.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000017",
+      "customer_id": "CUST-009",
+      "book_id": "BOOK-07",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "CHF",
+      "direction": "sell_base",
+      "amount": 109000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000017-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 109000,
+        "buy_currency": "CHF",
+        "buy_amount": 95920.0,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000017-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 109000,
+        "buy_currency": "CHF",
+        "buy_amount": 95920.0,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000018",
+      "customer_id": "CUST-010",
+      "book_id": "BOOK-08",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "NZD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 110000,
+      "currency": "NZD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000018-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "NZD",
+        "sell_amount": 36666,
+        "buy_currency": "USD",
+        "buy_amount": 21999.6,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000018-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "NZD",
+        "sell_amount": 36666,
+        "buy_currency": "USD",
+        "buy_amount": 21999.6,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000018-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "NZD",
+        "sell_amount": 36668,
+        "buy_currency": "USD",
+        "buy_amount": 22000.8,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000019",
+      "customer_id": "CUST-010",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "MYR",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000019-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "MYR",
+        "buy_amount": 660000.0,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000019-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "MYR",
+        "buy_amount": 660000.0,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000020",
+      "customer_id": "CUST-011",
+      "book_id": "BOOK-09",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "EUR",
+      "term_currency": "GBP",
+      "direction": "sell_base",
+      "amount": 111000,
+      "currency": "EUR",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000020-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "EUR",
+        "sell_amount": 111000,
+        "buy_currency": "GBP",
+        "buy_amount": 94350.0,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000020-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "EUR",
+        "sell_amount": 5550.0,
+        "buy_currency": "EUR",
+        "buy_amount": 5550.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000021",
+      "customer_id": "CUST-011",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "IDR",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000021-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "IDR",
+        "buy_amount": 2370000000.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000021-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "IDR",
+        "buy_amount": 2370000000.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000022",
+      "customer_id": "CUST-012",
+      "book_id": "BOOK-10",
+      "product_id": "SPOT",
+      "base_currency": "EUR",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 112000,
+      "currency": "EUR",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000022-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 112000,
+        "buy_currency": "JPY",
+        "buy_amount": 18256000.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000022-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 112000,
+        "buy_currency": "JPY",
+        "buy_amount": 18256000.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000023",
+      "customer_id": "CUST-013",
+      "book_id": "BOOK-11",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "GBP",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 113000,
+      "currency": "GBP",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000023-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "GBP",
+        "sell_amount": 37666,
+        "buy_currency": "JPY",
+        "buy_amount": 7194206.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000023-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "GBP",
+        "sell_amount": 37666,
+        "buy_currency": "JPY",
+        "buy_amount": 7194206.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000023-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "GBP",
+        "sell_amount": 37668,
+        "buy_currency": "JPY",
+        "buy_amount": 7194588.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000024",
+      "customer_id": "CUST-013",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "TWD",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000024-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "TWD",
+        "buy_amount": 4800000.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000024-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "TWD",
+        "buy_amount": 4800000.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000025",
+      "customer_id": "CUST-014",
+      "book_id": "BOOK-12",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "EUR",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 114000,
+      "currency": "EUR",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000025-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "EUR",
+        "sell_amount": 114000,
+        "buy_currency": "INR",
+        "buy_amount": 10260000.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000025-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "EUR",
+        "sell_amount": 5700.0,
+        "buy_currency": "EUR",
+        "buy_amount": 5700.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000026",
+      "customer_id": "CUST-014",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "AED",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000026-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "AED",
+        "buy_amount": 550500.0,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000026-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "AED",
+        "buy_amount": 550500.0,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000027",
+      "customer_id": "CUST-015",
+      "book_id": "BOOK-13",
+      "product_id": "SPOT",
+      "base_currency": "GBP",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 115000,
+      "currency": "GBP",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000027-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 115000,
+        "buy_currency": "INR",
+        "buy_amount": 12075000.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000027-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 115000,
+        "buy_currency": "INR",
+        "buy_amount": 12075000.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000028",
+      "customer_id": "CUST-016",
+      "book_id": "BOOK-14",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "SGD",
+      "direction": "sell_base",
+      "amount": 116000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000028-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 38666,
+        "buy_currency": "SGD",
+        "buy_amount": 51812.44,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000028-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 38666,
+        "buy_currency": "SGD",
+        "buy_amount": 51812.44,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000028-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 38668,
+        "buy_currency": "SGD",
+        "buy_amount": 51815.12,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000029",
+      "customer_id": "CUST-016",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "BRL",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-08-03",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000029-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "BRL",
+        "buy_amount": 810000.0,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000029-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-08-05",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "BRL",
+        "buy_amount": 810000.0,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000030",
+      "customer_id": "CUST-017",
+      "book_id": "BOOK-15",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "HKD",
+      "direction": "sell_base",
+      "amount": 117000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000030-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 117000,
+        "buy_currency": "HKD",
+        "buy_amount": 912600.0,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000030-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 5850.0,
+        "buy_currency": "USD",
+        "buy_amount": 5850.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000031",
+      "customer_id": "CUST-018",
+      "book_id": "BOOK-16",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "CNH",
+      "direction": "sell_base",
+      "amount": 118000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000031-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 118000,
+        "buy_currency": "CNH",
+        "buy_amount": 855500.0,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000031-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 118000,
+        "buy_currency": "CNH",
+        "buy_amount": 855500.0,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000032",
+      "customer_id": "CUST-019",
+      "book_id": "BOOK-17",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "AUD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 119000,
+      "currency": "AUD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000032-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "AUD",
+        "sell_amount": 39666,
+        "buy_currency": "JPY",
+        "buy_amount": 3926934.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000032-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "AUD",
+        "sell_amount": 39666,
+        "buy_currency": "JPY",
+        "buy_amount": 3926934.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000032-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "AUD",
+        "sell_amount": 39668,
+        "buy_currency": "JPY",
+        "buy_amount": 3927132.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000033",
+      "customer_id": "CUST-020",
+      "book_id": "BOOK-18",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "ZAR",
+      "direction": "sell_base",
+      "amount": 120000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000033-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 120000,
+        "buy_currency": "ZAR",
+        "buy_amount": 2184000.0,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000033-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6000.0,
+        "buy_currency": "USD",
+        "buy_amount": 6000.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000034",
+      "customer_id": "CUST-021",
+      "book_id": "BOOK-19",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "MXN",
+      "direction": "sell_base",
+      "amount": 121000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000034-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 121000,
+        "buy_currency": "MXN",
+        "buy_amount": 2069100.0,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000034-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 121000,
+        "buy_currency": "MXN",
+        "buy_amount": 2069100.0,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000035",
+      "customer_id": "CUST-022",
+      "book_id": "BOOK-20",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "TRY",
+      "direction": "sell_base",
+      "amount": 122000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000035-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 40666,
+        "buy_currency": "TRY",
+        "buy_amount": 1382644.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000035-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 40666,
+        "buy_currency": "TRY",
+        "buy_amount": 1382644.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000035-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 40668,
+        "buy_currency": "TRY",
+        "buy_amount": 1382712.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000036",
+      "customer_id": "CUST-023",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "SEK",
+      "direction": "sell_base",
+      "amount": 123000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000036-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 123000,
+        "buy_currency": "SEK",
+        "buy_amount": 1291500.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000036-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6150.0,
+        "buy_currency": "USD",
+        "buy_amount": 6150.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000037",
+      "customer_id": "CUST-024",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "NOK",
+      "direction": "sell_base",
+      "amount": 124000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000037-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 124000,
+        "buy_currency": "NOK",
+        "buy_amount": 1326800.0,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000037-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 124000,
+        "buy_currency": "NOK",
+        "buy_amount": 1326800.0,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000038",
+      "customer_id": "CUST-025",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "DKK",
+      "direction": "sell_base",
+      "amount": 125000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000038-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 41666,
+        "buy_currency": "DKK",
+        "buy_amount": 287495.4,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000038-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 41666,
+        "buy_currency": "DKK",
+        "buy_amount": 287495.4,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000038-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 41668,
+        "buy_currency": "DKK",
+        "buy_amount": 287509.2,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000039",
+      "customer_id": "CUST-026",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "PLN",
+      "direction": "sell_base",
+      "amount": 126000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000039-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 126000,
+        "buy_currency": "PLN",
+        "buy_amount": 504000.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000039-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6300.0,
+        "buy_currency": "USD",
+        "buy_amount": 6300.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000040",
+      "customer_id": "CUST-027",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "CZK",
+      "direction": "sell_base",
+      "amount": 127000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000040-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 127000,
+        "buy_currency": "CZK",
+        "buy_amount": 2921000.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000040-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 127000,
+        "buy_currency": "CZK",
+        "buy_amount": 2921000.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000041",
+      "customer_id": "CUST-028",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "HUF",
+      "direction": "sell_base",
+      "amount": 128000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000041-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 42666,
+        "buy_currency": "HUF",
+        "buy_amount": 15573090.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000041-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 42666,
+        "buy_currency": "HUF",
+        "buy_amount": 15573090.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000041-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 42668,
+        "buy_currency": "HUF",
+        "buy_amount": 15573820.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000042",
+      "customer_id": "CUST-029",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "THB",
+      "direction": "sell_base",
+      "amount": 129000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000042-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 129000,
+        "buy_currency": "THB",
+        "buy_amount": 4450500.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000042-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6450.0,
+        "buy_currency": "USD",
+        "buy_amount": 6450.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000043",
+      "customer_id": "CUST-030",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "MYR",
+      "direction": "sell_base",
+      "amount": 130000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000043-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 130000,
+        "buy_currency": "MYR",
+        "buy_amount": 572000.0,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000043-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 130000,
+        "buy_currency": "MYR",
+        "buy_amount": 572000.0,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000044",
+      "customer_id": "CUST-031",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "IDR",
+      "direction": "sell_base",
+      "amount": 131000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000044-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 43666,
+        "buy_currency": "IDR",
+        "buy_amount": 689922800.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000044-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 43666,
+        "buy_currency": "IDR",
+        "buy_amount": 689922800.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000044-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 43668,
+        "buy_currency": "IDR",
+        "buy_amount": 689954400.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000045",
+      "customer_id": "CUST-032",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "KRW",
+      "direction": "sell_base",
+      "amount": 132000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000045-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 132000,
+        "buy_currency": "KRW",
+        "buy_amount": 178200000.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000045-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6600.0,
+        "buy_currency": "USD",
+        "buy_amount": 6600.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000046",
+      "customer_id": "CUST-033",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "TWD",
+      "direction": "sell_base",
+      "amount": 133000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000046-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 133000,
+        "buy_currency": "TWD",
+        "buy_amount": 4256000.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000046-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 133000,
+        "buy_currency": "TWD",
+        "buy_amount": 4256000.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000047",
+      "customer_id": "CUST-034",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "AED",
+      "direction": "sell_base",
+      "amount": 134000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000047-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 44666,
+        "buy_currency": "AED",
+        "buy_amount": 163924.22,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000047-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 44666,
+        "buy_currency": "AED",
+        "buy_amount": 163924.22,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000047-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 44668,
+        "buy_currency": "AED",
+        "buy_amount": 163931.56,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000048",
+      "customer_id": "CUST-035",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "SAR",
+      "direction": "sell_base",
+      "amount": 135000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000048-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 135000,
+        "buy_currency": "SAR",
+        "buy_amount": 506250.0,
+        "rate": 3.75,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000048-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 6750.0,
+        "buy_currency": "USD",
+        "buy_amount": 6750.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000049",
+      "customer_id": "CUST-036",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "BRL",
+      "direction": "sell_base",
+      "amount": 136000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000049-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 136000,
+        "buy_currency": "BRL",
+        "buy_amount": 734400.0,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000049-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 136000,
+        "buy_currency": "BRL",
+        "buy_amount": 734400.0,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000050",
+      "customer_id": "CUST-037",
+      "book_id": "BOOK-01",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 137000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000050-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 45666,
+        "buy_currency": "INR",
+        "buy_amount": 3790278.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000050-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 45666,
+        "buy_currency": "INR",
+        "buy_amount": 3790278.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000050-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 45668,
+        "buy_currency": "INR",
+        "buy_amount": 3790444.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000051",
+      "customer_id": "CUST-038",
+      "book_id": "BOOK-02",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "EUR",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 138000,
+      "currency": "EUR",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000051-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "EUR",
+        "sell_amount": 138000,
+        "buy_currency": "USD",
+        "buy_amount": 149040.0,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000051-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "EUR",
+        "sell_amount": 6900.0,
+        "buy_currency": "EUR",
+        "buy_amount": 6900.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000052",
+      "customer_id": "CUST-039",
+      "book_id": "BOOK-03",
+      "product_id": "SPOT",
+      "base_currency": "GBP",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 139000,
+      "currency": "GBP",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000052-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 139000,
+        "buy_currency": "USD",
+        "buy_amount": 176530.0,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000052-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 139000,
+        "buy_currency": "USD",
+        "buy_amount": 176530.0,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000053",
+      "customer_id": "CUST-040",
+      "book_id": "BOOK-04",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 140000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000053-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 46666,
+        "buy_currency": "JPY",
+        "buy_amount": 7046566.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000053-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 46666,
+        "buy_currency": "JPY",
+        "buy_amount": 7046566.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000053-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 46668,
+        "buy_currency": "JPY",
+        "buy_amount": 7046868.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000054",
+      "customer_id": "CUST-041",
+      "book_id": "BOOK-05",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "AUD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 141000,
+      "currency": "AUD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000054-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "AUD",
+        "sell_amount": 141000,
+        "buy_currency": "USD",
+        "buy_amount": 93060.0,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000054-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "AUD",
+        "sell_amount": 7050.0,
+        "buy_currency": "AUD",
+        "buy_amount": 7050.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000055",
+      "customer_id": "CUST-042",
+      "book_id": "BOOK-06",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "CAD",
+      "direction": "sell_base",
+      "amount": 142000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000055-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 142000,
+        "buy_currency": "CAD",
+        "buy_amount": 193120.0,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000055-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 142000,
+        "buy_currency": "CAD",
+        "buy_amount": 193120.0,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000056",
+      "customer_id": "CUST-043",
+      "book_id": "BOOK-07",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "CHF",
+      "direction": "sell_base",
+      "amount": 143000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000056-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 47666,
+        "buy_currency": "CHF",
+        "buy_amount": 41946.08,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000056-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 47666,
+        "buy_currency": "CHF",
+        "buy_amount": 41946.08,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000056-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 47668,
+        "buy_currency": "CHF",
+        "buy_amount": 41947.84,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000057",
+      "customer_id": "CUST-044",
+      "book_id": "BOOK-08",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "NZD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 144000,
+      "currency": "NZD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000057-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "NZD",
+        "sell_amount": 144000,
+        "buy_currency": "USD",
+        "buy_amount": 86400.0,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000057-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "NZD",
+        "sell_amount": 7200.0,
+        "buy_currency": "NZD",
+        "buy_amount": 7200.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000058",
+      "customer_id": "CUST-045",
+      "book_id": "BOOK-09",
+      "product_id": "SPOT",
+      "base_currency": "EUR",
+      "term_currency": "GBP",
+      "direction": "sell_base",
+      "amount": 145000,
+      "currency": "EUR",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000058-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 145000,
+        "buy_currency": "GBP",
+        "buy_amount": 123250.0,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000058-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 145000,
+        "buy_currency": "GBP",
+        "buy_amount": 123250.0,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000059",
+      "customer_id": "CUST-046",
+      "book_id": "BOOK-10",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "EUR",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 146000,
+      "currency": "EUR",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000059-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "EUR",
+        "sell_amount": 48666,
+        "buy_currency": "JPY",
+        "buy_amount": 7932558.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000059-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "EUR",
+        "sell_amount": 48666,
+        "buy_currency": "JPY",
+        "buy_amount": 7932558.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000059-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "EUR",
+        "sell_amount": 48668,
+        "buy_currency": "JPY",
+        "buy_amount": 7932884.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000060",
+      "customer_id": "CUST-047",
+      "book_id": "BOOK-11",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "GBP",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 147000,
+      "currency": "GBP",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000060-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "GBP",
+        "sell_amount": 147000,
+        "buy_currency": "JPY",
+        "buy_amount": 28077000.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000060-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "GBP",
+        "sell_amount": 7350.0,
+        "buy_currency": "GBP",
+        "buy_amount": 7350.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000061",
+      "customer_id": "CUST-048",
+      "book_id": "BOOK-12",
+      "product_id": "SPOT",
+      "base_currency": "EUR",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 148000,
+      "currency": "EUR",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000061-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 148000,
+        "buy_currency": "INR",
+        "buy_amount": 13320000.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000061-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 148000,
+        "buy_currency": "INR",
+        "buy_amount": 13320000.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000062",
+      "customer_id": "CUST-049",
+      "book_id": "BOOK-13",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "GBP",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 149000,
+      "currency": "GBP",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000062-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "GBP",
+        "sell_amount": 49666,
+        "buy_currency": "INR",
+        "buy_amount": 5214930.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000062-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "GBP",
+        "sell_amount": 49666,
+        "buy_currency": "INR",
+        "buy_amount": 5214930.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000062-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "GBP",
+        "sell_amount": 49668,
+        "buy_currency": "INR",
+        "buy_amount": 5215140.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000063",
+      "customer_id": "CUST-050",
+      "book_id": "BOOK-14",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "SGD",
+      "direction": "sell_base",
+      "amount": 150000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000063-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 150000,
+        "buy_currency": "SGD",
+        "buy_amount": 201000.0,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000063-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 7500.0,
+        "buy_currency": "USD",
+        "buy_amount": 7500.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000064",
+      "customer_id": "CUST-051",
+      "book_id": "BOOK-15",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "HKD",
+      "direction": "sell_base",
+      "amount": 151000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000064-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 151000,
+        "buy_currency": "HKD",
+        "buy_amount": 1177800.0,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000064-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 151000,
+        "buy_currency": "HKD",
+        "buy_amount": 1177800.0,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000065",
+      "customer_id": "CUST-052",
+      "book_id": "BOOK-16",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "CNH",
+      "direction": "sell_base",
+      "amount": 152000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000065-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 50666,
+        "buy_currency": "CNH",
+        "buy_amount": 367328.5,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000065-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 50666,
+        "buy_currency": "CNH",
+        "buy_amount": 367328.5,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000065-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 50668,
+        "buy_currency": "CNH",
+        "buy_amount": 367343.0,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000066",
+      "customer_id": "CUST-053",
+      "book_id": "BOOK-17",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "AUD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 153000,
+      "currency": "AUD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000066-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "AUD",
+        "sell_amount": 153000,
+        "buy_currency": "JPY",
+        "buy_amount": 15147000.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000066-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "AUD",
+        "sell_amount": 7650.0,
+        "buy_currency": "AUD",
+        "buy_amount": 7650.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000067",
+      "customer_id": "CUST-054",
+      "book_id": "BOOK-18",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "ZAR",
+      "direction": "sell_base",
+      "amount": 154000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000067-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 154000,
+        "buy_currency": "ZAR",
+        "buy_amount": 2802800.0,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000067-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 154000,
+        "buy_currency": "ZAR",
+        "buy_amount": 2802800.0,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000068",
+      "customer_id": "CUST-055",
+      "book_id": "BOOK-19",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "MXN",
+      "direction": "sell_base",
+      "amount": 155000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000068-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 51666,
+        "buy_currency": "MXN",
+        "buy_amount": 883488.6,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000068-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 51666,
+        "buy_currency": "MXN",
+        "buy_amount": 883488.6,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000068-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 51668,
+        "buy_currency": "MXN",
+        "buy_amount": 883522.8,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000069",
+      "customer_id": "CUST-056",
+      "book_id": "BOOK-20",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "TRY",
+      "direction": "sell_base",
+      "amount": 156000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000069-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 156000,
+        "buy_currency": "TRY",
+        "buy_amount": 5304000.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000069-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 7800.0,
+        "buy_currency": "USD",
+        "buy_amount": 7800.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000070",
+      "customer_id": "CUST-057",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "SEK",
+      "direction": "sell_base",
+      "amount": 157000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000070-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 157000,
+        "buy_currency": "SEK",
+        "buy_amount": 1648500.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000070-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 157000,
+        "buy_currency": "SEK",
+        "buy_amount": 1648500.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000071",
+      "customer_id": "CUST-058",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "NOK",
+      "direction": "sell_base",
+      "amount": 158000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000071-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 52666,
+        "buy_currency": "NOK",
+        "buy_amount": 563526.2,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000071-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 52666,
+        "buy_currency": "NOK",
+        "buy_amount": 563526.2,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000071-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 52668,
+        "buy_currency": "NOK",
+        "buy_amount": 563547.6,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000072",
+      "customer_id": "CUST-059",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "DKK",
+      "direction": "sell_base",
+      "amount": 159000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000072-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 159000,
+        "buy_currency": "DKK",
+        "buy_amount": 1097100.0,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000072-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 7950.0,
+        "buy_currency": "USD",
+        "buy_amount": 7950.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000073",
+      "customer_id": "CUST-060",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "PLN",
+      "direction": "sell_base",
+      "amount": 160000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000073-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 160000,
+        "buy_currency": "PLN",
+        "buy_amount": 640000.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000073-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 160000,
+        "buy_currency": "PLN",
+        "buy_amount": 640000.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000074",
+      "customer_id": "CUST-061",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "CZK",
+      "direction": "sell_base",
+      "amount": 161000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000074-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 53666,
+        "buy_currency": "CZK",
+        "buy_amount": 1234318.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000074-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 53666,
+        "buy_currency": "CZK",
+        "buy_amount": 1234318.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000074-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 53668,
+        "buy_currency": "CZK",
+        "buy_amount": 1234364.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000075",
+      "customer_id": "CUST-062",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "HUF",
+      "direction": "sell_base",
+      "amount": 162000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000075-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 162000,
+        "buy_currency": "HUF",
+        "buy_amount": 59130000.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000075-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8100.0,
+        "buy_currency": "USD",
+        "buy_amount": 8100.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000076",
+      "customer_id": "CUST-063",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "THB",
+      "direction": "sell_base",
+      "amount": 163000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000076-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 163000,
+        "buy_currency": "THB",
+        "buy_amount": 5623500.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000076-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 163000,
+        "buy_currency": "THB",
+        "buy_amount": 5623500.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000077",
+      "customer_id": "CUST-064",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "MYR",
+      "direction": "sell_base",
+      "amount": 164000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000077-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 54666,
+        "buy_currency": "MYR",
+        "buy_amount": 240530.4,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000077-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 54666,
+        "buy_currency": "MYR",
+        "buy_amount": 240530.4,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000077-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 54668,
+        "buy_currency": "MYR",
+        "buy_amount": 240539.2,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000078",
+      "customer_id": "CUST-065",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "IDR",
+      "direction": "sell_base",
+      "amount": 165000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000078-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 165000,
+        "buy_currency": "IDR",
+        "buy_amount": 2607000000.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000078-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8250.0,
+        "buy_currency": "USD",
+        "buy_amount": 8250.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000079",
+      "customer_id": "CUST-066",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "KRW",
+      "direction": "sell_base",
+      "amount": 166000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000079-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 166000,
+        "buy_currency": "KRW",
+        "buy_amount": 224100000.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000079-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 166000,
+        "buy_currency": "KRW",
+        "buy_amount": 224100000.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000080",
+      "customer_id": "CUST-067",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "TWD",
+      "direction": "sell_base",
+      "amount": 167000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000080-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 55666,
+        "buy_currency": "TWD",
+        "buy_amount": 1781312.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000080-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 55666,
+        "buy_currency": "TWD",
+        "buy_amount": 1781312.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000080-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 55668,
+        "buy_currency": "TWD",
+        "buy_amount": 1781376.0,
+        "rate": 32.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000081",
+      "customer_id": "CUST-068",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "AED",
+      "direction": "sell_base",
+      "amount": 168000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000081-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 168000,
+        "buy_currency": "AED",
+        "buy_amount": 616560.0,
+        "rate": 3.67,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000081-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8400.0,
+        "buy_currency": "USD",
+        "buy_amount": 8400.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000082",
+      "customer_id": "CUST-069",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "SAR",
+      "direction": "sell_base",
+      "amount": 169000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000082-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 169000,
+        "buy_currency": "SAR",
+        "buy_amount": 633750.0,
+        "rate": 3.75,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000082-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 169000,
+        "buy_currency": "SAR",
+        "buy_amount": 633750.0,
+        "rate": 3.75,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000083",
+      "customer_id": "CUST-070",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "BRL",
+      "direction": "sell_base",
+      "amount": 170000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000083-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 56666,
+        "buy_currency": "BRL",
+        "buy_amount": 305996.4,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000083-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 56666,
+        "buy_currency": "BRL",
+        "buy_amount": 305996.4,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000083-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 56668,
+        "buy_currency": "BRL",
+        "buy_amount": 306007.2,
+        "rate": 5.4,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000084",
+      "customer_id": "CUST-071",
+      "book_id": "BOOK-01",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 171000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000084-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 171000,
+        "buy_currency": "INR",
+        "buy_amount": 14193000.0,
+        "rate": 83.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000084-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8550.0,
+        "buy_currency": "USD",
+        "buy_amount": 8550.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000085",
+      "customer_id": "CUST-072",
+      "book_id": "BOOK-02",
+      "product_id": "SPOT",
+      "base_currency": "EUR",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 172000,
+      "currency": "EUR",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000085-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 172000,
+        "buy_currency": "USD",
+        "buy_amount": 185760.0,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000085-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "EUR",
+        "sell_amount": 172000,
+        "buy_currency": "USD",
+        "buy_amount": 185760.0,
+        "rate": 1.08,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000086",
+      "customer_id": "CUST-073",
+      "book_id": "BOOK-03",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "GBP",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 173000,
+      "currency": "GBP",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000086-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "GBP",
+        "sell_amount": 57666,
+        "buy_currency": "USD",
+        "buy_amount": 73235.82,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000086-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "GBP",
+        "sell_amount": 57666,
+        "buy_currency": "USD",
+        "buy_amount": 73235.82,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000086-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "GBP",
+        "sell_amount": 57668,
+        "buy_currency": "USD",
+        "buy_amount": 73238.36,
+        "rate": 1.27,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000087",
+      "customer_id": "CUST-074",
+      "book_id": "BOOK-04",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 174000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000087-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 174000,
+        "buy_currency": "JPY",
+        "buy_amount": 26274000.0,
+        "rate": 151.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000087-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8700.0,
+        "buy_currency": "USD",
+        "buy_amount": 8700.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000088",
+      "customer_id": "CUST-075",
+      "book_id": "BOOK-05",
+      "product_id": "SPOT",
+      "base_currency": "AUD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 175000,
+      "currency": "AUD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000088-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "AUD",
+        "sell_amount": 175000,
+        "buy_currency": "USD",
+        "buy_amount": 115500.0,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000088-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "AUD",
+        "sell_amount": 175000,
+        "buy_currency": "USD",
+        "buy_amount": 115500.0,
+        "rate": 0.66,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000089",
+      "customer_id": "CUST-076",
+      "book_id": "BOOK-06",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "CAD",
+      "direction": "sell_base",
+      "amount": 176000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000089-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 58666,
+        "buy_currency": "CAD",
+        "buy_amount": 79785.76,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000089-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 58666,
+        "buy_currency": "CAD",
+        "buy_amount": 79785.76,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000089-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 58668,
+        "buy_currency": "CAD",
+        "buy_amount": 79788.48,
+        "rate": 1.36,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000090",
+      "customer_id": "CUST-077",
+      "book_id": "BOOK-07",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "CHF",
+      "direction": "sell_base",
+      "amount": 177000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000090-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 177000,
+        "buy_currency": "CHF",
+        "buy_amount": 155760.0,
+        "rate": 0.88,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000090-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 8850.0,
+        "buy_currency": "USD",
+        "buy_amount": 8850.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000091",
+      "customer_id": "CUST-078",
+      "book_id": "BOOK-08",
+      "product_id": "SPOT",
+      "base_currency": "NZD",
+      "term_currency": "USD",
+      "direction": "sell_base",
+      "amount": 178000,
+      "currency": "NZD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000091-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "NZD",
+        "sell_amount": 178000,
+        "buy_currency": "USD",
+        "buy_amount": 106800.0,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000091-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "NZD",
+        "sell_amount": 178000,
+        "buy_currency": "USD",
+        "buy_amount": 106800.0,
+        "rate": 0.6,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000092",
+      "customer_id": "CUST-079",
+      "book_id": "BOOK-09",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "EUR",
+      "term_currency": "GBP",
+      "direction": "sell_base",
+      "amount": 179000,
+      "currency": "EUR",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000092-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "EUR",
+        "sell_amount": 59666,
+        "buy_currency": "GBP",
+        "buy_amount": 50716.1,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000092-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "EUR",
+        "sell_amount": 59666,
+        "buy_currency": "GBP",
+        "buy_amount": 50716.1,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000092-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "EUR",
+        "sell_amount": 59668,
+        "buy_currency": "GBP",
+        "buy_amount": 50717.8,
+        "rate": 0.85,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000093",
+      "customer_id": "CUST-080",
+      "book_id": "BOOK-10",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "EUR",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 180000,
+      "currency": "EUR",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000093-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "EUR",
+        "sell_amount": 180000,
+        "buy_currency": "JPY",
+        "buy_amount": 29340000.0,
+        "rate": 163.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000093-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "EUR",
+        "sell_amount": 9000.0,
+        "buy_currency": "EUR",
+        "buy_amount": 9000.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000094",
+      "customer_id": "CUST-081",
+      "book_id": "BOOK-11",
+      "product_id": "SPOT",
+      "base_currency": "GBP",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 181000,
+      "currency": "GBP",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000094-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 181000,
+        "buy_currency": "JPY",
+        "buy_amount": 34571000.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000094-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "GBP",
+        "sell_amount": 181000,
+        "buy_currency": "JPY",
+        "buy_amount": 34571000.0,
+        "rate": 191.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000095",
+      "customer_id": "CUST-082",
+      "book_id": "BOOK-12",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "EUR",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 182000,
+      "currency": "EUR",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000095-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "EUR",
+        "sell_amount": 60666,
+        "buy_currency": "INR",
+        "buy_amount": 5459940.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000095-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "EUR",
+        "sell_amount": 60666,
+        "buy_currency": "INR",
+        "buy_amount": 5459940.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000095-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "EUR",
+        "sell_amount": 60668,
+        "buy_currency": "INR",
+        "buy_amount": 5460120.0,
+        "rate": 90.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000096",
+      "customer_id": "CUST-083",
+      "book_id": "BOOK-13",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "GBP",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 183000,
+      "currency": "GBP",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000096-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "GBP",
+        "sell_amount": 183000,
+        "buy_currency": "INR",
+        "buy_amount": 19215000.0,
+        "rate": 105.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000096-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "GBP",
+        "sell_amount": 9150.0,
+        "buy_currency": "GBP",
+        "buy_amount": 9150.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000097",
+      "customer_id": "CUST-084",
+      "book_id": "BOOK-14",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "SGD",
+      "direction": "sell_base",
+      "amount": 184000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000097-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 184000,
+        "buy_currency": "SGD",
+        "buy_amount": 246560.0,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000097-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 184000,
+        "buy_currency": "SGD",
+        "buy_amount": 246560.0,
+        "rate": 1.34,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000098",
+      "customer_id": "CUST-085",
+      "book_id": "BOOK-15",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "HKD",
+      "direction": "sell_base",
+      "amount": 185000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000098-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 61666,
+        "buy_currency": "HKD",
+        "buy_amount": 480994.8,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000098-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 61666,
+        "buy_currency": "HKD",
+        "buy_amount": 480994.8,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000098-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 61668,
+        "buy_currency": "HKD",
+        "buy_amount": 481010.4,
+        "rate": 7.8,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000099",
+      "customer_id": "CUST-086",
+      "book_id": "BOOK-16",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "CNH",
+      "direction": "sell_base",
+      "amount": 186000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000099-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 186000,
+        "buy_currency": "CNH",
+        "buy_amount": 1348500.0,
+        "rate": 7.25,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000099-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 9300.0,
+        "buy_currency": "USD",
+        "buy_amount": 9300.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000100",
+      "customer_id": "CUST-087",
+      "book_id": "BOOK-17",
+      "product_id": "SPOT",
+      "base_currency": "AUD",
+      "term_currency": "JPY",
+      "direction": "sell_base",
+      "amount": 187000,
+      "currency": "AUD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000100-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "AUD",
+        "sell_amount": 187000,
+        "buy_currency": "JPY",
+        "buy_amount": 18513000.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000100-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "AUD",
+        "sell_amount": 187000,
+        "buy_currency": "JPY",
+        "buy_amount": 18513000.0,
+        "rate": 99.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000101",
+      "customer_id": "CUST-088",
+      "book_id": "BOOK-18",
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "ZAR",
+      "direction": "sell_base",
+      "amount": 188000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000101-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 62666,
+        "buy_currency": "ZAR",
+        "buy_amount": 1140521.2,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000101-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 62666,
+        "buy_currency": "ZAR",
+        "buy_amount": 1140521.2,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000101-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 62668,
+        "buy_currency": "ZAR",
+        "buy_amount": 1140557.6,
+        "rate": 18.2,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000102",
+      "customer_id": "CUST-089",
+      "book_id": "BOOK-19",
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "MXN",
+      "direction": "sell_base",
+      "amount": 189000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000102-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 189000,
+        "buy_currency": "MXN",
+        "buy_amount": 3231900.0,
+        "rate": 17.1,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000102-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 9450.0,
+        "buy_currency": "USD",
+        "buy_amount": 9450.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000103",
+      "customer_id": "CUST-090",
+      "book_id": "BOOK-20",
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "TRY",
+      "direction": "sell_base",
+      "amount": 190000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000103-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 190000,
+        "buy_currency": "TRY",
+        "buy_amount": 6460000.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000103-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 190000,
+        "buy_currency": "TRY",
+        "buy_amount": 6460000.0,
+        "rate": 34.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000104",
+      "customer_id": "CUST-091",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "SEK",
+      "direction": "sell_base",
+      "amount": 191000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000104-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 63666,
+        "buy_currency": "SEK",
+        "buy_amount": 668493.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000104-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 63666,
+        "buy_currency": "SEK",
+        "buy_amount": 668493.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000104-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 63668,
+        "buy_currency": "SEK",
+        "buy_amount": 668514.0,
+        "rate": 10.5,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000105",
+      "customer_id": "CUST-092",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "NOK",
+      "direction": "sell_base",
+      "amount": 192000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000105-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 192000,
+        "buy_currency": "NOK",
+        "buy_amount": 2054400.0,
+        "rate": 10.7,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000105-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 9600.0,
+        "buy_currency": "USD",
+        "buy_amount": 9600.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000106",
+      "customer_id": "CUST-093",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "DKK",
+      "direction": "sell_base",
+      "amount": 193000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000106-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 193000,
+        "buy_currency": "DKK",
+        "buy_amount": 1331700.0,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000106-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 193000,
+        "buy_currency": "DKK",
+        "buy_amount": 1331700.0,
+        "rate": 6.9,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000107",
+      "customer_id": "CUST-094",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "PLN",
+      "direction": "sell_base",
+      "amount": 194000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000107-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 64666,
+        "buy_currency": "PLN",
+        "buy_amount": 258664.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000107-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 64666,
+        "buy_currency": "PLN",
+        "buy_amount": 258664.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000107-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 64668,
+        "buy_currency": "PLN",
+        "buy_amount": 258672.0,
+        "rate": 4.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000108",
+      "customer_id": "CUST-095",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "CZK",
+      "direction": "sell_base",
+      "amount": 195000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000108-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 195000,
+        "buy_currency": "CZK",
+        "buy_amount": 4485000.0,
+        "rate": 23.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000108-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 9750.0,
+        "buy_currency": "USD",
+        "buy_amount": 9750.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000109",
+      "customer_id": "CUST-096",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "HUF",
+      "direction": "sell_base",
+      "amount": 196000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000109-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 196000,
+        "buy_currency": "HUF",
+        "buy_amount": 71540000.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000109-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 196000,
+        "buy_currency": "HUF",
+        "buy_amount": 71540000.0,
+        "rate": 365.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000110",
+      "customer_id": "CUST-097",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "THB",
+      "direction": "sell_base",
+      "amount": 197000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000110-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 65666,
+        "buy_currency": "THB",
+        "buy_amount": 2265477.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000110-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 65666,
+        "buy_currency": "THB",
+        "buy_amount": 2265477.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000110-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 65668,
+        "buy_currency": "THB",
+        "buy_amount": 2265546.0,
+        "rate": 34.5,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000111",
+      "customer_id": "CUST-098",
+      "book_id": null,
+      "product_id": "CURRENCY_FUTURES",
+      "base_currency": "USD",
+      "term_currency": "MYR",
+      "direction": "sell_base",
+      "amount": 198000,
+      "currency": "USD",
+      "order_date": "2026-05-04",
+      "settlement_pattern": "fixed contract expiry",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": "2026-11-26",
+      "margin_required": true,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000111-1",
+        "line_number": 1,
+        "line_type": "contract",
+        "value_date": "2026-11-26",
+        "sell_currency": "USD",
+        "sell_amount": 198000,
+        "buy_currency": "MYR",
+        "buy_amount": 871200.0,
+        "rate": 4.4,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000111-2",
+        "line_number": 2,
+        "line_type": "margin",
+        "value_date": "2026-05-04",
+        "sell_currency": "USD",
+        "sell_amount": 9900.0,
+        "buy_currency": "USD",
+        "buy_amount": 9900.0,
+        "rate": 1.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000112",
+      "customer_id": "CUST-099",
+      "book_id": null,
+      "product_id": "SPOT",
+      "base_currency": "USD",
+      "term_currency": "IDR",
+      "direction": "sell_base",
+      "amount": 199000,
+      "currency": "USD",
+      "order_date": "2026-03-02",
+      "settlement_pattern": "single settlement",
+      "window_start": null,
+      "window_end": null,
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000112-1",
+        "line_number": 1,
+        "line_type": "pay",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 199000,
+        "buy_currency": "IDR",
+        "buy_amount": 3144200000.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000112-2",
+        "line_number": 2,
+        "line_type": "receive",
+        "value_date": "2026-03-04",
+        "sell_currency": "USD",
+        "sell_amount": 199000,
+        "buy_currency": "IDR",
+        "buy_amount": 3144200000.0,
+        "rate": 15800.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  },
+  {
+    "order_header": {
+      "order_id": "ORD-000113",
+      "customer_id": "CUST-100",
+      "book_id": null,
+      "product_id": "WINDOW_FORWARD",
+      "base_currency": "USD",
+      "term_currency": "KRW",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "order_date": "2026-04-01",
+      "settlement_pattern": "three partial settlements",
+      "window_start": "2026-04-06",
+      "window_end": "2026-04-24",
+      "futures_expiry": null,
+      "margin_required": false,
+      "status": "settled",
+      "rate_basis": "illustrative"
+    },
+    "order_lines": [
+      {
+        "line_id": "ORD-000113-1",
+        "line_number": 1,
+        "line_type": "settlement",
+        "value_date": "2026-04-08",
+        "sell_currency": "USD",
+        "sell_amount": 66666,
+        "buy_currency": "KRW",
+        "buy_amount": 89999100.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000113-2",
+        "line_number": 2,
+        "line_type": "settlement",
+        "value_date": "2026-04-15",
+        "sell_currency": "USD",
+        "sell_amount": 66666,
+        "buy_currency": "KRW",
+        "buy_amount": 89999100.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      },
+      {
+        "line_id": "ORD-000113-3",
+        "line_number": 3,
+        "line_type": "settlement",
+        "value_date": "2026-04-22",
+        "sell_currency": "USD",
+        "sell_amount": 66668,
+        "buy_currency": "KRW",
+        "buy_amount": 90001800.0,
+        "rate": 1350.0,
+        "rate_basis": "illustrative"
+      }
+    ]
+  }
+]

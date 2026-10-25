@@ -1,0 +1,2802 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "name": "Northwind Exports",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 1000000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-001",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 1000000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-002",
+    "name": "Harbor Retail",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 250000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-002",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 250000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-003",
+    "name": "Customer 003",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 203000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-003",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-004",
+    "name": "Customer 004",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 404000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-004",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-005",
+    "name": "Customer 005",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 205000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-005",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-006",
+    "name": "Customer 006",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 406000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-006",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-007",
+    "name": "Customer 007",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 207000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-007",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-008",
+    "name": "Customer 008",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 408000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-008",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-009",
+    "name": "Customer 009",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 209000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-009",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-010",
+    "name": "Customer 010",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 410000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-010",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-011",
+    "name": "Customer 011",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 211000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-011",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-012",
+    "name": "Customer 012",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 412000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-012",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-013",
+    "name": "Customer 013",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 213000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-013",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-014",
+    "name": "Customer 014",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 414000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-014",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-015",
+    "name": "Customer 015",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 215000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-015",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-016",
+    "name": "Customer 016",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 416000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-016",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-017",
+    "name": "Customer 017",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 217000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-017",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-018",
+    "name": "Customer 018",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 418000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-018",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-019",
+    "name": "Customer 019",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 219000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-019",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-020",
+    "name": "Customer 020",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 420000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-020",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-021",
+    "name": "Customer 021",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 221000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-021",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-022",
+    "name": "Customer 022",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 422000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-022",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-023",
+    "name": "Customer 023",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 223000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-023",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-024",
+    "name": "Customer 024",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 424000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-024",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-025",
+    "name": "Customer 025",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 225000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-025",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-026",
+    "name": "Customer 026",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 426000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-026",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-027",
+    "name": "Customer 027",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 227000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-027",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-028",
+    "name": "Customer 028",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 428000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-028",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-029",
+    "name": "Customer 029",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 229000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-029",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-030",
+    "name": "Customer 030",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 430000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-030",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-031",
+    "name": "Customer 031",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 231000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-031",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-032",
+    "name": "Customer 032",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 432000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-032",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-033",
+    "name": "Customer 033",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 233000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-033",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-034",
+    "name": "Customer 034",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 434000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-034",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-035",
+    "name": "Customer 035",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 235000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-035",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-036",
+    "name": "Customer 036",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 436000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-036",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-037",
+    "name": "Customer 037",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 237000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-037",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-038",
+    "name": "Customer 038",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 438000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-038",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-039",
+    "name": "Customer 039",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 239000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-039",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-040",
+    "name": "Customer 040",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 440000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-040",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-041",
+    "name": "Customer 041",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 241000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-041",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-042",
+    "name": "Customer 042",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 442000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-042",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-043",
+    "name": "Customer 043",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 243000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-043",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-044",
+    "name": "Customer 044",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 444000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-044",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-045",
+    "name": "Customer 045",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 245000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-045",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-046",
+    "name": "Customer 046",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 446000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-046",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-047",
+    "name": "Customer 047",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 247000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-047",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-048",
+    "name": "Customer 048",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 448000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-048",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-049",
+    "name": "Customer 049",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 249000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-049",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-050",
+    "name": "Customer 050",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 450000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-050",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-051",
+    "name": "Customer 051",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 251000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-051",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-052",
+    "name": "Customer 052",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 452000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-052",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-053",
+    "name": "Customer 053",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 253000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-053",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-054",
+    "name": "Customer 054",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 454000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-054",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-055",
+    "name": "Customer 055",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 255000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-055",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-056",
+    "name": "Customer 056",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 456000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-056",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-057",
+    "name": "Customer 057",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 257000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-057",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-058",
+    "name": "Customer 058",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 458000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-058",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-059",
+    "name": "Customer 059",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 259000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-059",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-060",
+    "name": "Customer 060",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 460000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-060",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-061",
+    "name": "Customer 061",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 261000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-061",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-062",
+    "name": "Customer 062",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 462000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-062",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-063",
+    "name": "Customer 063",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 263000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-063",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-064",
+    "name": "Customer 064",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 464000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-064",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-065",
+    "name": "Customer 065",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 265000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-065",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-066",
+    "name": "Customer 066",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 466000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-066",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-067",
+    "name": "Customer 067",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 267000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-067",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-068",
+    "name": "Customer 068",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 468000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-068",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-069",
+    "name": "Customer 069",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 269000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-069",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-070",
+    "name": "Customer 070",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 470000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-070",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-071",
+    "name": "Customer 071",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 271000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-071",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-072",
+    "name": "Customer 072",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 472000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-072",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-073",
+    "name": "Customer 073",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 273000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-073",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-074",
+    "name": "Customer 074",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 474000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-074",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-075",
+    "name": "Customer 075",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 275000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-075",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-076",
+    "name": "Customer 076",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 476000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-076",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-077",
+    "name": "Customer 077",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 277000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-077",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-078",
+    "name": "Customer 078",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 478000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-078",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-079",
+    "name": "Customer 079",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 279000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-079",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-080",
+    "name": "Customer 080",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 480000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-080",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-081",
+    "name": "Customer 081",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 281000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-081",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-082",
+    "name": "Customer 082",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 482000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-082",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-083",
+    "name": "Customer 083",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 283000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-083",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-084",
+    "name": "Customer 084",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 484000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-084",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-085",
+    "name": "Customer 085",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 285000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-085",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-086",
+    "name": "Customer 086",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 486000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-086",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-087",
+    "name": "Customer 087",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 287000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-087",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-088",
+    "name": "Customer 088",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 488000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-088",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-089",
+    "name": "Customer 089",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 289000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-089",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-090",
+    "name": "Customer 090",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 490000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-090",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-091",
+    "name": "Customer 091",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 291000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-091",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-092",
+    "name": "Customer 092",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 492000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-092",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-093",
+    "name": "Customer 093",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 293000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-093",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-094",
+    "name": "Customer 094",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 494000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-094",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-095",
+    "name": "Customer 095",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 295000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-095",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-096",
+    "name": "Customer 096",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 496000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-096",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-097",
+    "name": "Customer 097",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 297000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-097",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-098",
+    "name": "Customer 098",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 498000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-098",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  },
+  {
+    "customer_id": "CUST-099",
+    "name": "Customer 099",
+    "country": "US",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "SPOT",
+      "typical_size": 299000,
+      "typical_currency": "USD",
+      "hedging": "immediate conversion",
+      "note": "Usually converts currency that is already available."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-099",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 200000,
+      "currency": "USD",
+      "usd_available_now": true,
+      "window_days": 2,
+      "dates": [
+        "2026-10-28"
+      ],
+      "purpose": "Currency is available for near-term conversion."
+    }
+  },
+  {
+    "customer_id": "CUST-100",
+    "name": "Customer 100",
+    "country": "IN",
+    "resident": true,
+    "preferences": {
+      "preferred_product": "WINDOW_FORWARD",
+      "typical_size": 500000,
+      "typical_currency": "USD",
+      "hedging": "rate certainty with flexible settlement dates",
+      "note": "Frequently uses Window Forwards when receiving currency across multiple dates."
+    },
+    "settlement_requirement": {
+      "requirement_id": "SET-100",
+      "base_currency": "USD",
+      "term_currency": "INR",
+      "direction": "sell_base",
+      "amount": 500000,
+      "currency": "USD",
+      "usd_available_now": false,
+      "window_days": 30,
+      "dates": [
+        "2026-11-10",
+        "2026-11-18",
+        "2026-11-27"
+      ],
+      "purpose": "Expected receivables. The term currency is needed on more than one date."
+    }
+  }
+]

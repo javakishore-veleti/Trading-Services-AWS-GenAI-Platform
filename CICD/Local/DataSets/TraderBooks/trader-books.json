@@ -1,0 +1,222 @@
+[
+  {
+    "book_id": "BOOK-01",
+    "name": "USD/INR",
+    "base_currency": "USD",
+    "term_currency": "INR",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-02",
+    "name": "EUR/USD",
+    "base_currency": "EUR",
+    "term_currency": "USD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-03",
+    "name": "GBP/USD",
+    "base_currency": "GBP",
+    "term_currency": "USD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-04",
+    "name": "USD/JPY",
+    "base_currency": "USD",
+    "term_currency": "JPY",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-05",
+    "name": "AUD/USD",
+    "base_currency": "AUD",
+    "term_currency": "USD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-06",
+    "name": "USD/CAD",
+    "base_currency": "USD",
+    "term_currency": "CAD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-07",
+    "name": "USD/CHF",
+    "base_currency": "USD",
+    "term_currency": "CHF",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-08",
+    "name": "NZD/USD",
+    "base_currency": "NZD",
+    "term_currency": "USD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-09",
+    "name": "EUR/GBP",
+    "base_currency": "EUR",
+    "term_currency": "GBP",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-10",
+    "name": "EUR/JPY",
+    "base_currency": "EUR",
+    "term_currency": "JPY",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-11",
+    "name": "GBP/JPY",
+    "base_currency": "GBP",
+    "term_currency": "JPY",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-12",
+    "name": "EUR/INR",
+    "base_currency": "EUR",
+    "term_currency": "INR",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-13",
+    "name": "GBP/INR",
+    "base_currency": "GBP",
+    "term_currency": "INR",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-14",
+    "name": "USD/SGD",
+    "base_currency": "USD",
+    "term_currency": "SGD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-15",
+    "name": "USD/HKD",
+    "base_currency": "USD",
+    "term_currency": "HKD",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-16",
+    "name": "USD/CNH",
+    "base_currency": "USD",
+    "term_currency": "CNH",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-17",
+    "name": "AUD/JPY",
+    "base_currency": "AUD",
+    "term_currency": "JPY",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-18",
+    "name": "USD/ZAR",
+    "base_currency": "USD",
+    "term_currency": "ZAR",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-19",
+    "name": "USD/MXN",
+    "base_currency": "USD",
+    "term_currency": "MXN",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  },
+  {
+    "book_id": "BOOK-20",
+    "name": "USD/TRY",
+    "base_currency": "USD",
+    "term_currency": "TRY",
+    "products": [
+      "SPOT",
+      "WINDOW_FORWARD",
+      "CURRENCY_FUTURES"
+    ]
+  }
+]

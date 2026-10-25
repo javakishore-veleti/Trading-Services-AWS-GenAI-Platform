@@ -1,0 +1,10 @@
+[project]
+name = "traders-service"
+version = "0.1.0"
+description = "Traders, trading books, and trader-book mappings"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "psycopg[binary]>=3.2",
+    "uvicorn==0.54.0",
+]

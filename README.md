@@ -45,6 +45,15 @@ Start with `npm run local::containers::middleware::all:up`. Passwords that say `
 | Strands calculator | [http://127.0.0.1:8301/health](http://127.0.0.1:8301/health) | none | none |
 | Strands loan buddy | [http://127.0.0.1:8302/health](http://127.0.0.1:8302/health) | none | none |
 | Agno calculator | [http://127.0.0.1:8401/health](http://127.0.0.1:8401/health) | none | none |
+| Admin portal | [http://127.0.0.1:4201](http://127.0.0.1:4201) | `admin` | `local-admin` |
+| Trading Desk | [http://127.0.0.1:4200](http://127.0.0.1:4200) | `trader001` | `local-trader` |
+| app-auth-service | [http://127.0.0.1:8501/health](http://127.0.0.1:8501/health) | none | none |
+| traders-service | [http://127.0.0.1:8502/health](http://127.0.0.1:8502/health) | none | none |
+| customer-service | [http://127.0.0.1:8503/health](http://127.0.0.1:8503/health) | none | none |
+| trades-catalog-service | [http://127.0.0.1:8504/health](http://127.0.0.1:8504/health) | none | none |
+| trades-offers-services | [http://127.0.0.1:8505/health](http://127.0.0.1:8505/health) | none | none |
+| trades-orders-service | [http://127.0.0.1:8506/health](http://127.0.0.1:8506/health) | none | none |
+| FX question service | [http://127.0.0.1:8601/health](http://127.0.0.1:8601/health) | none | none |
 
 vLLM and SGLang are not started on this Mac. ClickHouse stays inside the Langfuse containers and has no localhost port.
 

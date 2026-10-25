@@ -14,4 +14,6 @@ Each sub-agent has its own Redis key and does not read the others. The parent st
 
 A screen preview drops the discount and the timing. A platform preview also drops the all-in, and the platform agent does not place an order.
 
+`traders-agentic-wfs` on port 8601 is the FX question graph. It runs Customer Behavior, Historical Transaction, Settlement Requirements, Market Intelligence, Regulatory Analysis, Hedging Strategy, then the decision step and the assurance check. Start it with `fx-desk-up.sh` after the API services. The framework defaults to LangGraph.
+
 Start all five with `lang-graph-all-up.sh`. Invoke is `POST /agents/{agent}/invoke` on that agent's port. The LiteLLM seed registers each one as a LangGraph agent. The model is `langgraph/{agent}` and the API base is `http://host.docker.internal:{port}`. LiteLLM calls `POST /runs/wait` on that base. A message is JSON with `context_id`, `tool`, and `arguments`.

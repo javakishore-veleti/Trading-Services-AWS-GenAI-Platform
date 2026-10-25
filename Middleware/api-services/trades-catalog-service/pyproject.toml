@@ -1,0 +1,9 @@
+[project]
+name = "trades-catalog-service"
+version = "0.1.0"
+description = "FX product definitions, eligibility, and regulatory references"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+]

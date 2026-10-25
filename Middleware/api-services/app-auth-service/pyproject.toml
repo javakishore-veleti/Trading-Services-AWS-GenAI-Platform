@@ -1,0 +1,9 @@
+[project]
+name = "app-auth-service"
+version = "0.1.0"
+description = "Sign-in for the FX admin portal and the trading desk"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+]

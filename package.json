@@ -22,6 +22,14 @@
     "local::strands::all:down": "bash Middleware/agentic-ai-wfs/aws-strands/strands-all-down.sh",
     "local::agno::all:up": "bash Middleware/agentic-ai-wfs/agno/agno-all-up.sh",
     "local::agno::all:status": "bash Middleware/agentic-ai-wfs/agno/agno-all-status.sh",
-    "local::agno::all:down": "bash Middleware/agentic-ai-wfs/agno/agno-all-down.sh"
+    "local::agno::all:down": "bash Middleware/agentic-ai-wfs/agno/agno-all-down.sh",
+    "local::api-services::all:up": "bash Middleware/api-services/api-all-up.sh",
+    "local::api-services::all:status": "bash Middleware/api-services/api-all-status.sh",
+    "local::api-services::all:down": "bash Middleware/api-services/api-all-down.sh",
+    "local::fx-desk::all:up": "bash Middleware/fx-desk-all-up.sh",
+    "local::fx-desk::all:status": "bash Middleware/fx-desk-all-status.sh",
+    "local::fx-desk::all:down": "bash Middleware/fx-desk-all-down.sh",
+    "local::portal::trading-desk": "npm --prefix Portals run start:trading-desk",
+    "local::portal::admin": "npm --prefix Portals run start:admin"
   }
 }

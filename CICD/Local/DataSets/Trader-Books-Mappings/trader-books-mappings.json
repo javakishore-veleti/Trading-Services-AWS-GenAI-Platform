@@ -1,0 +1,802 @@
+[
+  {
+    "trader_id": "TRADER-001",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-001",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-002",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-002",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-003",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-003",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-004",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-004",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-005",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-005",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-006",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-006",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-007",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-007",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-008",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-008",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-009",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-009",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-010",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-010",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-011",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-011",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-012",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-012",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-013",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-013",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-014",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-014",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-015",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-015",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-016",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-016",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-017",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-017",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-018",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-018",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-019",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-019",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-020",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-020",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-021",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-021",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-022",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-022",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-023",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-023",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-024",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-024",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-025",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-025",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-026",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-026",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-027",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-027",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-028",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-028",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-029",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-029",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-030",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-030",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-031",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-031",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-032",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-032",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-033",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-033",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-034",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-034",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-035",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-035",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-036",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-036",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-037",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-037",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-038",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-038",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-039",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-039",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-040",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-040",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-041",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-041",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-042",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-042",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-043",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-043",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-044",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-044",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-045",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-045",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-046",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-046",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-047",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-047",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-048",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-048",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-049",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-049",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-050",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-050",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-051",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-051",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-052",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-052",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-053",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-053",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-054",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-054",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-055",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-055",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-056",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-056",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-057",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-057",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-058",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-058",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-059",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-059",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-060",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-060",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-061",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-061",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-062",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-062",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-063",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-063",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-064",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-064",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-065",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-065",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-066",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-066",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-067",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-067",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-068",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-068",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-069",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-069",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-070",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-070",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-071",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-071",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-072",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-072",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-073",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-073",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-074",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-074",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-075",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-075",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-076",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-076",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-077",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-077",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-078",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-078",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-079",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-079",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-080",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-080",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-081",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-081",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-082",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-082",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-083",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-083",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-084",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-084",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-085",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-085",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-086",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-086",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-087",
+    "book_id": "BOOK-07"
+  },
+  {
+    "trader_id": "TRADER-087",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-088",
+    "book_id": "BOOK-08"
+  },
+  {
+    "trader_id": "TRADER-088",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-089",
+    "book_id": "BOOK-09"
+  },
+  {
+    "trader_id": "TRADER-089",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-090",
+    "book_id": "BOOK-10"
+  },
+  {
+    "trader_id": "TRADER-090",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-091",
+    "book_id": "BOOK-11"
+  },
+  {
+    "trader_id": "TRADER-091",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-092",
+    "book_id": "BOOK-12"
+  },
+  {
+    "trader_id": "TRADER-092",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-093",
+    "book_id": "BOOK-13"
+  },
+  {
+    "trader_id": "TRADER-093",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-094",
+    "book_id": "BOOK-14"
+  },
+  {
+    "trader_id": "TRADER-094",
+    "book_id": "BOOK-01"
+  },
+  {
+    "trader_id": "TRADER-095",
+    "book_id": "BOOK-15"
+  },
+  {
+    "trader_id": "TRADER-095",
+    "book_id": "BOOK-02"
+  },
+  {
+    "trader_id": "TRADER-096",
+    "book_id": "BOOK-16"
+  },
+  {
+    "trader_id": "TRADER-096",
+    "book_id": "BOOK-03"
+  },
+  {
+    "trader_id": "TRADER-097",
+    "book_id": "BOOK-17"
+  },
+  {
+    "trader_id": "TRADER-097",
+    "book_id": "BOOK-04"
+  },
+  {
+    "trader_id": "TRADER-098",
+    "book_id": "BOOK-18"
+  },
+  {
+    "trader_id": "TRADER-098",
+    "book_id": "BOOK-05"
+  },
+  {
+    "trader_id": "TRADER-099",
+    "book_id": "BOOK-19"
+  },
+  {
+    "trader_id": "TRADER-099",
+    "book_id": "BOOK-06"
+  },
+  {
+    "trader_id": "TRADER-100",
+    "book_id": "BOOK-20"
+  },
+  {
+    "trader_id": "TRADER-100",
+    "book_id": "BOOK-07"
+  }
+]

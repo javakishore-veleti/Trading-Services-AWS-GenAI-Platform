@@ -1,0 +1,10 @@
+[project]
+name = "traders-agentic-wfs"
+version = "0.1.0"
+description = "LangGraph desk that answers one FX question for the trader"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "uvicorn==0.54.0",
+    "langgraph==1.0.2",
+]
